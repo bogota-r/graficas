@@ -1,0 +1,107 @@
+---
+title: "Gráficas en R"
+---
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(message = FALSE, comment = "#>")
+```
+
+# Gráficas en R
+
+## Contenido (I)
+<!-- Esto es solo para guiarnos luego miramos si lo dejamos o no --> 
+
+- Que es R (por si acaso)
+- Gráficas Base
+    * Componentes de bajo nivel
+    * Metodos - Todo de una: `plot()`
+    * Ejemplos
+- Grid
+    * Que es grid (o por qué otro sistema?)
+    * Componentes (solo hay de bajo nivel)
+
+## Contenido (II)
+- lattice
+    * Trellis plots
+    * ...
+    * Ejemplos
+- ggplot2
+    * Una gramatica de graficas
+    * Capas, geometrias y componentes æsteticos
+    * Ejemplos
+
+## Contenido (III)
+- Maś allá: graficas interactivas
+    * ggvis y shiny
+    * Integración con JS y htmlwidgets
+    * Ayuda y otros recursos
+
+## Qué es R?
+
+> *"R is a language and environment for statistical computing and graphics."*
+
+Entre otras cosas R incluye:
+
+  - capacidad para almacenar y manipular datos **efectivamente**
+  - un conjunto de operadores para hacer cálculos sobre arreglos, particularmente matrices
+  - una colección grande, **coherente** e integrada de herramientas para el análisis de datos
+  - **dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso**
+  - un lenguaje de programación bien desarrollado, **simple y eficaz**
+  
+# Gráficas Base
+
+Importante por los metodos.
+
+## Componentes de bajo nivel
+
+## Todo de una: `plot()`
+
+# Grid
+
+## Que es grid?
+
+## Componentes de bajo nivel
+
+## Lattice
+
+# ggplot
+
+## R moderno o el ["Hadleyverse"](https://barryrowlingson.github.io/hadleyverse/) {.build}
+
+- `readr`, `readxl` y `haven` lectura de archivos.
+- `lubridate` manejo de fechas y tiempo.
+- `stringr` interface a `stringi` para manejo de caracteres.
+- `dplyr` y `tidyr` manipulación y limpieza de datos.
+- `ggplot2` una gramática de gráficas - util para abstraer y construir visualizaciones.
+
+# Más allá: Gráficas interactivas
+
+Una deuda grande de R.
+
+# ggvis y shiny
+
+# Integración con JS - htmlwidgets
+
+## Una tabla
+
+Función    | Vectores      | Matrices                    | Arreglos         | 
+-----------|---------------|-----------------------------|------------------|
+Dimensión  | `length()`    | `ncol()` y `nrow()`         | `dim()`          |  
+Nombres    | `names()`     | `rownames()` y `colnames()` | `dimnames()`     |
+Concatenar | `c()`         | `cbind()` y `rbind()`       | `abind::abind()` |  
+
+## Ayuda y otros recursos {.build}
+
+La vista de tareas con la que empezamos: [_Vista de Tareas_/Gráficas](http://cran.r-project.org/web/views/grafics).
+
+Canales: [en twitter #rstats](https://twitter.com/hashtag/rstats) y en [StackOverflow el tag R](http://stackoverflow.com/questions/tagged/r). También pueden [googlea-R](https://www.google.com.co/#q=R) R + "pregunta".  
+
+Algunas buenas referencias:
+
+- [Quick R - Gráficas](http://www.statmethods.net/graphs/index.html)
+- [Springer - Use R Series](http://www.springer.com/series/6991?detailsPage=titles) R en la práctica en diferentes contextos.
+- ...
+
+## Colofón {.smaller .left-margin}
+
+Esta presentación fue escrita en RMarkdown desde RStudio y compilada por `rmarkdown` en la plantilla `ioslides` de Google gracias a `knitr` y `pandoc`. Publicada en la web en GitHub gracias a GitHub Pages.

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gráficas en R</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" media="all" href="libs/ioslides-13.5.1/fonts/fonts.css">
+
+  <link rel="stylesheet" media="all" href="libs/ioslides-13.5.1/theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="libs/ioslides-13.5.1/theme/css/phone.css">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Gráficas en R',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                favIcon: 'graficas_files/logo.png',
+              },
+
+      // Author information
+      presenters: [
+            ]
+    };
+  </script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(graficas_files/logo.png) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="graficas_files/logo.png"></aside>
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+          </hgroup>
+  </slide>
+
+<slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Gráficas en R</h2></hgroup><article  id="graficas-en-r">
+
+</article></slide><slide class=''><hgroup><h2>Contenido (I)</h2></hgroup><article  id="contenido-i">
+
+<!-- Esto es solo para guiarnos luego miramos si lo dejamos o no -->
+
+<ul class = 'build'>
+<li>Que es R (por si acaso)</li>
+<li>Gráficas Base
+
+<ul class = 'build'>
+<li>Componentes de bajo nivel</li>
+<li>Metodos - Todo de una: <code>plot()</code></li>
+<li>Ejemplos</li>
+</ul></li>
+<li>Grid
+
+<ul class = 'build'>
+<li>Que es grid (o por qué otro sistema?)</li>
+<li>Componentes (solo hay de bajo nivel)</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Contenido (II)</h2></hgroup><article  id="contenido-ii">
+
+<ul class = 'build'>
+<li>lattice
+
+<ul class = 'build'>
+<li>Trellis plots</li>
+<li>&#8230;</li>
+<li>Ejemplos</li>
+</ul></li>
+<li>ggplot2
+
+<ul class = 'build'>
+<li>Una gramatica de graficas</li>
+<li>Capas, geometrias y componentes æsteticos</li>
+<li>Ejemplos</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Contenido (III)</h2></hgroup><article  id="contenido-iii">
+
+<ul class = 'build'>
+<li>Maś allá: graficas interactivas
+
+<ul class = 'build'>
+<li>ggvis y shiny</li>
+<li>Integración con JS y htmlwidgets</li>
+<li>Ayuda y otros recursos</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Qué es R?</h2></hgroup><article  id="que-es-r">
+
+<blockquote>
+<p><em>&quot;R is a language and environment for statistical computing and graphics.&quot;</em></p>
+</blockquote>
+
+<p>Entre otras cosas R incluye:</p>
+
+<ul class = 'build'>
+<li>capacidad para almacenar y manipular datos <strong>efectivamente</strong></li>
+<li>un conjunto de operadores para hacer cálculos sobre arreglos, particularmente matrices</li>
+<li>una colección grande, <strong>coherente</strong> e integrada de herramientas para el análisis de datos</li>
+<li><strong>dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso</strong></li>
+<li>un lenguaje de programación bien desarrollado, <strong>simple y eficaz</strong></li>
+</ul>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Gráficas Base</h2></hgroup><article  id="graficas-base">
+
+<p>Importante por los metodos.</p>
+
+</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
+
+</article></slide><slide class=''><hgroup><h2>Todo de una: <code>plot()</code></h2></hgroup><article  id="todo-de-una-plot">
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Grid</h2></hgroup><article  id="grid">
+
+</article></slide><slide class=''><hgroup><h2>Que es grid?</h2></hgroup><article  id="que-es-grid">
+
+</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel-1">
+
+</article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice">
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>ggplot</h2></hgroup><article  id="ggplot">
+
+</article></slide><slide class=''><hgroup><h2>R moderno o el <a href='https://barryrowlingson.github.io/hadleyverse/' title=''>&quot;Hadleyverse&quot;</a></h2></hgroup><article  id="r-moderno-o-el-hadleyverse" class="build">
+
+<ul class = 'build'>
+<li><code>readr</code>, <code>readxl</code> y <code>haven</code> lectura de archivos.</li>
+<li><code>lubridate</code> manejo de fechas y tiempo.</li>
+<li><code>stringr</code> interface a <code>stringi</code> para manejo de caracteres.</li>
+<li><code>dplyr</code> y <code>tidyr</code> manipulación y limpieza de datos.</li>
+<li><code>ggplot2</code> una gramática de gráficas - util para abstraer y construir visualizaciones.</li>
+</ul>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Más allá: Gráficas interactivas</h2></hgroup><article  id="mas-alla-graficas-interactivas">
+
+<p>Una deuda grande de R.</p>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>ggvis y shiny</h2></hgroup><article  id="ggvis-y-shiny">
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Integración con JS - htmlwidgets</h2></hgroup><article  id="integracion-con-js---htmlwidgets">
+
+</article></slide><slide class=''><hgroup><h2>Una tabla</h2></hgroup><article  id="una-tabla">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Función</th>
+<th align="left">Vectores</th>
+<th align="left">Matrices</th>
+<th align="left">Arreglos</th>
+</tr>
+<tr class="odd">
+<td align="left">Dimensión</td>
+<td align="left"><code>length()</code></td>
+<td align="left"><code>ncol()</code> y <code>nrow()</code></td>
+<td align="left"><code>dim()</code></td>
+</tr>
+<tr class="even">
+<td align="left">Nombres</td>
+<td align="left"><code>names()</code></td>
+<td align="left"><code>rownames()</code> y <code>colnames()</code></td>
+<td align="left"><code>dimnames()</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Concatenar</td>
+<td align="left"><code>c()</code></td>
+<td align="left"><code>cbind()</code> y <code>rbind()</code></td>
+<td align="left"><code>abind::abind()</code></td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Ayuda y otros recursos</h2></hgroup><article  id="ayuda-y-otros-recursos" class="build">
+
+<p>La vista de tareas con la que empezamos: <a href='http://cran.r-project.org/web/views/grafics' title=''><em>Vista de Tareas</em>/Gráficas</a>.</p>
+
+<p>Canales: <a href='https://twitter.com/hashtag/rstats' title=''>en twitter #rstats</a> y en <a href='http://stackoverflow.com/questions/tagged/r' title=''>StackOverflow el tag R</a>. También pueden <a href='https://www.google.com.co/#q=R' title=''>googlea-R</a> R + &quot;pregunta&quot;.</p>
+
+<p>Algunas buenas referencias:</p>
+
+<ul class = 'build'>
+<li><a href='http://www.statmethods.net/graphs/index.html' title=''>Quick R - Gráficas</a></li>
+<li><a href='http://www.springer.com/series/6991?detailsPage=titles' title=''>Springer - Use R Series</a> R en la práctica en diferentes contextos.</li>
+<li>&#8230;</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Colofón</h2></hgroup><article  id="colofon" class="smaller left-margin">
+
+<p>Esta presentación fue escrita en RMarkdown desde RStudio y compilada por <code>rmarkdown</code> en la plantilla <code>ioslides</code> de Google gracias a <code>knitr</code> y <code>pandoc</code>. Publicada en la web en GitHub gracias a GitHub Pages.</p></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script src="libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+<script src="libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+<script src="libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+<script src="libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+<script src="libs/ioslides-13.5.1/js/hammer.js"></script>
+<script src="libs/ioslides-13.5.1/js/slide-controller.js"></script>
+<script src="libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
