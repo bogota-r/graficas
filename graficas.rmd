@@ -47,7 +47,13 @@ Entre otras cosas R incluye:
   - una colección grande, **coherente** e integrada de herramientas para el análisis de datos
   - **dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso**
   - un lenguaje de programación bien desarrollado, **simple y eficaz**
-  
+
+## El ambiente para graficas de R
+
+```{r graphics-diagram, child = "graficas_files/graphics-diagram.rmd"}
+```
+
+
 # Gráficas Base
 
 Importante por los metodos.
