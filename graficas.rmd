@@ -2,9 +2,66 @@
 title: "Gráficas en R"
 ---
 
-```{r setup, echo = FALSE}
+```{r setup, echo = FALSE, include=FALSE}
+library("dplyr")
+library("tidyr")
+library("forecast")
+library("scales")
+library("grid")
+library("knitr")
+library("magrittr")
+library("ggplot2")
+
+data("diamonds")
+data("iris")
+data("mtcars")
+
 knitr::opts_chunk$set(message = FALSE, comment = "#>")
 ```
+
+## Motivación
+
+```{r, echo=FALSE, include=TRUE}
+fit <- Arima(WWWusage,c(3,1,0))
+
+cast <- as.data.frame(forecast(fit, h = 40, fan = TRUE)) %>%
+  add_rownames(var = "t") %>%
+  mutate(t = as.numeric(t)) %>%
+  gather(p, y, -(t:`Point Forecast`)) %>%
+  separate(p, c("Side", "p"), convert = TRUE) %>%
+  spread(Side, y)
+
+series <- data.frame(y = as.numeric(WWWusage),
+                     t = as.numeric(time(WWWusage)))
+
+last_obs <- data.frame(t = series[nrow(series), "t"], 
+                       "Point Forecast" = series[nrow(series), "y"],
+                       p = unique(cast$p),
+                       Hi = series[nrow(series), "y"],
+                       Lo = series[nrow(series), "y"],
+                       check.names = FALSE)
+
+cast %<>% rbind(last_obs)
+
+pallete <- seq_gradient_pal(low = "white", high = "red")
+offset <- 0.25
+
+# pallete <- seq_gradient_pal(low = "#132B43", high = "#56B1F7")
+
+fan_chart <- ggplot(data = cast, aes(x = t, y = `Point Forecast`)) +
+  geom_line(aes(x = t, y = y), data = series)
+  
+for (pr in sort(unique(cast$p), decreasing = TRUE)){
+  fan_chart <- fan_chart +
+    geom_ribbon(aes(x = t, ymax = Hi, ymin = Lo), 
+                data = filter(cast, p == pr), alpha = 0.4,
+                fill = pallete((1 - offset)*(1 - pr/100) + offset))
+}
+
+fan_chart + theme_bw() + geom_line(linetype = "dashed")
+```
+
+
 
 # Gráficas en R
 
@@ -61,6 +118,38 @@ Importante por los metodos.
 ## Componentes de bajo nivel
 
 ## Todo de una: `plot()`
+```{r, echo=FALSE}
+par(mfrow = c(1,2))
+boxplot(iris$Sepal.Length~iris$Species)
+TABLE <- 100*table(diamonds$cut, diamonds$color)/sum(table(diamonds$cut, diamonds$color))
+BP<-barplot(TABLE, beside=TRUE)
+```
+
+## Ejes, bordes, fuentes y colores
+
+```{r, echo=FALSE}
+col <- c("#34b257","#fc032c", "#7a2985", "#6c8393", "#a6cd32", "#0095ff", "#e4681b", "#9b2ed1", "#9b2ed1", "#08cbf7", "#347f6d", "#f4c10b", "#040525", "#8ee916", "#f51e0a", "#2fd0ba", "#fc4503", "#b0614f", "#c33c3e", "#46b9b7")
+col <- c("#e4681b", "#0095ff", "#7a2985", "#fc032c", "#347f6d")
+
+ par(family="Sawasdee", cex=0.8)#
+ BP<-boxplot(iris$Sepal.Length~iris$Species, main="Iris", ylab="Sepal Length", axes=FALSE, col="#aaaaaa",  border="#333333")
+ text(x=(1:3-0.5), y=t(BP$stats), round(t(BP$stats), 1), pos=3)
+ axis(1, at=1:3, labels=levels(iris$Species))
+ axis(2)
+
+```
+
+## Ejes, bordes, fuentes y colores
+
+```{r, echo=FALSE}
+par(family="Sawasdee", cex=0.8)#
+BP<-barplot(TABLE, beside=TRUE, main="Iris", ylab="Freq", axes=FALSE, col=col,  border=NA, ylim = c(0,10))
+text(x=BP, y=TABLE, paste(round(TABLE, 1),"%"), pos=3)
+legend("topright", levels(diamonds$cut), fill=col, border=NA, bty="n")
+#axis(1, at=BP, labels=Levels)
+axis(2)
+```
+
 
 # Grid
 
@@ -79,6 +168,41 @@ Importante por los metodos.
 - `stringr` interface a `stringi` para manejo de caracteres.
 - `dplyr` y `tidyr` manipulación y limpieza de datos.
 - `ggplot2` una gramática de gráficas - util para abstraer y construir visualizaciones.
+
+## ggplot2
+
+ - Gráficos por capas
+ - Gestión de la gráfica como objeto
+ - Graficar, guardar, abrir y editar.
+
+```{r, echo=FALSE, fig.height=3.5}
+
+qplot(mpg, wt, data=mtcars, colour=factor(cyl), size=carb)
+
+```
+
+
+## ggplot2 (geoms)
+
+```{r}
+
+ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
+
+```
+
+## ggplot2 (geoms) {.smaller}
+
+```{r, echo=FALSE}
+ls(pattern = '^geom_', env = as.environment('package:ggplot2')) %>%
+  setdiff("geom_violin") %>% matrix(9) %>% kable
+```
+
+## ggplot2 (stats)
+
+```{r}
+ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
+```
+
 
 # Más allá: Gráficas interactivas
 
