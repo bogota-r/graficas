@@ -2,8 +2,23 @@
 title: "Gráficas en R"
 ---
 
-```{r setup, echo = FALSE}
-knitr::opts_chunk$set(message = FALSE, comment = "#>")
+```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
+library("graphics")
+library("grid")
+library("lattice")
+library("ggplot2")
+
+# Lo de siempre
+library("magrittr")
+library("dplyr")
+library("tidyr")
+
+# Datos para ejemplos
+library("saber") # Ver github.com/nebulae-co/saber
+
+# Algunas opciones de knitr
+knitr::opts_chunk$set(message = FALSE,
+                      comment = "#>")
 ```
 
 # Gráficas en R
@@ -13,8 +28,8 @@ knitr::opts_chunk$set(message = FALSE, comment = "#>")
 
 - Que es R (por si acaso)
 - Gráficas Base
-    * Componentes de bajo nivel
     * Metodos - Todo de una: `plot()`
+    * Componentes de bajo nivel
     * Ejemplos
 - Grid
     * Que es grid (o por qué otro sistema?)
@@ -48,19 +63,90 @@ Entre otras cosas R incluye:
   - **dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso**
   - un lenguaje de programación bien desarrollado, **simple y eficaz**
 
-## El ambiente para graficas de R
+## [El ambiente para graficas de R](https://cran.r-project.org/web/views/Graphics.html) {.smaller}
 
 ```{r graphics-diagram, child = "graficas_files/graphics-diagram.rmd"}
 ```
 
 
+Grafica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
+
+## Basicamente
+
+```r
+library("graphics")
+library("grid")
+
+# http://lattice.r-forge.r-project.org/
+library("lattice")
+
+# https://github.com/hadley/ggplot2
+library("ggplot2")
+```
+
 # Gráficas Base
 
-Importante por los metodos.
+## Metodos (o todo de una):
+
+- `plot()` para "diagramas de dispersión"
+- `barplot()` para graficas de barra
+- `hist()` para histogramas
+- `boxplot()` para diagramas de cajas y bigotes
+- `pie()` - mejor evitarlos
+
+## `plot()`
+
+```{r plot, eval = FALSE}
+y <- rnorm(30)
+types <- c("p", "l", "b", "c", "o", "h", "s", "S", "n")
+
+par(mfrow = c(3, 3), cex = 0.6, mar = c(3, 3, 3, 1))
+
+for (type in types){
+  plot(y, type = type, main = paste0("type = ", type))
+}
+```
+
+## `plot()`
+
+```{r plot, echo = FALSE}
+```
+
+## `barplot()`
+
+```{r barplot-data, include = FALSE, cache = TRUE}
+# library("saber")  # Ver github.com/nebulae-co/saber
+
+data(SB11_20142)
+
+estratos <- SB11_20142 %$%
+  table(PERS_GENERO, FINS_ESTRATOVIVIENDAENERGIA)
+
+educacion_madre <- SB11_20142 %$%
+  table(PERS_GENERO, FINS_NIVELEDUCATIVOMADRE)
+```
+
+```{r barplot, eval = FALSE}
+par(mfrow = c(2, 1), mar = c(3, 3, 1, 1), cex = 0.6)
+
+barplot(estratos, angle = c(45, 135), 
+        density = 20, col = "grey",
+        names = colnames(estratos))
+
+legend("topright", title = "Genero", rownames(estratos), cex = 1.5,
+       angle = c(45, 135), density = 20, fill = "gray")
+
+barplot(educacion_madre, angle = c(45, 135), 
+        density = 20, col = "grey",
+        names = colnames(educacion_madre),
+        horiz = TRUE)
+```
+
+## `barplot()`
+```{r barplot, echo = FALSE}
+```
 
 ## Componentes de bajo nivel
-
-## Todo de una: `plot()`
 
 # Grid
 

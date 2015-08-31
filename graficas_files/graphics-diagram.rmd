@@ -4,7 +4,7 @@
 # https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R
 
 # Makes use of the roundrect grob defined in the RGraphics package
-require(RGraphics)
+require("grid")
 
 label <- function(label, row, col, title = FALSE, box = TRUE, tcol = "black",
                   fill = NA, lwd = 1){
@@ -83,9 +83,11 @@ pushViewport(viewport(layout.pos.row = 7,
 grid.roundrect(gp = gpar(lty = "dashed"), r = unit(0.1, "snpc"))
 popViewport()
 
-label("Graphics\nDevice\nPackages", 7, 1, title = TRUE, box = FALSE)
-label("gtkDevice", 7, 3)
-label("...", 7, 4)
+label("Interactive\nGraphics\nTools", 7, 1, title = TRUE, box = FALSE)
+label("rggobi", 7, 2, box = FALSE)
+label("shiny/ggvis", 7, 3, box = FALSE)
+label("htmlwidgets", 7, 4, box = FALSE)
+label("...", 7, 5, box = FALSE)
 
 popViewport()
 ```

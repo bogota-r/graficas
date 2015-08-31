@@ -107,18 +107,18 @@
 
 <!-- Esto es solo para guiarnos luego miramos si lo dejamos o no -->
 
-<ul class = 'build'>
+<ul>
 <li>Que es R (por si acaso)</li>
 <li>Gráficas Base
 
-<ul class = 'build'>
-<li>Componentes de bajo nivel</li>
+<ul>
 <li>Metodos - Todo de una: <code>plot()</code></li>
+<li>Componentes de bajo nivel</li>
 <li>Ejemplos</li>
 </ul></li>
 <li>Grid
 
-<ul class = 'build'>
+<ul>
 <li>Que es grid (o por qué otro sistema?)</li>
 <li>Componentes (solo hay de bajo nivel)</li>
 </ul></li>
@@ -126,17 +126,17 @@
 
 </article></slide><slide class=''><hgroup><h2>Contenido (II)</h2></hgroup><article  id="contenido-ii">
 
-<ul class = 'build'>
+<ul>
 <li>lattice
 
-<ul class = 'build'>
+<ul>
 <li>Trellis plots</li>
 <li>&#8230;</li>
 <li>Ejemplos</li>
 </ul></li>
 <li>ggplot2
 
-<ul class = 'build'>
+<ul>
 <li>Una gramatica de graficas</li>
 <li>Capas, geometrias y componentes æsteticos</li>
 <li>Ejemplos</li>
@@ -145,10 +145,10 @@
 
 </article></slide><slide class=''><hgroup><h2>Contenido (III)</h2></hgroup><article  id="contenido-iii">
 
-<ul class = 'build'>
+<ul>
 <li>Maś allá: graficas interactivas
 
-<ul class = 'build'>
+<ul>
 <li>ggvis y shiny</li>
 <li>Integración con JS y htmlwidgets</li>
 <li>Ayuda y otros recursos</li>
@@ -163,7 +163,7 @@
 
 <p>Entre otras cosas R incluye:</p>
 
-<ul class = 'build'>
+<ul>
 <li>capacidad para almacenar y manipular datos <strong>efectivamente</strong></li>
 <li>un conjunto de operadores para hacer cálculos sobre arreglos, particularmente matrices</li>
 <li>una colección grande, <strong>coherente</strong> e integrada de herramientas para el análisis de datos</li>
@@ -171,17 +171,71 @@
 <li>un lenguaje de programación bien desarrollado, <strong>simple y eficaz</strong></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>El ambiente para graficas de R</h2></hgroup><article  id="el-ambiente-para-graficas-de-r">
+</article></slide><slide class=''><hgroup><h2><a href='https://cran.r-project.org/web/views/Graphics.html' title=''>El ambiente para graficas de R</a></h2></hgroup><article  id="el-ambiente-para-graficas-de-r" class="smaller">
 
-<p><img src="graficas_files/figure-html/graphics-diagram-1.png" title="" alt="" width="720" /></p>
+<img src='graficas_files/figure-html/graphics-diagram-1.png' title=''/>
+
+<p>Grafica basada en <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R' title=''>codigo</a> del libro <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html' title=''><em>R Graphics</em> de Paul Murrel</a></p>
+
+</article></slide><slide class=''><hgroup><h2>Basicamente</h2></hgroup><article  id="basicamente">
+
+<pre class = 'prettyprint lang-r'>library(&quot;graphics&quot;)
+library(&quot;grid&quot;)
+
+# http://lattice.r-forge.r-project.org/
+library(&quot;lattice&quot;)
+
+# https://github.com/hadley/ggplot2
+library(&quot;ggplot2&quot;)</pre>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Gráficas Base</h2></hgroup><article  id="graficas-base">
 
-<p>Importante por los metodos.</p>
+</article></slide><slide class=''><hgroup><h2>Metodos (o todo de una):</h2></hgroup><article  id="metodos-o-todo-de-una">
+
+<ul>
+<li><code>plot()</code> para &quot;diagramas de dispersión&quot;</li>
+<li><code>barplot()</code> para graficas de barra</li>
+<li><code>hist()</code> para histogramas</li>
+<li><code>boxplot()</code> para diagramas de cajas y bigotes</li>
+<li><code>pie()</code> - mejor evitarlos</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot">
+
+<pre class = 'prettyprint lang-r'>y &lt;- rnorm(30)
+types &lt;- c(&quot;p&quot;, &quot;l&quot;, &quot;b&quot;, &quot;c&quot;, &quot;o&quot;, &quot;h&quot;, &quot;s&quot;, &quot;S&quot;, &quot;n&quot;)
+
+par(mfrow = c(3, 3), cex = 0.6, mar = c(3, 3, 3, 1))
+
+for (type in types){
+  plot(y, type = type, main = paste0(&quot;type = &quot;, type))
+}</pre>
+
+</article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot-1">
+
+<img src='graficas_files/figure-html/plot-1.png' title=''/>
+
+</article></slide><slide class=''><hgroup><h2><code>barplot()</code></h2></hgroup><article  id="barplot">
+
+<pre class = 'prettyprint lang-r'>par(mfrow = c(2, 1), mar = c(3, 3, 1, 1), cex = 0.6)
+
+barplot(estratos, angle = c(45, 135), 
+        density = 20, col = &quot;grey&quot;,
+        names = colnames(estratos))
+
+legend(&quot;topright&quot;, title = &quot;Genero&quot;, rownames(estratos), cex = 1.5,
+       angle = c(45, 135), density = 20, fill = &quot;gray&quot;)
+
+barplot(educacion_madre, angle = c(45, 135), 
+        density = 20, col = &quot;grey&quot;,
+        names = colnames(educacion_madre),
+        horiz = TRUE)</pre>
+
+</article></slide><slide class=''><hgroup><h2><code>barplot()</code></h2></hgroup><article  id="barplot-1">
+
+<img src='graficas_files/figure-html/barplot-1.png' title=''/>
 
 </article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
-
-</article></slide><slide class=''><hgroup><h2>Todo de una: <code>plot()</code></h2></hgroup><article  id="todo-de-una-plot">
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Grid</h2></hgroup><article  id="grid">
 
@@ -195,7 +249,7 @@
 
 </article></slide><slide class=''><hgroup><h2>R moderno o el <a href='https://barryrowlingson.github.io/hadleyverse/' title=''>&quot;Hadleyverse&quot;</a></h2></hgroup><article  id="r-moderno-o-el-hadleyverse" class="build">
 
-<ul class = 'build'>
+<ul>
 <li><code>readr</code>, <code>readxl</code> y <code>haven</code> lectura de archivos.</li>
 <li><code>lubridate</code> manejo de fechas y tiempo.</li>
 <li><code>stringr</code> interface a <code>stringi</code> para manejo de caracteres.</li>
@@ -248,7 +302,7 @@
 
 <p>Algunas buenas referencias:</p>
 
-<ul class = 'build'>
+<ul>
 <li><a href='http://www.statmethods.net/graphs/index.html' title=''>Quick R - Gráficas</a></li>
 <li><a href='http://www.springer.com/series/6991?detailsPage=titles' title=''>Springer - Use R Series</a> R en la práctica en diferentes contextos.</li>
 <li>&#8230;</li>
