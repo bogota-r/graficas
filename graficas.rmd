@@ -31,47 +31,8 @@ opts_chunk$set(message = FALSE,
 
 ## Motivación
 
-```{r, echo=FALSE, include=TRUE}
-fit <- Arima(WWWusage,c(3,1,0))
-
-cast <- as.data.frame(forecast(fit, h = 40, fan = TRUE)) %>%
-  add_rownames(var = "t") %>%
-  mutate(t = as.numeric(t)) %>%
-  gather(p, y, -(t:`Point Forecast`)) %>%
-  separate(p, c("Side", "p"), convert = TRUE) %>%
-  spread(Side, y)
-
-series <- data.frame(y = as.numeric(WWWusage),
-                     t = as.numeric(time(WWWusage)))
-
-last_obs <- data.frame(t = series[nrow(series), "t"], 
-                       "Point Forecast" = series[nrow(series), "y"],
-                       p = unique(cast$p),
-                       Hi = series[nrow(series), "y"],
-                       Lo = series[nrow(series), "y"],
-                       check.names = FALSE)
-
-cast %<>% rbind(last_obs)
-
-pallete <- seq_gradient_pal(low = "white", high = "red")
-offset <- 0.25
-
-# pallete <- seq_gradient_pal(low = "#132B43", high = "#56B1F7")
-
-fan_chart <- ggplot(data = cast, aes(x = t, y = `Point Forecast`)) +
-  geom_line(aes(x = t, y = y), data = series)
-  
-for (pr in sort(unique(cast$p), decreasing = TRUE)){
-  fan_chart <- fan_chart +
-    geom_ribbon(aes(x = t, ymax = Hi, ymin = Lo), 
-                data = filter(cast, p == pr), alpha = 0.4,
-                fill = pallete((1 - offset)*(1 - pr/100) + offset))
-}
-
-fan_chart + theme_bw() + geom_line(linetype = "dashed")
+```{r motivacion, child = "graficas_files/motivacion.rmd"}
 ```
-
-
 
 # Gráficas en R
 
@@ -148,7 +109,7 @@ library("ggplot2")
 
 ## `plot()`
 
-```{r plot, eval = FALSE}
+```{r plot, eval = FALSE, cache = TRUE}
 y <- rnorm(30)
 types <- c("p", "l", "b", "c", "o", "h", "s", "S", "n")
 
@@ -253,7 +214,7 @@ axis(2)
 - `lubridate` manejo de fechas y tiempo.
 - `stringr` interface a `stringi` para manejo de caracteres.
 - `dplyr` y `tidyr` manipulación y limpieza de datos.
-- `ggplot2` una gramática de gráficas - util para abstraer y construir visualizaciones.
+- `ggplot2` *una gramática de gráficas - util para abstraer y construir visualizaciones*.
 
 ## ggplot2
 
@@ -261,34 +222,28 @@ axis(2)
  - Gestión de la gráfica como objeto
  - Graficar, guardar, abrir y editar.
 
-```{r, echo=FALSE, fig.height=3.5}
-
+```{r qplot, echo = FALSE, fig.height = 3.5}
 qplot(mpg, wt, data=mtcars, colour=factor(cyl), size=carb)
-
 ```
-
 
 ## ggplot2 (geoms)
 
-```{r}
-
+```{r geoms-intro}
 ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
-
 ```
 
-## ggplot2 (geoms) {.smaller}
+## [ggplot2 (geoms)](geoms.html) {.smaller}
 
-```{r, echo=FALSE}
+```{r geoms-table, echo = FALSE}
 ls(pattern = '^geom_', env = as.environment('package:ggplot2')) %>%
   setdiff("geom_violin") %>% matrix(9) %>% kable
 ```
 
 ## ggplot2 (stats)
 
-```{r}
+```{r stats-intro}
 ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 ```
-
 
 # Más allá: Gráficas interactivas
 

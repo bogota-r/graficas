@@ -101,7 +101,11 @@
           </hgroup>
   </slide>
 
-<slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Gráficas en R</h2></hgroup><article  id="graficas-en-r">
+<slide class=''><hgroup><h2>Motivación</h2></hgroup><article  id="motivacion">
+
+<p><img src="graficas_files/figure-html/motivacion-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Gráficas en R</h2></hgroup><article  id="graficas-en-r">
 
 </article></slide><slide class=''><hgroup><h2>Contenido (I)</h2></hgroup><article  id="contenido-i">
 
@@ -173,7 +177,7 @@
 
 </article></slide><slide class=''><hgroup><h2><a href='https://cran.r-project.org/web/views/Graphics.html' title=''>El ambiente para graficas de R</a></h2></hgroup><article  id="el-ambiente-para-graficas-de-r" class="smaller">
 
-<img src='graficas_files/figure-html/graphics-diagram-1.png' title=''/>
+<p><img src="graficas_files/figure-html/graphics-diagram-1.png" title="" alt="" width="720" /></p>
 
 <p>Grafica basada en <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R' title=''>codigo</a> del libro <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html' title=''><em>R Graphics</em> de Paul Murrel</a></p>
 
@@ -213,7 +217,7 @@ for (type in types){
 
 </article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot-1">
 
-<img src='graficas_files/figure-html/plot-1.png' title=''/>
+<p><img src="graficas_files/figure-html/plot-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2><code>barplot()</code></h2></hgroup><article  id="barplot">
 
@@ -233,15 +237,29 @@ barplot(educacion_madre, angle = c(45, 135),
 
 </article></slide><slide class=''><hgroup><h2><code>barplot()</code></h2></hgroup><article  id="barplot-1">
 
-<img src='graficas_files/figure-html/barplot-1.png' title=''/>
+<p><img src="graficas_files/figure-html/barplot-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
+</article></slide><slide class=''><hgroup><h2>Algunos parametros gráficos</h2></hgroup><article  id="algunos-parametros-graficos">
+
+<p>Una gráfica cruda:</p>
+
+<p><img src="graficas_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Ejes, bordes, fuentes y colores</h2></hgroup><article  id="ejes-bordes-fuentes-y-colores">
+
+<p>Con pocas modificaciones de parametros</p>
+
+<p><img src="graficas_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Ejes, bordes, fuentes y colores</h2></hgroup><article  id="ejes-bordes-fuentes-y-colores-1">
+
+<p><img src="graficas_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Grid</h2></hgroup><article  id="grid">
 
 </article></slide><slide class=''><hgroup><h2>Que es grid?</h2></hgroup><article  id="que-es-grid">
 
-</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel-1">
+</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
 
 </article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice">
 
@@ -254,8 +272,89 @@ barplot(educacion_madre, angle = c(45, 135),
 <li><code>lubridate</code> manejo de fechas y tiempo.</li>
 <li><code>stringr</code> interface a <code>stringi</code> para manejo de caracteres.</li>
 <li><code>dplyr</code> y <code>tidyr</code> manipulación y limpieza de datos.</li>
-<li><code>ggplot2</code> una gramática de gráficas - util para abstraer y construir visualizaciones.</li>
+<li><code>ggplot2</code> <em>una gramática de gráficas - util para abstraer y construir visualizaciones</em>.</li>
 </ul>
+
+</article></slide><slide class=''><hgroup><h2>ggplot2</h2></hgroup><article  id="ggplot2">
+
+<ul>
+<li>Gráficos por capas</li>
+<li>Gestión de la gráfica como objeto</li>
+<li>Graficar, guardar, abrir y editar.</li>
+</ul>
+
+<p><img src="graficas_files/figure-html/qplot-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>ggplot2 (geoms)</h2></hgroup><article  id="ggplot2-geoms">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()</pre>
+
+<p><img src="graficas_files/figure-html/geoms-intro-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2><a href='geoms.html' title=''>ggplot2 (geoms)</a></h2></hgroup><article  id="ggplot2-geoms-1" class="smaller">
+
+<table class = 'rmdtable'>
+<tr class="odd">
+<td align="left">geom_abline</td>
+<td align="left">geom_density2d</td>
+<td align="left">geom_line</td>
+<td align="left">geom_rect</td>
+</tr>
+<tr class="even">
+<td align="left">geom_area</td>
+<td align="left">geom_dotplot</td>
+<td align="left">geom_linerange</td>
+<td align="left">geom_ribbon</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_bar</td>
+<td align="left">geom_errorbar</td>
+<td align="left">geom_map</td>
+<td align="left">geom_rug</td>
+</tr>
+<tr class="even">
+<td align="left">geom_bin2d</td>
+<td align="left">geom_errorbarh</td>
+<td align="left">geom_path</td>
+<td align="left">geom_segment</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_blank</td>
+<td align="left">geom_freqpoly</td>
+<td align="left">geom_point</td>
+<td align="left">geom_smooth</td>
+</tr>
+<tr class="even">
+<td align="left">geom_boxplot</td>
+<td align="left">geom_hex</td>
+<td align="left">geom_pointrange</td>
+<td align="left">geom_step</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_contour</td>
+<td align="left">geom_histogram</td>
+<td align="left">geom_polygon</td>
+<td align="left">geom_text</td>
+</tr>
+<tr class="even">
+<td align="left">geom_crossbar</td>
+<td align="left">geom_hline</td>
+<td align="left">geom_quantile</td>
+<td align="left">geom_tile</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_density</td>
+<td align="left">geom_jitter</td>
+<td align="left">geom_raster</td>
+<td align="left">geom_vline</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>ggplot2 (stats)</h2></hgroup><article  id="ggplot2-stats">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()</pre>
+
+<p><img src="graficas_files/figure-html/stats-intro-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Más allá: Gráficas interactivas</h2></hgroup><article  id="mas-alla-graficas-interactivas">
 

@@ -1,0 +1,39 @@
+```{r motivacion, echo = FALSE}
+fit <- Arima(WWWusage, c(3, 1, 0))
+
+cast <- as.data.frame(forecast(fit, h = 40, fan = TRUE)) %>%
+  add_rownames(var = "t") %>%
+  mutate(t = as.numeric(t)) %>%
+  gather(p, y, -(t:`Point Forecast`)) %>%
+  separate(p, c("Side", "p"), convert = TRUE) %>%
+  spread(Side, y)
+
+series <- data.frame(y = as.numeric(WWWusage),
+                     t = as.numeric(time(WWWusage)))
+
+last_obs <- data.frame(t = series[nrow(series), "t"], 
+                       "Point Forecast" = series[nrow(series), "y"],
+                       p = unique(cast$p),
+                       Hi = series[nrow(series), "y"],
+                       Lo = series[nrow(series), "y"],
+                       check.names = FALSE)
+
+cast %<>% rbind(last_obs)
+
+pallete <- seq_gradient_pal(low = "white", high = "red")
+offset <- 0.25
+
+# pallete <- seq_gradient_pal(low = "#132B43", high = "#56B1F7")
+
+fan_chart <- ggplot(data = cast, aes(x = t, y = `Point Forecast`)) +
+  geom_line(aes(x = t, y = y), data = series)
+  
+for (pr in sort(unique(cast$p), decreasing = TRUE)){
+  fan_chart <- fan_chart +
+    geom_ribbon(aes(x = t, ymax = Hi, ymin = Lo), 
+                data = filter(cast, p == pr), alpha = 0.4,
+                fill = pallete((1 - offset)*(1 - pr/100) + offset))
+}
+
+fan_chart + theme_bw() + geom_line(linetype = "dashed")
+```

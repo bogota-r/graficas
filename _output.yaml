@@ -5,4 +5,4 @@ ioslides_presentation:
   incremental: no
   logo: "graficas_files/logo.png"
   css: styles.css
-  keep_md: yes
+  keep_md: no

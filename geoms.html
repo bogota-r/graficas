@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geoms</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" media="all" href="libs/ioslides-13.5.1/fonts/fonts.css">
+
+  <link rel="stylesheet" media="all" href="libs/ioslides-13.5.1/theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="libs/ioslides-13.5.1/theme/css/phone.css">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Geoms',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                favIcon: 'geoms_files/logo.png',
+              },
+
+      // Author information
+      presenters: [
+            ]
+    };
+  </script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(geoms_files/logo.png) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="geoms_files/logo.png"></aside>
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+          </hgroup>
+  </slide>
+
+<slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Geoms</h2></hgroup><article  id="geoms">
+
+</article></slide><slide class=''><hgroup><h2>geom_violin</h2></hgroup><article  id="geom_violin">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()</pre>
+
+<p><img src="geoms_files/figure-html/geom_violin-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_dotplot</h2></hgroup><article  id="geom_dotplot">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = factor(cyl), y = mpg) + 
+  geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;, binwidth = 1)</pre>
+
+<p><img src="geoms_files/figure-html/geom_dotplot-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_boxplot</h2></hgroup><article  id="geom_boxplot">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(factor(cyl), mpg) + geom_boxplot()</pre>
+
+<p><img src="geoms_files/figure-html/geom_boxplot-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_bar</h2></hgroup><article  id="geom_bar">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(factor(cyl)) + geom_bar()</pre>
+
+<p><img src="geoms_files/figure-html/geom_bar-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_point</h2></hgroup><article  id="geom_point">
+
+<pre class = 'prettyprint lang-r'>ggplot(diamonds) + aes(price, depth) + geom_point()</pre>
+
+<p><img src="geoms_files/figure-html/geom_point-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_bin2d</h2></hgroup><article  id="geom_bin2d">
+
+<pre class = 'prettyprint lang-r'>ggplot(diamonds) + aes(price, depth)   + geom_bin2d()</pre>
+
+<p><img src="geoms_files/figure-html/geom_bin2d-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_hex</h2></hgroup><article  id="geom_hex">
+
+<pre class = 'prettyprint lang-r'>#install.packages(&quot;hexbin&quot;)
+ggplot(diamonds) + aes(price, depth) + stat_binhex()</pre>
+
+<p><img src="geoms_files/figure-html/geom_hex-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_points</h2></hgroup><article  id="geom_points">
+
+<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point()</pre>
+
+<p><img src="geoms_files/figure-html/geom_points2-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_jitter</h2></hgroup><article  id="geom_jitter">
+
+<p>Points, jittered to reduce overplotting.</p>
+
+<pre class = 'prettyprint lang-r'>set.seed(86420)
+ggplot(mpg) + aes(displ, hwy) + geom_jitter()</pre>
+
+<p><img src="geoms_files/figure-html/geom_jitter-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_quantile</h2></hgroup><article  id="geom_quantile">
+
+<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_quantile()</pre>
+
+<p><img src="geoms_files/figure-html/geom_quantile-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_smooth</h2></hgroup><article  id="geom_smooth">
+
+<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_smooth()</pre>
+
+<p><img src="geoms_files/figure-html/geom_smooth-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_density2d</h2></hgroup><article  id="geom_density2d">
+
+<pre class = 'prettyprint lang-r'>set.seed(98765)
+ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
+
+<p><img src="geoms_files/figure-html/geom_density2d-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_path</h2></hgroup><article  id="geom_path">
+
+<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path()</pre>
+
+<p><img src="geoms_files/figure-html/geom_path-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_rug</h2></hgroup><article  id="geom_rug">
+
+<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()</pre>
+
+<p><img src="geoms_files/figure-html/geom_rug-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>????</h2></hgroup><article  id="section">
+
+<pre class = 'prettyprint lang-r'>boxplot(diamonds$price~ diamonds$color, plot = TRUE) %$% 
+  stats %&gt;% matrix(5, 7) %&gt;% t %&gt;%  as.data.frame.matrix() %&gt;% setNames(c(&quot;min&quot;, &quot;q1&quot;, &quot;med&quot;, &quot;q3&quot;, &quot;max&quot;)) %&gt;% 
+  mutate(names = levels(diamonds$color)) -&gt; intervalos</pre>
+
+<p><img src="geoms_files/figure-html/base-boxplot-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_crossbar</h2></hgroup><article  id="geom_crossbar">
+
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) +
+  geom_crossbar()</pre>
+
+<p><img src="geoms_files/figure-html/geom_crossbar-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_linerange</h2></hgroup><article  id="geom_linerange">
+
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+  geom_linerange()</pre>
+
+<p><img src="geoms_files/figure-html/geom_linerange-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_pointrange</h2></hgroup><article  id="geom_pointrange">
+
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+  geom_pointrange()</pre>
+
+<p><img src="geoms_files/figure-html/geom_pointrange-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_errorbar</h2></hgroup><article  id="geom_errorbar">
+
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+  geom_errorbar()</pre>
+
+<p><img src="geoms_files/figure-html/geom_errorbar-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_errorbarh</h2></hgroup><article  id="geom_errorbarh">
+
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(y = names, xmin =q1, xmax = q3, x = med) + 
+  geom_errorbarh()</pre>
+
+<p><img src="geoms_files/figure-html/geom_errorbarh-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_ribbon</h2></hgroup><article  id="geom_ribbon">
+
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = 1:7, ymin =q1, ymax = q3, y = med) + 
+  geom_ribbon(alpha = I(1/3)) + geom_pointrange()</pre>
+
+<p><img src="geoms_files/figure-html/geom_ribbon-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_area</h2></hgroup><article  id="geom_area">
+
+<pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;% 
+  ggplot + aes(y = value, x = rep(1:7, 5), fill= stat) + geom_area()</pre>
+
+<p><img src="geoms_files/figure-html/geom_area-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_line</h2></hgroup><article  id="geom_line">
+
+<pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;% 
+  ggplot + aes(y = value, x = rep(1:7, 5), colour= stat) + geom_line()</pre>
+
+<p><img src="geoms_files/figure-html/geom_line-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_density</h2></hgroup><article  id="geom_density">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = mpg) + geom_density()</pre>
+
+<p><img src="geoms_files/figure-html/geom_density-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_freqpoly</h2></hgroup><article  id="geom_freqpoly">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = mpg) + geom_freqpoly(binwidth = 2)</pre>
+
+<p><img src="geoms_files/figure-html/geom_freqpoly-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_histogram</h2></hgroup><article  id="geom_histogram">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = mpg) + geom_histogram(binwidth = 2)</pre>
+
+<p><img src="geoms_files/figure-html/geom_histogram-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_blank</h2></hgroup><article  id="geom_blank">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg) + geom_point() + 
+  geom_abline(aes(intercept = a, slope = b), data = df1)</pre>
+
+<p><img src="geoms_files/figure-html/geom_blank-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_blank</h2></hgroup><article  id="geom_blank-1">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg, colour = factor(cyl), size = hp) + geom_blank() +
+  geom_abline(aes(intercept = a, slope = b), data = df1)</pre>
+
+<p><img src="geoms_files/figure-html/geom_blank-a-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_abline</h2></hgroup><article  id="geom_abline">
+
+<pre class = 'prettyprint lang-r'>ggplot() +
+scale_x_continuous(name=&quot;x&quot;, limits=c(0,5)) +
+scale_y_continuous(name=&quot;y&quot;, limits=c(0,10)) +
+scale_linetype(name=&quot;s&quot;) +
+geom_abline(data=data.example, mapping=aes(slope=vx, intercept=vy, linetype=factor(x))) +
+geom_hline(data=data.example, mapping=aes(yintercept=vy)) + 
+geom_vline(data=data.example, mapping=aes(xintercept=vy)) </pre>
+
+</article></slide><slide class=''><hgroup><h2>geom_abline</h2></hgroup><article  id="geom_abline-1">
+
+<p><img src="geoms_files/figure-html/geom_abline-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_map</h2></hgroup><article  id="geom_map" class="smaller">
+
+<pre class = 'prettyprint lang-r'>library(&quot;colmaps&quot;)
+map_df &lt;- fortify(departamentos)
+ggplot(map_df, aes(map_id = id)) + 
+  geom_map(map = map_df, color = &quot;white&quot;, size = 0.1) + 
+  expand_limits(x = map_df$long, y = map_df$lat) + 
+  coord_map() </pre>
+
+<p><img src="geoms_files/figure-html/geom_map-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_map</h2></hgroup><article  id="geom_map-1">
+
+<pre class = 'prettyprint lang-r'>library(&quot;colmaps&quot;)
+colmap(municipios) + 
+  theme(plot.background = element_rect(fill = &quot;transparent&quot;, colour = &quot;transparent&quot;))</pre>
+
+<p><img src="geoms_files/figure-html/geom_map2-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_polygon</h2></hgroup><article  id="geom_polygon">
+
+<pre class = 'prettyprint lang-r'>map_df %&gt;% filter(id == 25) %&gt;% ggplot + aes(x = long, y = lat) +
+  geom_polygon() + coord_fixed()</pre>
+
+<p><img src="geoms_files/figure-html/geom_polygon-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_raster</h2></hgroup><article  id="geom_raster">
+
+<pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot + 
+  aes(x = color, y = clarity, fill=Freq) + geom_raster()</pre>
+
+<p><img src="geoms_files/figure-html/geom_raster-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_segment</h2></hgroup><article  id="geom_segment">
+
+<pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(x=x, y=y, xend=x+vx, yend=y+vy) +
+geom_segment(arrow=arrow(), size=2, color=&quot;blue&quot;)</pre>
+
+<p><img src="geoms_files/figure-html/geom_segment-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_rect</h2></hgroup><article  id="geom_rect">
+
+<pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(xmin=x, ymin=y, xmax=x+vx, ymax=y+vy) +
+geom_rect(fill=&quot;blue&quot;)</pre>
+
+<p><img src="geoms_files/figure-html/geom_rect-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_step</h2></hgroup><article  id="geom_step">
+
+<pre class = 'prettyprint lang-r'>data.frame(x = sort(rnorm(47))) %&gt;% ggplot + aes(seq_along(x), x) + geom_step()</pre>
+
+<p><img src="geoms_files/figure-html/geom_step-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_text</h2></hgroup><article  id="geom_text">
+
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x=wt, y=mpg, label=rownames(mtcars)) + geom_text()</pre>
+
+<p><img src="geoms_files/figure-html/geom_text-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_tile</h2></hgroup><article  id="geom_tile">
+
+<pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot + 
+  aes(x = color, y = clarity, fill=Freq) + geom_tile()</pre>
+
+<p><img src="geoms_files/figure-html/geom_tile-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>geom_countour</h2></hgroup><article  id="geom_countour">
+
+<pre class = 'prettyprint lang-r'>ggplot(volcano3d, aes(x, y, z = z)) + 
+  stat_contour(binwidth = 2, size = 0.5, colour = &quot;grey50&quot;) +
+  stat_contour(binwidth = 10, size = 1)</pre>
+
+<p><img src="geoms_files/figure-html/geom_countour-1.png" title="" alt="" width="720" /></p></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script src="libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+<script src="libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+<script src="libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+<script src="libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+<script src="libs/ioslides-13.5.1/js/hammer.js"></script>
+<script src="libs/ioslides-13.5.1/js/slide-controller.js"></script>
+<script src="libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
