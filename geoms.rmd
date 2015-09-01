@@ -261,22 +261,25 @@ ggplot() +
 ## geom_map {.smaller}
 
 ```{r geom_map}
-library("colmaps")
+require("colmaps")
 map_df <- fortify(departamentos)
 ggplot(map_df, aes(map_id = id)) +
   geom_map(map = map_df, color = "white", size = 0.1) +
   expand_limits(x = map_df$long, y = map_df$lat) +
   coord_map()
-
 ```
 
 ## geom_map
 
-```{r geom_map2, cache = TRUE}
-library("colmaps")
-colmap(municipios) +
-  theme(plot.background = element_rect(fill = "transparent",
+```{r colmap-cache, cache = TRUE}
+require("colmaps")
+colombia <- colmap(municipios) + 
+  theme(plot.background = element_rect(fill = "transparent", 
                                        colour = "transparent"))
+```
+
+```{r colmap}
+print(colombia)
 ```
 
 ## geom_polygon
