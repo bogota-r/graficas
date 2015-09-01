@@ -109,7 +109,9 @@ library("ggplot2")
 
 ## `plot()`
 
-```{r plot, eval = FALSE, cache = TRUE}
+```{r plot, eval = FALSE}
+set.seed(13579)
+
 y <- rnorm(30)
 types <- c("p", "l", "b", "c", "o", "h", "s", "S", "n")
 
