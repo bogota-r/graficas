@@ -140,7 +140,6 @@ ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path()
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()
 ```
 
-
 ## ????
 
 ```{r base-boxplot}
@@ -237,7 +236,6 @@ ggplot(mtcars) + aes(x = wt, y = mpg, colour = factor(cyl), size = hp) + geom_bl
   geom_abline(aes(intercept = a, slope = b), data = df1)
 ```
 
-
 ## geom_abline
 
 ```{r geom_abline, eval = FALSE}
@@ -251,12 +249,10 @@ ggplot() +
   geom_vline(data = data.example, mapping = aes(xintercept = vy))
 ```
 
-
 ## geom_abline
 
 ```{r geom_abline, echo = FALSE}
 ```
-
 
 ## geom_map {.smaller}
 
@@ -288,7 +284,6 @@ print(colombia)
 map_df %>% filter(id == 25) %>% ggplot + aes(x = long, y = lat) +
   geom_polygon() + coord_fixed()
 ```
-
 
 ## geom_raster
 
