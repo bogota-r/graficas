@@ -18,7 +18,7 @@ library("colmaps")
 # Algunas opciones de knitr y ggplot2
 library("knitr")
 
-knitr::opts_chunk$set(message = FALSE, 
+knitr::opts_chunk$set(message = FALSE,
                       comment = "#>",
                       dev.args = list(bg = "transparent"))
 
@@ -33,9 +33,9 @@ volcano3d <- reshape2::melt(volcano)
 
 names(volcano3d) <- c("x", "y", "z")
 
-data.example <- data.frame(x  = c(1, 2, 5, 6, 8), 
-                           y  = c(3, 6, 2, 8, 7), 
-                           vx = c(1, 1.5, 0.8, 0.5, 1.3), 
+data.example <- data.frame(x  = c(1, 2, 5, 6, 8),
+                           y  = c(3, 6, 2, 8, 7),
+                           vx = c(1, 1.5, 0.8, 0.5, 1.3),
                            vy = c(0.2, 1.3, 1.7, 0.8, 1.4))
 
 data("diamonds")
@@ -58,7 +58,7 @@ ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 ## geom_dotplot
 
 ```{r geom_dotplot}
-ggplot(mtcars) + aes(x = factor(cyl), y = mpg) + 
+ggplot(mtcars) + aes(x = factor(cyl), y = mpg) +
   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 1)
 ```
 
@@ -144,64 +144,64 @@ ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()
 ## ????
 
 ```{r base-boxplot}
-boxplot(diamonds$price~ diamonds$color, plot = TRUE) %$% 
-  stats %>% matrix(5, 7) %>% t %>%  as.data.frame.matrix() %>% setNames(c("min", "q1", "med", "q3", "max")) %>% 
+boxplot(diamonds$price~ diamonds$color, plot = TRUE) %$%
+  stats %>% matrix(5, 7) %>% t %>%  as.data.frame.matrix() %>% setNames(c("min", "q1", "med", "q3", "max")) %>%
   mutate(names = levels(diamonds$color)) -> intervalos
 ```
 
 ## geom_crossbar
 
 ```{r geom_crossbar}
-ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) +
+ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_crossbar()
 ```
 
 ## geom_linerange
 
 ```{r geom_linerange}
-ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_linerange()
 ```
 
 ## geom_pointrange
 
 ```{r geom_pointrange}
-ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_pointrange()
 ```
 
 ## geom_errorbar
 
 ```{r geom_errorbar}
-ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_errorbar()
 ```
 
 ## geom_errorbarh
 
 ```{r geom_errorbarh}
-ggplot(intervalos) + aes(y = names, xmin =q1, xmax = q3, x = med) + 
+ggplot(intervalos) + aes(y = names, xmin = q1, xmax = q3, x = med) +
   geom_errorbarh()
 ```
 
 ## geom_ribbon
 
 ```{r geom_ribbon}
-ggplot(intervalos) + aes(x = 1:7, ymin =q1, ymax = q3, y = med) + 
+ggplot(intervalos) + aes(x = 1:7, ymin = q1, ymax = q3, y = med) +
   geom_ribbon(alpha = I(1/3)) + geom_pointrange()
 ```
 
 ## geom_area
 
 ```{r geom_area}
-intervalos %>% select(-names) %>% gather(stat, value) %>% 
+intervalos %>% select(-names) %>% gather(stat, value) %>%
   ggplot + aes(y = value, x = rep(1:7, 5), fill= stat) + geom_area()
 ```
 
 ## geom_line
 
 ```{r geom_line}
-intervalos %>% select(-names) %>% gather(stat, value) %>% 
+intervalos %>% select(-names) %>% gather(stat, value) %>%
   ggplot + aes(y = value, x = rep(1:7, 5), colour= stat) + geom_line()
 ```
 
@@ -226,7 +226,7 @@ ggplot(mtcars) + aes(x = mpg) + geom_histogram(binwidth = 2)
 ## geom_blank
 
 ```{r geom_blank}
-ggplot(mtcars) + aes(x = wt, y = mpg) + geom_point() + 
+ggplot(mtcars) + aes(x = wt, y = mpg) + geom_point() +
   geom_abline(aes(intercept = a, slope = b), data = df1)
 ```
 
@@ -240,21 +240,21 @@ ggplot(mtcars) + aes(x = wt, y = mpg, colour = factor(cyl), size = hp) + geom_bl
 
 ## geom_abline
 
-```{r geom_abline, eval=FALSE}
+```{r geom_abline, eval = FALSE}
 ggplot() +
-scale_x_continuous(name="x", limits=c(0,5)) +
-scale_y_continuous(name="y", limits=c(0,10)) +
-scale_linetype(name="s") +
-geom_abline(data=data.example, mapping=aes(slope=vx, intercept=vy, linetype=factor(x))) +
-geom_hline(data=data.example, mapping=aes(yintercept=vy)) + 
-geom_vline(data=data.example, mapping=aes(xintercept=vy)) 
-
+  scale_x_continuous(name = "x", limits = c(0,5)) +
+  scale_y_continuous(name = "y", limits = c(0,10)) +
+  scale_linetype(name = "s") +
+  geom_abline(data.example,
+              mapping = aes(slope = vx, intercept = vy, linetype = factor(x))) +
+  geom_hline(data = data.example, mapping = aes(yintercept = vy)) +
+  geom_vline(data = data.example, mapping = aes(xintercept = vy))
 ```
 
 
 ## geom_abline
 
-```{r geom_abline, echo=FALSE}
+```{r geom_abline, echo = FALSE}
 ```
 
 
@@ -263,19 +263,20 @@ geom_vline(data=data.example, mapping=aes(xintercept=vy))
 ```{r geom_map}
 library("colmaps")
 map_df <- fortify(departamentos)
-ggplot(map_df, aes(map_id = id)) + 
-  geom_map(map = map_df, color = "white", size = 0.1) + 
-  expand_limits(x = map_df$long, y = map_df$lat) + 
-  coord_map() 
+ggplot(map_df, aes(map_id = id)) +
+  geom_map(map = map_df, color = "white", size = 0.1) +
+  expand_limits(x = map_df$long, y = map_df$lat) +
+  coord_map()
 
 ```
 
-## geom_map 
+## geom_map
 
-```{r geom_map2, cache=TRUE}
+```{r geom_map2, cache = TRUE}
 library("colmaps")
-colmap(municipios) + 
-  theme(plot.background = element_rect(fill = "transparent", colour = "transparent"))
+colmap(municipios) +
+  theme(plot.background = element_rect(fill = "transparent",
+                                       colour = "transparent"))
 ```
 
 ## geom_polygon
@@ -289,22 +290,22 @@ map_df %>% filter(id == 25) %>% ggplot + aes(x = long, y = lat) +
 ## geom_raster
 
 ```{r geom_raster}
-diamonds %$% table(color, clarity) %>% as.data.frame %>% ggplot + 
-  aes(x = color, y = clarity, fill=Freq) + geom_raster()
+diamonds %$% table(color, clarity) %>% as.data.frame %>% ggplot +
+  aes(x = color, y = clarity, fill = Freq) + geom_raster()
 ```
 
 ## geom_segment
 
 ```{r geom_segment}
-ggplot(data.example) + aes(x=x, y=y, xend=x+vx, yend=y+vy) +
-geom_segment(arrow=arrow(), size=2, color="blue")
+ggplot(data.example) + aes(x = x, y = y, xend = x + vx, yend = y + vy) +
+  geom_segment(arrow = arrow(), size = 2, color = "blue")
 ```
 
 ## geom_rect
-
+  
 ```{r geom_rect}
-ggplot(data.example) + aes(xmin=x, ymin=y, xmax=x+vx, ymax=y+vy) +
-geom_rect(fill="blue")
+ggplot(data.example) + aes(xmin = x, ymin = y, xmax = x + vx, ymax = y + vy) +
+  geom_rect(fill = "blue")
 ```
 
 ## geom_step
@@ -316,22 +317,20 @@ data.frame(x = sort(rnorm(47))) %>% ggplot + aes(seq_along(x), x) + geom_step()
 ## geom_text
 
 ```{r geom_text}
-ggplot(mtcars) + aes(x=wt, y=mpg, label=rownames(mtcars)) + geom_text()
+ggplot(mtcars) + aes(x = wt, y = mpg, label = rownames(mtcars)) + geom_text()
 ```
 
 ## geom_tile
 
 ```{r geom_tile}
-diamonds %$% table(color, clarity) %>% as.data.frame %>% ggplot + 
-  aes(x = color, y = clarity, fill=Freq) + geom_tile()
+diamonds %$% table(color, clarity) %>% as.data.frame %>% ggplot +
+  aes(x = color, y = clarity, fill = Freq) + geom_tile()
 ```
 
 ## geom_countour
 
 ```{r geom_countour}
-ggplot(volcano3d, aes(x, y, z = z)) + 
+ggplot(volcano3d, aes(x, y, z = z)) +
   stat_contour(binwidth = 2, size = 0.5, colour = "grey50") +
   stat_contour(binwidth = 10, size = 1)
 ```
-
-
