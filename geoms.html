@@ -111,7 +111,7 @@
 
 </article></slide><slide class=''><hgroup><h2>geom_dotplot</h2></hgroup><article  id="geom_dotplot">
 
-<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = factor(cyl), y = mpg) + 
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = factor(cyl), y = mpg) +
   geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;, binwidth = 1)</pre>
 
 <p><img src="geoms_files/figure-html/geom_dotplot-1.png" title="" alt="" width="720" /></p>
@@ -195,64 +195,64 @@ ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
 
 </article></slide><slide class=''><hgroup><h2>????</h2></hgroup><article  id="section">
 
-<pre class = 'prettyprint lang-r'>boxplot(diamonds$price~ diamonds$color, plot = TRUE) %$% 
-  stats %&gt;% matrix(5, 7) %&gt;% t %&gt;%  as.data.frame.matrix() %&gt;% setNames(c(&quot;min&quot;, &quot;q1&quot;, &quot;med&quot;, &quot;q3&quot;, &quot;max&quot;)) %&gt;% 
+<pre class = 'prettyprint lang-r'>boxplot(diamonds$price~ diamonds$color, plot = TRUE) %$%
+  stats %&gt;% matrix(5, 7) %&gt;% t %&gt;%  as.data.frame.matrix() %&gt;% setNames(c(&quot;min&quot;, &quot;q1&quot;, &quot;med&quot;, &quot;q3&quot;, &quot;max&quot;)) %&gt;%
   mutate(names = levels(diamonds$color)) -&gt; intervalos</pre>
 
 <p><img src="geoms_files/figure-html/base-boxplot-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_crossbar</h2></hgroup><article  id="geom_crossbar">
 
-<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) +
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_crossbar()</pre>
 
 <p><img src="geoms_files/figure-html/geom_crossbar-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_linerange</h2></hgroup><article  id="geom_linerange">
 
-<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_linerange()</pre>
 
 <p><img src="geoms_files/figure-html/geom_linerange-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_pointrange</h2></hgroup><article  id="geom_pointrange">
 
-<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_pointrange()</pre>
 
 <p><img src="geoms_files/figure-html/geom_pointrange-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_errorbar</h2></hgroup><article  id="geom_errorbar">
 
-<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin =q1, ymax = q3, y = med) + 
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_errorbar()</pre>
 
 <p><img src="geoms_files/figure-html/geom_errorbar-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_errorbarh</h2></hgroup><article  id="geom_errorbarh">
 
-<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(y = names, xmin =q1, xmax = q3, x = med) + 
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(y = names, xmin = q1, xmax = q3, x = med) +
   geom_errorbarh()</pre>
 
 <p><img src="geoms_files/figure-html/geom_errorbarh-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_ribbon</h2></hgroup><article  id="geom_ribbon">
 
-<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = 1:7, ymin =q1, ymax = q3, y = med) + 
+<pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = 1:7, ymin = q1, ymax = q3, y = med) +
   geom_ribbon(alpha = I(1/3)) + geom_pointrange()</pre>
 
 <p><img src="geoms_files/figure-html/geom_ribbon-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_area</h2></hgroup><article  id="geom_area">
 
-<pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;% 
+<pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;%
   ggplot + aes(y = value, x = rep(1:7, 5), fill= stat) + geom_area()</pre>
 
 <p><img src="geoms_files/figure-html/geom_area-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_line</h2></hgroup><article  id="geom_line">
 
-<pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;% 
+<pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;%
   ggplot + aes(y = value, x = rep(1:7, 5), colour= stat) + geom_line()</pre>
 
 <p><img src="geoms_files/figure-html/geom_line-1.png" title="" alt="" width="720" /></p>
@@ -277,7 +277,7 @@ ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
 
 </article></slide><slide class=''><hgroup><h2>geom_blank</h2></hgroup><article  id="geom_blank">
 
-<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg) + geom_point() + 
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg) + geom_point() +
   geom_abline(aes(intercept = a, slope = b), data = df1)</pre>
 
 <p><img src="geoms_files/figure-html/geom_blank-1.png" title="" alt="" width="720" /></p>
@@ -292,12 +292,13 @@ ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
 </article></slide><slide class=''><hgroup><h2>geom_abline</h2></hgroup><article  id="geom_abline">
 
 <pre class = 'prettyprint lang-r'>ggplot() +
-scale_x_continuous(name=&quot;x&quot;, limits=c(0,5)) +
-scale_y_continuous(name=&quot;y&quot;, limits=c(0,10)) +
-scale_linetype(name=&quot;s&quot;) +
-geom_abline(data=data.example, mapping=aes(slope=vx, intercept=vy, linetype=factor(x))) +
-geom_hline(data=data.example, mapping=aes(yintercept=vy)) + 
-geom_vline(data=data.example, mapping=aes(xintercept=vy)) </pre>
+  scale_x_continuous(name = &quot;x&quot;, limits = c(0,5)) +
+  scale_y_continuous(name = &quot;y&quot;, limits = c(0,10)) +
+  scale_linetype(name = &quot;s&quot;) +
+  geom_abline(data.example,
+              mapping = aes(slope = vx, intercept = vy, linetype = factor(x))) +
+  geom_hline(data = data.example, mapping = aes(yintercept = vy)) +
+  geom_vline(data = data.example, mapping = aes(xintercept = vy))</pre>
 
 </article></slide><slide class=''><hgroup><h2>geom_abline</h2></hgroup><article  id="geom_abline-1">
 
@@ -305,22 +306,25 @@ geom_vline(data=data.example, mapping=aes(xintercept=vy)) </pre>
 
 </article></slide><slide class=''><hgroup><h2>geom_map</h2></hgroup><article  id="geom_map" class="smaller">
 
-<pre class = 'prettyprint lang-r'>library(&quot;colmaps&quot;)
+<pre class = 'prettyprint lang-r'>require(&quot;colmaps&quot;)
 map_df &lt;- fortify(departamentos)
-ggplot(map_df, aes(map_id = id)) + 
-  geom_map(map = map_df, color = &quot;white&quot;, size = 0.1) + 
-  expand_limits(x = map_df$long, y = map_df$lat) + 
-  coord_map() </pre>
+ggplot(map_df, aes(map_id = id)) +
+  geom_map(map = map_df, color = &quot;white&quot;, size = 0.1) +
+  expand_limits(x = map_df$long, y = map_df$lat) +
+  coord_map()</pre>
 
 <p><img src="geoms_files/figure-html/geom_map-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_map</h2></hgroup><article  id="geom_map-1">
+</article></slide><slide class=''><hgroup><h2>geom_map</h2></hgroup><article  id="geom_map-1" class="smaller">
 
-<pre class = 'prettyprint lang-r'>library(&quot;colmaps&quot;)
-colmap(municipios) + 
-  theme(plot.background = element_rect(fill = &quot;transparent&quot;, colour = &quot;transparent&quot;))</pre>
+<pre class = 'prettyprint lang-r'>require(&quot;colmaps&quot;)
+colombia &lt;- colmap(municipios) + 
+  theme(plot.background = element_rect(fill = &quot;transparent&quot;, 
+                                       colour = &quot;transparent&quot;))</pre>
 
-<p><img src="geoms_files/figure-html/geom_map2-1.png" title="" alt="" width="720" /></p>
+<pre class = 'prettyprint lang-r'>print(colombia)</pre>
+
+<p><img src="geoms_files/figure-html/colmap-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_polygon</h2></hgroup><article  id="geom_polygon">
 
@@ -331,22 +335,22 @@ colmap(municipios) +
 
 </article></slide><slide class=''><hgroup><h2>geom_raster</h2></hgroup><article  id="geom_raster">
 
-<pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot + 
-  aes(x = color, y = clarity, fill=Freq) + geom_raster()</pre>
+<pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot +
+  aes(x = color, y = clarity, fill = Freq) + geom_raster()</pre>
 
 <p><img src="geoms_files/figure-html/geom_raster-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_segment</h2></hgroup><article  id="geom_segment">
 
-<pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(x=x, y=y, xend=x+vx, yend=y+vy) +
-geom_segment(arrow=arrow(), size=2, color=&quot;blue&quot;)</pre>
+<pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(x = x, y = y, xend = x + vx, yend = y + vy) +
+  geom_segment(arrow = arrow(), size = 2, color = &quot;blue&quot;)</pre>
 
 <p><img src="geoms_files/figure-html/geom_segment-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_rect</h2></hgroup><article  id="geom_rect">
 
-<pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(xmin=x, ymin=y, xmax=x+vx, ymax=y+vy) +
-geom_rect(fill=&quot;blue&quot;)</pre>
+<pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(xmin = x, ymin = y, xmax = x + vx, ymax = y + vy) +
+  geom_rect(fill = &quot;blue&quot;)</pre>
 
 <p><img src="geoms_files/figure-html/geom_rect-1.png" title="" alt="" width="720" /></p>
 
@@ -358,20 +362,20 @@ geom_rect(fill=&quot;blue&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2>geom_text</h2></hgroup><article  id="geom_text">
 
-<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x=wt, y=mpg, label=rownames(mtcars)) + geom_text()</pre>
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg, label = rownames(mtcars)) + geom_text()</pre>
 
 <p><img src="geoms_files/figure-html/geom_text-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_tile</h2></hgroup><article  id="geom_tile">
 
-<pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot + 
-  aes(x = color, y = clarity, fill=Freq) + geom_tile()</pre>
+<pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot +
+  aes(x = color, y = clarity, fill = Freq) + geom_tile()</pre>
 
 <p><img src="geoms_files/figure-html/geom_tile-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_countour</h2></hgroup><article  id="geom_countour">
 
-<pre class = 'prettyprint lang-r'>ggplot(volcano3d, aes(x, y, z = z)) + 
+<pre class = 'prettyprint lang-r'>ggplot(volcano3d, aes(x, y, z = z)) +
   stat_contour(binwidth = 2, size = 0.5, colour = &quot;grey50&quot;) +
   stat_contour(binwidth = 10, size = 1)</pre>
 

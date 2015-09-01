@@ -265,7 +265,7 @@ ggplot(map_df, aes(map_id = id)) +
   coord_map()
 ```
 
-## geom_map
+## geom_map {.smaller}
 
 ```{r colmap-cache, cache = TRUE}
 require("colmaps")
