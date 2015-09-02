@@ -102,8 +102,6 @@ set.seed(54321)
 df1 <- data.frame(a = rnorm(10, 25), b = rnorm(10, 0))
 ```
 
-# Geoms
-
 ## geom_violin
 
 ```{r geom_violin}
@@ -325,8 +323,8 @@ ggplot(map_df, aes(map_id = id)) +
 
 ```{r colmap-cache, cache = TRUE}
 require("colmaps")
-colombia <- colmap(municipios) + 
-  theme(plot.background = element_rect(fill = "transparent", 
+colombia <- colmap(municipios) +
+  theme(plot.background = element_rect(fill = "transparent",
                                        colour = "transparent"))
 ```
 
@@ -356,7 +354,7 @@ ggplot(data.example) + aes(x = x, y = y, xend = x + vx, yend = y + vy) +
 ```
 
 ## geom_rect
-  
+
 ```{r geom_rect}
 ggplot(data.example) + aes(xmin = x, ymin = y, xmax = x + vx, ymax = y + vy) +
   geom_rect(fill = "blue")
