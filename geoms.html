@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Geoms</title>
+  <title>ggplot2 - Geoms</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Geoms',
+                title: 'ggplot2 - Geoms',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -101,195 +101,194 @@
           </hgroup>
   </slide>
 
-<slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Geoms</h2></hgroup><article  id="geoms">
-
-</article></slide><slide class=''><hgroup><h2>geom_violin</h2></hgroup><article  id="geom_violin">
+<slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_violin.html' title=''>geom_violin</a></h2></hgroup><article  id="geom_violin">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()</pre>
 
-<p><img src="geoms_files/figure-html/geom_violin-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_violin.html"> <img src="geoms_files/figure-html/geom_violin-1.png" title="geom_violin" alt="geom_violin" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_dotplot</h2></hgroup><article  id="geom_dotplot">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_dotplot.html' title=''>geom_dotplot</a></h2></hgroup><article  id="geom_dotplot">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = factor(cyl), y = mpg) +
   geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;, binwidth = 1)</pre>
 
-<p><img src="geoms_files/figure-html/geom_dotplot-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_dotplot.html"> <img src="geoms_files/figure-html/geom_dotplot-1.png" title="geom_dotplot" alt="geom_dotplot" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_boxplot</h2></hgroup><article  id="geom_boxplot">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_boxplot.html' title=''>geom_boxplot</a></h2></hgroup><article  id="geom_boxplot">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(factor(cyl), mpg) + geom_boxplot()</pre>
 
-<p><img src="geoms_files/figure-html/geom_boxplot-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_boxplot.html"> <img src="geoms_files/figure-html/geom_boxplot-1.png" title="geom_boxplot" alt="geom_boxplot" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_bar</h2></hgroup><article  id="geom_bar">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_bar.html' title=''>geom_bar</a></h2></hgroup><article  id="geom_bar">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(factor(cyl)) + geom_bar()</pre>
 
-<p><img src="geoms_files/figure-html/geom_bar-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_bar.html"> <img src="geoms_files/figure-html/geom_bar-1.png" title="geom_bar" alt="geom_bar" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_point</h2></hgroup><article  id="geom_point">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_point.html' title=''>geom_point</a></h2></hgroup><article  id="geom_point">
 
 <pre class = 'prettyprint lang-r'>ggplot(diamonds) + aes(price, depth) + geom_point()</pre>
 
-<p><img src="geoms_files/figure-html/geom_point-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_point.html"> <img src="geoms_files/figure-html/geom_point-1.png" title="geom_point" alt="geom_point" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_bin2d</h2></hgroup><article  id="geom_bin2d">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_bin2d.html' title=''>geom_bin2d</a></h2></hgroup><article  id="geom_bin2d">
 
 <pre class = 'prettyprint lang-r'>ggplot(diamonds) + aes(price, depth)   + geom_bin2d()</pre>
 
-<p><img src="geoms_files/figure-html/geom_bin2d-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_bin2d.html"> <img src="geoms_files/figure-html/geom_bin2d-1.png" title="geom_bin2d" alt="geom_bin2d" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_hex</h2></hgroup><article  id="geom_hex">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_hex.html' title=''>geom_hex</a></h2></hgroup><article  id="geom_hex">
 
 <pre class = 'prettyprint lang-r'>#install.packages(&quot;hexbin&quot;)
 ggplot(diamonds) + aes(price, depth) + stat_binhex()</pre>
 
-<p><img src="geoms_files/figure-html/geom_hex-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_hex.html"> <img src="geoms_files/figure-html/geom_hex-1.png" title="geom_hex" alt="geom_hex" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_points</h2></hgroup><article  id="geom_points">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_points.html' title=''>geom_points</a></h2></hgroup><article  id="geom_points">
 
 <pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point()</pre>
 
-<p><img src="geoms_files/figure-html/geom_points2-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_points2.html"> <img src="geoms_files/figure-html/geom_points2-1.png" title="geom_points2" alt="geom_points2" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_jitter</h2></hgroup><article  id="geom_jitter">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_jitter.html' title=''>geom_jitter</a></h2></hgroup><article  id="geom_jitter">
 
 <p>Points, jittered to reduce overplotting.</p>
 
 <pre class = 'prettyprint lang-r'>set.seed(86420)
 ggplot(mpg) + aes(displ, hwy) + geom_jitter()</pre>
 
-<p><img src="geoms_files/figure-html/geom_jitter-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_jitter.html"> <img src="geoms_files/figure-html/geom_jitter-1.png" title="geom_jitter" alt="geom_jitter" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_quantile</h2></hgroup><article  id="geom_quantile">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_quantile.html' title=''>geom_quantile</a></h2></hgroup><article  id="geom_quantile">
 
 <pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_quantile()</pre>
 
-<p><img src="geoms_files/figure-html/geom_quantile-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_quantile.html"> <img src="geoms_files/figure-html/geom_quantile-1.png" title="geom_quantile" alt="geom_quantile" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_smooth</h2></hgroup><article  id="geom_smooth">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_smooth.html' title=''>geom_smooth</a></h2></hgroup><article  id="geom_smooth">
 
 <pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_smooth()</pre>
 
-<p><img src="geoms_files/figure-html/geom_smooth-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_smooth.html"> <img src="geoms_files/figure-html/geom_smooth-1.png" title="geom_smooth" alt="geom_smooth" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_density2d</h2></hgroup><article  id="geom_density2d">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_density2d.html' title=''>geom_density2d</a></h2></hgroup><article  id="geom_density2d">
 
 <pre class = 'prettyprint lang-r'>set.seed(98765)
 ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
 
-<p><img src="geoms_files/figure-html/geom_density2d-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_density2d.html"> <img src="geoms_files/figure-html/geom_density2d-1.png" title="geom_density2d" alt="geom_density2d" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_path</h2></hgroup><article  id="geom_path">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_path.html' title=''>geom_path</a></h2></hgroup><article  id="geom_path">
 
 <pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path()</pre>
 
-<p><img src="geoms_files/figure-html/geom_path-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_path.html"> <img src="geoms_files/figure-html/geom_path-1.png" title="geom_path" alt="geom_path" width="720" /> </a></p>
 
 </article></slide><slide class=''><hgroup><h2>geom_rug</h2></hgroup><article  id="geom_rug">
 
 <pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()</pre>
 
-<p><img src="geoms_files/figure-html/geom_rug-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_rug.html"> <img src="geoms_files/figure-html/geom_rug-1.png" title="geom_rug" alt="geom_rug" width="720" /> </a></p>
 
 </article></slide><slide class=''><hgroup><h2>????</h2></hgroup><article  id="section">
 
-<pre class = 'prettyprint lang-r'>boxplot(diamonds$price~ diamonds$color, plot = TRUE) %$%
-  stats %&gt;% matrix(5, 7) %&gt;% t %&gt;%  as.data.frame.matrix() %&gt;% setNames(c(&quot;min&quot;, &quot;q1&quot;, &quot;med&quot;, &quot;q3&quot;, &quot;max&quot;)) %&gt;%
+<pre class = 'prettyprint lang-r'>boxplot(diamonds$price ~ diamonds$color, plot = TRUE) %$%
+  stats %&gt;% matrix(5, 7) %&gt;% t %&gt;% as.data.frame.matrix() %&gt;%
+  setNames(c(&quot;min&quot;, &quot;q1&quot;, &quot;med&quot;, &quot;q3&quot;, &quot;max&quot;)) %&gt;%
   mutate(names = levels(diamonds$color)) -&gt; intervalos</pre>
 
-<p><img src="geoms_files/figure-html/base-boxplot-1.png" title="" alt="" width="720" /></p>
+<p><img src="geoms_files/figure-html/base-boxplot-1.png" title="base-boxplot" alt="base-boxplot" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_crossbar</h2></hgroup><article  id="geom_crossbar">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_crossbar.html' title=''>geom_crossbar</a></h2></hgroup><article  id="geom_crossbar">
 
 <pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_crossbar()</pre>
 
-<p><img src="geoms_files/figure-html/geom_crossbar-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_crossbar.html"> <img src="geoms_files/figure-html/geom_crossbar-1.png" title="geom_crossbar" alt="geom_crossbar" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_linerange</h2></hgroup><article  id="geom_linerange">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_linerange.html' title=''>geom_linerange</a></h2></hgroup><article  id="geom_linerange">
 
 <pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_linerange()</pre>
 
-<p><img src="geoms_files/figure-html/geom_linerange-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_linerange.html"> <img src="geoms_files/figure-html/geom_linerange-1.png" title="geom_linerange" alt="geom_linerange" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_pointrange</h2></hgroup><article  id="geom_pointrange">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_pointrange.html' title=''>geom_pointrange</a></h2></hgroup><article  id="geom_pointrange">
 
 <pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_pointrange()</pre>
 
-<p><img src="geoms_files/figure-html/geom_pointrange-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_pointrange.html"> <img src="geoms_files/figure-html/geom_pointrange-1.png" title="geom_pointrange" alt="geom_pointrange" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_errorbar</h2></hgroup><article  id="geom_errorbar">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_errorbar.html' title=''>geom_errorbar</a></h2></hgroup><article  id="geom_errorbar">
 
 <pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_errorbar()</pre>
 
-<p><img src="geoms_files/figure-html/geom_errorbar-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_errorbar.html"> <img src="geoms_files/figure-html/geom_errorbar-1.png" title="geom_errorbar" alt="geom_errorbar" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_errorbarh</h2></hgroup><article  id="geom_errorbarh">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_errorbarh.html' title=''>geom_errorbarh</a></h2></hgroup><article  id="geom_errorbarh">
 
 <pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(y = names, xmin = q1, xmax = q3, x = med) +
   geom_errorbarh()</pre>
 
-<p><img src="geoms_files/figure-html/geom_errorbarh-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_errorbarh.html"> <img src="geoms_files/figure-html/geom_errorbarh-1.png" title="geom_errorbarh" alt="geom_errorbarh" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_ribbon</h2></hgroup><article  id="geom_ribbon">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_ribbon.html' title=''>geom_ribbon</a></h2></hgroup><article  id="geom_ribbon">
 
 <pre class = 'prettyprint lang-r'>ggplot(intervalos) + aes(x = 1:7, ymin = q1, ymax = q3, y = med) +
   geom_ribbon(alpha = I(1/3)) + geom_pointrange()</pre>
 
-<p><img src="geoms_files/figure-html/geom_ribbon-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_ribbon.html"> <img src="geoms_files/figure-html/geom_ribbon-1.png" title="geom_ribbon" alt="geom_ribbon" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_area</h2></hgroup><article  id="geom_area">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_area.html' title=''>geom_area</a></h2></hgroup><article  id="geom_area">
 
 <pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;%
   ggplot + aes(y = value, x = rep(1:7, 5), fill= stat) + geom_area()</pre>
 
-<p><img src="geoms_files/figure-html/geom_area-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_area.html"> <img src="geoms_files/figure-html/geom_area-1.png" title="geom_area" alt="geom_area" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_line</h2></hgroup><article  id="geom_line">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_line.html' title=''>geom_line</a></h2></hgroup><article  id="geom_line">
 
 <pre class = 'prettyprint lang-r'>intervalos %&gt;% select(-names) %&gt;% gather(stat, value) %&gt;%
   ggplot + aes(y = value, x = rep(1:7, 5), colour= stat) + geom_line()</pre>
 
-<p><img src="geoms_files/figure-html/geom_line-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_line.html"> <img src="geoms_files/figure-html/geom_line-1.png" title="geom_line" alt="geom_line" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_density</h2></hgroup><article  id="geom_density">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_density.html' title=''>geom_density</a></h2></hgroup><article  id="geom_density">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = mpg) + geom_density()</pre>
 
-<p><img src="geoms_files/figure-html/geom_density-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_density.html"> <img src="geoms_files/figure-html/geom_density-1.png" title="geom_density" alt="geom_density" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_freqpoly</h2></hgroup><article  id="geom_freqpoly">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_freqpoly.html' title=''>geom_freqpoly</a></h2></hgroup><article  id="geom_freqpoly">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = mpg) + geom_freqpoly(binwidth = 2)</pre>
 
-<p><img src="geoms_files/figure-html/geom_freqpoly-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_freqpoly.html"> <img src="geoms_files/figure-html/geom_freqpoly-1.png" title="geom_freqpoly" alt="geom_freqpoly" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_histogram</h2></hgroup><article  id="geom_histogram">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_histogram.html' title=''>geom_histogram</a></h2></hgroup><article  id="geom_histogram">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = mpg) + geom_histogram(binwidth = 2)</pre>
 
-<p><img src="geoms_files/figure-html/geom_histogram-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_histogram.html"> <img src="geoms_files/figure-html/geom_histogram-1.png" title="geom_histogram" alt="geom_histogram" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_blank</h2></hgroup><article  id="geom_blank">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_blank.html' title=''>geom_blank</a></h2></hgroup><article  id="geom_blank">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg) + geom_point() +
   geom_abline(aes(intercept = a, slope = b), data = df1)</pre>
 
-<p><img src="geoms_files/figure-html/geom_blank-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_blank.html"> <img src="geoms_files/figure-html/geom_blank-1.png" title="geom_blank" alt="geom_blank" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_blank</h2></hgroup><article  id="geom_blank-1">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_blank.html' title=''>geom_blank</a></h2></hgroup><article  id="geom_blank-1">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg, colour = factor(cyl), size = hp) + geom_blank() +
   geom_abline(aes(intercept = a, slope = b), data = df1)</pre>
 
-<p><img src="geoms_files/figure-html/geom_blank-a-1.png" title="" alt="" width="720" /></p>
+<p><img src="geoms_files/figure-html/geom_blank-a-1.png" title="geom_blank-a" alt="geom_blank-a" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_abline</h2></hgroup><article  id="geom_abline">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_abline.html' title=''>geom_abline</a></h2></hgroup><article  id="geom_abline">
 
 <pre class = 'prettyprint lang-r'>ggplot() +
   scale_x_continuous(name = &quot;x&quot;, limits = c(0,5)) +
@@ -300,11 +299,11 @@ ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
   geom_hline(data = data.example, mapping = aes(yintercept = vy)) +
   geom_vline(data = data.example, mapping = aes(xintercept = vy))</pre>
 
-</article></slide><slide class=''><hgroup><h2>geom_abline</h2></hgroup><article  id="geom_abline-1">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_abline.html' title=''>geom_abline</a></h2></hgroup><article  id="geom_abline-1">
 
-<p><img src="geoms_files/figure-html/geom_abline-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_abline.html"> <img src="geoms_files/figure-html/geom_abline-1.png" title="geom_abline" alt="geom_abline" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_map</h2></hgroup><article  id="geom_map" class="smaller">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_map.html' title=''>geom_map</a></h2></hgroup><article  id="geom_map" class="smaller">
 
 <pre class = 'prettyprint lang-r'>require(&quot;colmaps&quot;)
 map_df &lt;- fortify(departamentos)
@@ -313,73 +312,73 @@ ggplot(map_df, aes(map_id = id)) +
   expand_limits(x = map_df$long, y = map_df$lat) +
   coord_map()</pre>
 
-<p><img src="geoms_files/figure-html/geom_map-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_map.html"> <img src="geoms_files/figure-html/geom_map-1.png" title="geom_map" alt="geom_map" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_map</h2></hgroup><article  id="geom_map-1" class="smaller">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_map.html' title=''>geom_map</a></h2></hgroup><article  id="geom_map-1" class="smaller">
 
 <pre class = 'prettyprint lang-r'>require(&quot;colmaps&quot;)
-colombia &lt;- colmap(municipios) + 
-  theme(plot.background = element_rect(fill = &quot;transparent&quot;, 
+colombia &lt;- colmap(municipios) +
+  theme(plot.background = element_rect(fill = &quot;transparent&quot;,
                                        colour = &quot;transparent&quot;))</pre>
 
 <pre class = 'prettyprint lang-r'>print(colombia)</pre>
 
-<p><img src="geoms_files/figure-html/colmap-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://github.com/nebulae-co/colmaps"> <img src="geoms_files/figure-html/colmap-1.png" title="colmap" alt="colmap" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_polygon</h2></hgroup><article  id="geom_polygon">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_polygon.html' title=''>geom_polygon</a></h2></hgroup><article  id="geom_polygon">
 
 <pre class = 'prettyprint lang-r'>map_df %&gt;% filter(id == 25) %&gt;% ggplot + aes(x = long, y = lat) +
   geom_polygon() + coord_fixed()</pre>
 
-<p><img src="geoms_files/figure-html/geom_polygon-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_polygon.html"> <img src="geoms_files/figure-html/geom_polygon-1.png" title="geom_polygon" alt="geom_polygon" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_raster</h2></hgroup><article  id="geom_raster">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_raster.html' title=''>geom_raster</a></h2></hgroup><article  id="geom_raster">
 
 <pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot +
   aes(x = color, y = clarity, fill = Freq) + geom_raster()</pre>
 
-<p><img src="geoms_files/figure-html/geom_raster-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_raster.html"> <img src="geoms_files/figure-html/geom_raster-1.png" title="geom_raster" alt="geom_raster" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_segment</h2></hgroup><article  id="geom_segment">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_segment.html' title=''>geom_segment</a></h2></hgroup><article  id="geom_segment">
 
 <pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(x = x, y = y, xend = x + vx, yend = y + vy) +
   geom_segment(arrow = arrow(), size = 2, color = &quot;blue&quot;)</pre>
 
-<p><img src="geoms_files/figure-html/geom_segment-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_segment.html"> <img src="geoms_files/figure-html/geom_segment-1.png" title="geom_segment" alt="geom_segment" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_rect</h2></hgroup><article  id="geom_rect">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_rect.html' title=''>geom_rect</a></h2></hgroup><article  id="geom_rect">
 
 <pre class = 'prettyprint lang-r'>ggplot(data.example) + aes(xmin = x, ymin = y, xmax = x + vx, ymax = y + vy) +
   geom_rect(fill = &quot;blue&quot;)</pre>
 
-<p><img src="geoms_files/figure-html/geom_rect-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_rect.html"> <img src="geoms_files/figure-html/geom_rect-1.png" title="geom_rect" alt="geom_rect" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_step</h2></hgroup><article  id="geom_step">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_step.html' title=''>geom_step</a></h2></hgroup><article  id="geom_step">
 
 <pre class = 'prettyprint lang-r'>data.frame(x = sort(rnorm(47))) %&gt;% ggplot + aes(seq_along(x), x) + geom_step()</pre>
 
-<p><img src="geoms_files/figure-html/geom_step-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_step.html"> <img src="geoms_files/figure-html/geom_step-1.png" title="geom_step" alt="geom_step" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_text</h2></hgroup><article  id="geom_text">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_text.html' title=''>geom_text</a></h2></hgroup><article  id="geom_text">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = wt, y = mpg, label = rownames(mtcars)) + geom_text()</pre>
 
-<p><img src="geoms_files/figure-html/geom_text-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_text.html"> <img src="geoms_files/figure-html/geom_text-1.png" title="geom_text" alt="geom_text" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_tile</h2></hgroup><article  id="geom_tile">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_tile.html' title=''>geom_tile</a></h2></hgroup><article  id="geom_tile">
 
 <pre class = 'prettyprint lang-r'>diamonds %$% table(color, clarity) %&gt;% as.data.frame %&gt;% ggplot +
   aes(x = color, y = clarity, fill = Freq) + geom_tile()</pre>
 
-<p><img src="geoms_files/figure-html/geom_tile-1.png" title="" alt="" width="720" /></p>
+<p><a href="http://docs.ggplot2.org/current/geom_tile.html"> <img src="geoms_files/figure-html/geom_tile-1.png" title="geom_tile" alt="geom_tile" width="720" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>geom_countour</h2></hgroup><article  id="geom_countour">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_countour.html' title=''>geom_countour</a></h2></hgroup><article  id="geom_countour">
 
 <pre class = 'prettyprint lang-r'>ggplot(volcano3d, aes(x, y, z = z)) +
   stat_contour(binwidth = 2, size = 0.5, colour = &quot;grey50&quot;) +
   stat_contour(binwidth = 10, size = 1)</pre>
 
-<p><img src="geoms_files/figure-html/geom_countour-1.png" title="" alt="" width="720" /></p></article></slide>
+<p><a href="http://docs.ggplot2.org/current/geom_countour.html"> <img src="geoms_files/figure-html/geom_countour-1.png" title="geom_countour" alt="geom_countour" width="720" /> </a></p></article></slide>
 
 
   <slide class="backdrop"></slide>
