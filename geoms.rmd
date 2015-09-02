@@ -18,9 +18,65 @@ library("colmaps")
 # Algunas opciones de knitr y ggplot2
 library("knitr")
 
-knitr::opts_chunk$set(message = FALSE,
-                      comment = "#>",
-                      dev.args = list(bg = "transparent"))
+link_geom <- function(geom_name){
+  paste0("http://docs.ggplot2.org/current/", geom_name, ".html")
+}
+
+link_md <- function(x, link){
+  if (is.null(link) || link == "") x else sprintf("[%s](%s)", x, link)
+}
+
+link_html <- function(x, link){
+  if (is.null(link) || link == ""){
+    x
+  } else{
+    sprintf('<a href="%s"> %s </a>', link, x)
+  }
+}
+
+geom_slide_title <- function(geom_name){
+  link_md(x = geom_name, link = link_geom(geom_name))
+}
+
+# knitr:::hook_plot_md_base
+plot_hook <- function (x, options){
+  # "Export" some knitr internal functions used in knitr:::hook_plot_md_base
+  `%n%`       <- knitr:::`%n%`
+  .upload.url <- knitr:::.upload.url
+  .img.tag    <- knitr:::.img.tag
+  css_align   <- knitr:::css_align
+
+  if (options$fig.show == "animate")
+    return(hook_plot_html(x, options))
+
+  base <- opts_knit$get("base.url") %n% ""
+  cap <- options$label
+
+  link <- if (is.function(options$img.link)){
+    options$img.link(options$label)
+  } else if (is.character(options$img.link)){
+    options$img.link
+  }
+
+  if (is.null(w <- options$out.width) & is.null(h <- options$out.height) &
+      is.null(s <- options$out.extra) & options$fig.align == "default") {
+    return(
+      link_md(sprintf("![%s](%s%s) ", cap, base, .upload.url(x)), link)
+    )
+  }
+
+  link_html(
+    .img.tag(.upload.url(x), w, h, cap,
+             c(s, sprintf("style=\"%s\"", css_align(options$fig.align)))),
+    link)
+}
+
+knit_hooks$set(plot = plot_hook)
+
+opts_chunk$set(message = FALSE,
+               comment = "#>",
+               dev.args = list(bg = "transparent"),
+               img.link = link_geom)
 
 theme_update(plot.background = element_rect(fill = "transparent",
                                             colour = "transparent"))
