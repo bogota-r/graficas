@@ -19,14 +19,20 @@ library("tidyr")
 # Datos para ejemplos
 library("saber") # Ver github.com/nebulae-co/saber
 library("forecast")
+
 data("diamonds")
 data("iris")
 data("mtcars")
 
 # Algunas opciones de knitr
 library("knitr")
+
 opts_chunk$set(message = FALSE,
-               comment = "#>")
+               comment = "#>",
+               dev.args = list(bg = "transparent"))
+
+theme_update(plot.background = element_rect(fill = "transparent",
+                                            colour = "transparent"))
 ```
 
 ## Motivación
