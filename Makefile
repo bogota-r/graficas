@@ -7,6 +7,6 @@ index.html: graficas.rmd _output.yaml graficas_files/* styles.css
 	R $(R_OPTS) "rmarkdown::render('graficas.rmd')"
 	mv graficas.html index.html
 
-geoms.html: geoms.rmd _output.yaml graficas_files/* styles.css
+geoms.html: geoms.rmd _output.yaml geoms_files/* styles.css
 	rm -r -f geoms_files/figure-html/*
 	R $(R_OPTS) "rmarkdown::render('geoms.rmd')"
