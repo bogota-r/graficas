@@ -186,7 +186,7 @@ ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path()
 ```
 
-##  geom_rug
+## `r geom_slide_title("geom_rug")`
 
 ```{r geom_rug}
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()
