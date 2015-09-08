@@ -3,6 +3,8 @@ title: "Gráficas en R"
 ---
 
 ```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
+plot_methods <- methods("plot")
+
 library("graphics")
 library("grid")
 library("lattice")
@@ -47,7 +49,7 @@ theme_update(plot.background = element_rect(fill = "transparent",
 
 - Que es R (por si acaso)
 - Gráficas Base
-    * Metodos - Todo de una: `plot()`
+    * Métodos - Todo de una: `plot()`
     * Componentes de bajo nivel
     * Ejemplos
 - Grid
@@ -87,7 +89,6 @@ Entre otras cosas R incluye:
 ```{r graphics-diagram, child = "graficas_files/graphics-diagram.rmd"}
 ```
 
-
 Grafica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
 
 ## Basicamente
@@ -105,17 +106,17 @@ library("ggplot2")
 
 # Gráficas Base
 
-## Metodos (o todo de una):
+## Métodos (o todo de una):
 
 - `plot()` para "diagramas de dispersión"
 - `barplot()` para graficas de barra
 - `hist()` para histogramas
-- `boxplot()` para diagramas de cajas y bigotes
+- `boxplot()` (y `bxp()`)  para diagramas de cajas y bigotes
 - `pie()` - mejor evitarlos
 
 ## `plot()`
 
-```{r plot, eval = FALSE}
+```{r plot-0, eval = FALSE}
 set.seed(13579)
 
 y <- rnorm(30)
@@ -130,12 +131,47 @@ for (type in types){
 
 ## `plot()`
 
-```{r plot, echo = FALSE}
+```{r plot-0, echo = FALSE}
+```
+
+## `plot()`
+
+`plot()` es una función generica. Hay muchas formas de pasarle los datos y dependiendo de lo que se le pase se generara uno u otro tipo de gráfico.
+
+Veamos unos ejemplos usando el conjunto de datos `ìris`:
+
+```{r iris-str}
+str(iris)
+```
+
+## `plot()`
+
+```{r plot-1}
+plot(iris)
+```
+
+## `plot()`
+
+```{r plot-2}
+par(mfrow = c(1, 2), mar = c(5, 4, 2, 2))
+
+plot(iris$Petal.Length, iris$Petal.Width)
+plot(Petal.Length ~ Species, data = iris)
+```
+
+## `plot()` - Métodos
+
+```{r plot-methods, eval = FALSE}
+methods("plot")
+```
+
+```{r plot-methos-output, echo = FALSE}
+plot_methods
 ```
 
 ## `barplot()`
 
-```{r barplot-data, include = FALSE, cache = TRUE}
+```{r saber-data, include = FALSE, cache = TRUE}
 # library("saber")  # Ver github.com/nebulae-co/saber
 
 data(SB11_20142)
@@ -150,61 +186,88 @@ educacion_madre <- SB11_20142 %$%
 ```{r barplot, eval = FALSE}
 par(mfrow = c(2, 1), mar = c(3, 3, 1, 1), cex = 0.6)
 
-barplot(estratos, angle = c(45, 135), 
-        density = 20, col = "grey",
-        names = colnames(estratos))
+barplot(estratos, angle = c(45, 135), density = 20, col = "grey",
+        names = colnames(estratos), xlab = "Estrato")
 
 legend("topright", title = "Genero", rownames(estratos), cex = 1.5,
        angle = c(45, 135), density = 20, fill = "gray")
 
-barplot(educacion_madre, angle = c(45, 135), 
-        density = 20, col = "grey",
-        names = colnames(educacion_madre),
-        horiz = TRUE)
+barplot(educacion_madre, angle = c(45, 135), density = 20, 
+        col = colors()[c(50, 100)], horiz = TRUE,
+        names = colnames(educacion_madre), ylab = "Nivel Educativo\n Madre")
 ```
 
 ## `barplot()`
+
 ```{r barplot, echo = FALSE}
 ```
 
+## `boxplot()` (o `bxp()`)
 
-## Algunos parametros gráficos
+```{r boxplot, eval = FALSE}
+par(mfrow = c(1, 2), mar = c(4, 4, 4, 2), cex = 0.8)
 
-Una gráfica cruda:
+boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
+        col = "light grey")
 
-```{r, echo = FALSE}
-par(mfrow = c(1,2))
-boxplot(iris$Sepal.Length~iris$Species)
-TABLE <- 100*table(diamonds$cut, diamonds$color)/sum(table(diamonds$cut, diamonds$color))
-BP<-barplot(TABLE, beside=TRUE)
+boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
+        pch = 1:6, boxwex = 0.5, boxfill = "lightblue", frame.plot = FALSE,
+        main = "Distribución del puntaje\n de matematicas por estrato",
+        xlab = "Estrato", ylab = "Puntaje de matematicas")
 ```
 
-## Ejes, bordes, fuentes y colores
+## `boxplot()` (o `bxp()`)
 
-Con pocas modificaciones de parametros
-
-```{r, echo = FALSE}
-col <- c("#34b257","#fc032c", "#7a2985", "#6c8393", "#a6cd32", "#0095ff", "#e4681b", "#9b2ed1", "#9b2ed1", "#08cbf7", "#347f6d", "#f4c10b", "#040525", "#8ee916", "#f51e0a", "#2fd0ba", "#fc4503", "#b0614f", "#c33c3e", "#46b9b7")
-col <- c("#e4681b", "#0095ff", "#7a2985", "#fc032c", "#347f6d")
-
- par(family="Sawasdee", cex=0.8)#
- BP<-boxplot(iris$Sepal.Length~iris$Species, main="Iris", ylab="Sepal Length", axes=FALSE, col="#aaaaaa",  border="#333333")
- text(x=(1:3-0.5), y=t(BP$stats), round(t(BP$stats), 1), pos=3)
- axis(1, at=1:3, labels=levels(iris$Species))
- axis(2)
-
+```{r boxplot, echo = FALSE}
 ```
 
-## Ejes, bordes, fuentes y colores
+## Gráficas para 3 dimensiones o más
 
-```{r, echo=FALSE}
-par(family="Sawasdee", cex=0.8)#
-BP<-barplot(TABLE, beside=TRUE, main="Iris", ylab="Freq", axes=FALSE, col=col,  border=NA, ylim = c(0,10))
-text(x=BP, y=TABLE, paste(round(TABLE, 1),"%"), pos=3)
-legend("topright", levels(diamonds$cut), fill=col, border=NA, bty="n")
-#axis(1, at=BP, labels=Levels)
-axis(2)
+- `persp()` superficies.
+- `contour()` y `filled.contour()` contornos.
+- `image()` cuadricula con colores en $z$.
+- `symbols()` diagramas de dispersión con simbolos de tamaño variable.
+- `fourfoldplot()` para tablas de contingencia $2\times 2\times k$.
+- `mosaicplot()`
+- `stars()` para una visualización de varias variables cuantitativas.
+
+```{r , eval = FALSE, echo = FALSE}
+# persp-plot
+y <- x <- seq(-10, 10, length= 30)
+z <- outer(x, y, function(x, y){r <- sqrt(x^2+y^2); 10 * sin(r)/r})
+z[is.na(z)] <- 1
+
+persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue")
+
+# contour-image-plot
+image(x, y, volcano, col = terrain.colors(100), axes = FALSE)
+contour(x, y, volcano, levels = seq(90, 200, by = 5),
+        add = TRUE, col = "peru")
+axis(1, at = seq(100, 800, by = 100))
+axis(2, at = seq(100, 600, by = 100))
+box()
+title(main = "Maunga Whau Volcano", font.main = 4)
+
+# mosaic-plot
+mosaicplot(~ FINS_ESTRATOVIVIENDAENERGIA + FINS_NIVELEDUCATIVOMADRE, 
+           data = SB11_20142)
 ```
+
+## Otras funciones gráficas de alto nivel:
+
+- `matplot()` para gráficas de dispersión cruzando matrices.
+- `stripchart()` gráfica de dispersión en una sola dimensión.
+- `curve()` para gráficar funciones (como `plot.function()`).
+
+## Algunas más modernas o especificas:
+Además de los metodos especificos para `plot()`:
+
+- `dotchart()` para resumir una variable cuantitativa cruzada con una o más variables categoricas.
+- `coplot()` gráficas condicionales (Trellis).
+- `sunflowerplot()` para diagramas de dispersión con datos superpuestos - alternativas para esto son `image()` o `hexbin::hexbin()`. 
+- `assocplot()` visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - `vcd` extiende esto y ofrece más herramientas para datos categoricos.
+
+## `par()` y algunos parametros gráficos 
 
 # Grid
 

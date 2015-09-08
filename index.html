@@ -116,7 +116,7 @@
 <li>Gráficas Base
 
 <ul>
-<li>Metodos - Todo de una: <code>plot()</code></li>
+<li>Métodos - Todo de una: <code>plot()</code></li>
 <li>Componentes de bajo nivel</li>
 <li>Ejemplos</li>
 </ul></li>
@@ -194,13 +194,13 @@ library(&quot;ggplot2&quot;)</pre>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Gráficas Base</h2></hgroup><article  id="graficas-base">
 
-</article></slide><slide class=''><hgroup><h2>Metodos (o todo de una):</h2></hgroup><article  id="metodos-o-todo-de-una">
+</article></slide><slide class=''><hgroup><h2>Métodos (o todo de una):</h2></hgroup><article  id="metodos-o-todo-de-una">
 
 <ul>
 <li><code>plot()</code> para &quot;diagramas de dispersión&quot;</li>
 <li><code>barplot()</code> para graficas de barra</li>
 <li><code>hist()</code> para histogramas</li>
-<li><code>boxplot()</code> para diagramas de cajas y bigotes</li>
+<li><code>boxplot()</code> (y <code>bxp()</code>) para diagramas de cajas y bigotes</li>
 <li><code>pie()</code> - mejor evitarlos</li>
 </ul>
 
@@ -219,43 +219,120 @@ for (type in types){
 
 </article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot-1">
 
-<p><img src="graficas_files/figure-html/plot-1.png" title="" alt="" width="720" /></p>
+<p><img src="graficas_files/figure-html/plot-0-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot-2">
+
+<p><code>plot()</code> es una función generica. Hay muchas formas de pasarle los datos y dependiendo de lo que se le pase se generara uno u otro tipo de gráfico.</p>
+
+<p>Veamos unos ejemplos usando el conjunto de datos <code>ìris</code>:</p>
+
+<pre class = 'prettyprint lang-r'>str(iris)</pre>
+
+<pre >#&gt; &#39;data.frame&#39;:    150 obs. of  5 variables:
+#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+#&gt;  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</pre>
+
+</article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot-3">
+
+<pre class = 'prettyprint lang-r'>plot(iris)</pre>
+
+<p><img src="graficas_files/figure-html/plot-1-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot-4">
+
+<pre class = 'prettyprint lang-r'>par(mfrow = c(1, 2), mar = c(5, 4, 2, 2))
+
+plot(iris$Petal.Length, iris$Petal.Width)
+plot(Petal.Length ~ Species, data = iris)</pre>
+
+<p><img src="graficas_files/figure-html/plot-2-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>plot()</code> - Métodos</h2></hgroup><article  id="plot---metodos">
+
+<pre class = 'prettyprint lang-r'>methods(&quot;plot&quot;)</pre>
+
+<pre >#&gt;  [1] plot.acf*           plot.data.frame*    plot.decomposed.ts*
+#&gt;  [4] plot.default        plot.dendrogram*    plot.density*      
+#&gt;  [7] plot.ecdf           plot.factor*        plot.formula*      
+#&gt; [10] plot.function       plot.hclust*        plot.histogram*    
+#&gt; [13] plot.HoltWinters*   plot.isoreg*        plot.lm*           
+#&gt; [16] plot.medpolish*     plot.mlm*           plot.ppr*          
+#&gt; [19] plot.prcomp*        plot.princomp*      plot.profile.nls*  
+#&gt; [22] plot.raster*        plot.spec*          plot.stepfun       
+#&gt; [25] plot.stl*           plot.table*         plot.ts            
+#&gt; [28] plot.tskernel*      plot.TukeyHSD*     
+#&gt; see &#39;?methods&#39; for accessing help and source code</pre>
 
 </article></slide><slide class=''><hgroup><h2><code>barplot()</code></h2></hgroup><article  id="barplot">
 
 <pre class = 'prettyprint lang-r'>par(mfrow = c(2, 1), mar = c(3, 3, 1, 1), cex = 0.6)
 
-barplot(estratos, angle = c(45, 135), 
-        density = 20, col = &quot;grey&quot;,
-        names = colnames(estratos))
+barplot(estratos, angle = c(45, 135), density = 20, col = &quot;grey&quot;,
+        names = colnames(estratos), xlab = &quot;Estrato&quot;)
 
 legend(&quot;topright&quot;, title = &quot;Genero&quot;, rownames(estratos), cex = 1.5,
        angle = c(45, 135), density = 20, fill = &quot;gray&quot;)
 
-barplot(educacion_madre, angle = c(45, 135), 
-        density = 20, col = &quot;grey&quot;,
-        names = colnames(educacion_madre),
-        horiz = TRUE)</pre>
+barplot(educacion_madre, angle = c(45, 135), density = 20, 
+        col = colors()[c(50, 100)], horiz = TRUE,
+        names = colnames(educacion_madre), ylab = &quot;Nivel Educativo\n Madre&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2><code>barplot()</code></h2></hgroup><article  id="barplot-1">
 
 <p><img src="graficas_files/figure-html/barplot-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>Algunos parametros gráficos</h2></hgroup><article  id="algunos-parametros-graficos">
+</article></slide><slide class=''><hgroup><h2><code>boxplot()</code> (o <code>bxp()</code>)</h2></hgroup><article  id="boxplot-o-bxp">
 
-<p>Una gráfica cruda:</p>
+<pre class = 'prettyprint lang-r'>par(mfrow = c(1, 2), mar = c(4, 4, 4, 2), cex = 0.8)
 
-<p><img src="graficas_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="720" /></p>
+boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
+        col = &quot;light grey&quot;)
 
-</article></slide><slide class=''><hgroup><h2>Ejes, bordes, fuentes y colores</h2></hgroup><article  id="ejes-bordes-fuentes-y-colores">
+boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
+        pch = 1:6, boxwex = 0.5, boxfill = &quot;lightblue&quot;, frame.plot = FALSE,
+        main = &quot;Distribución del puntaje\n de matematicas por estrato&quot;,
+        xlab = &quot;Estrato&quot;, ylab = &quot;Puntaje de matematicas&quot;)</pre>
 
-<p>Con pocas modificaciones de parametros</p>
+</article></slide><slide class=''><hgroup><h2><code>boxplot()</code> (o <code>bxp()</code>)</h2></hgroup><article  id="boxplot-o-bxp-1">
 
-<p><img src="graficas_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="720" /></p>
+<p><img src="graficas_files/figure-html/boxplot-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>Ejes, bordes, fuentes y colores</h2></hgroup><article  id="ejes-bordes-fuentes-y-colores-1">
+</article></slide><slide class=''><hgroup><h2>Gráficas para 3 dimensiones o más</h2></hgroup><article  id="graficas-para-3-dimensiones-o-mas">
 
-<p><img src="graficas_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="720" /></p>
+<ul>
+<li><code>persp()</code> superficies.</li>
+<li><code>contour()</code> y <code>filled.contour()</code> contornos.</li>
+<li><code>image()</code> cuadricula con colores en \(z\).</li>
+<li><code>symbols()</code> diagramas de dispersión con simbolos de tamaño variable.</li>
+<li><code>fourfoldplot()</code> para tablas de contingencia \(2\times 2\times k\).</li>
+<li><code>mosaicplot()</code></li>
+<li><code>stars()</code> para una visualización de varias variables cuantitativas.</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Otras funciones gráficas de alto nivel:</h2></hgroup><article  id="otras-funciones-graficas-de-alto-nivel">
+
+<ul>
+<li><code>matplot()</code> para gráficas de dispersión cruzando matrices.</li>
+<li><code>stripchart()</code> gráfica de dispersión en una sola dimensión.</li>
+<li><code>curve()</code> para gráficar funciones (como <code>plot.function()</code>).</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Algunas más modernas o especificas:</h2></hgroup><article  id="algunas-mas-modernas-o-especificas">
+
+<p>Además de los metodos especificos para <code>plot()</code>:</p>
+
+<ul>
+<li><code>dotchart()</code> para resumir una variable cuantitativa cruzada con una o más variables categoricas.</li>
+<li><code>coplot()</code> gráficas condicionales (Trellis).</li>
+<li><code>sunflowerplot()</code> para diagramas de dispersión con datos superpuestos - alternativas para esto son <code>image()</code> o <code>hexbin::hexbin()</code>.</li>
+<li><code>assocplot()</code> visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - <code>vcd</code> extiende esto y ofrece más herramientas para datos categoricos.</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2><code>par()</code> y algunos parametros gráficos</h2></hgroup><article  id="par-y-algunos-parametros-graficos">
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Grid</h2></hgroup><article  id="grid">
 
