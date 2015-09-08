@@ -13,6 +13,9 @@ library("ggplot2")
 # Scales for ggplot2
 library("scales")
 
+# png files
+library("png")
+
 # Lo de siempre
 library("magrittr")
 library("dplyr")
@@ -344,26 +347,16 @@ Algunas buenas referencias:
 - [Springer - Use R Series](http://www.springer.com/series/6991?detailsPage=titles) R en la práctica en diferentes contextos.
 - ...
 
-## Colofón {.smaller .left-margin}
+## Preguntas?
 
-Esta presentación fue escrita en RMarkdown desde RStudio y compilada por `rmarkdown` en la plantilla `ioslides` de Google gracias a `knitr` y `pandoc`. Publicada en la web en GitHub gracias a GitHub Pages.
-
-## Muchas gracias {.smaller}
-
-Preguntas?
-
-## Muchas gracias {.smaller}
-
-```{r}
-library(png)
-
-PNG.MEME.GENERATOR <- function(web.path, over.text, under.text)
+```{r echo = FALSE}
+png_meme_generator <- function(web.path, over.text, under.text)
 {
-  con <- url(web.path,open='rb')
-  rawpng <- readBin(con, what='raw', n=50000)
+  con <- url(web.path, open = 'rb')
+  rawpng <- readBin(con, what = 'raw', n = 50000)
   close(con)
   
-  img <- readPNG(rawpng)
+  img <- png::readPNG(rawpng)
   
   par(xpd = NA, mgp = c(0, 0, 0), oma = c(0, 0, 0, 0), ann = F)
   
@@ -373,17 +366,18 @@ PNG.MEME.GENERATOR <- function(web.path, over.text, under.text)
   usr<-par("usr")    
   rasterImage(img, usr[1], usr[3], usr[2], usr[4])
   
-  text(.5,1.05, over.text, cex=2, col="#000000", pos=3)
-  text(.5, -.05, under.text, cex=2, col="#000000", pos=1)
-  
+  text(.5, 1.05,  over.text, cex = 2, col = "#000000", pos = 3)
+  text(.5, -.05, under.text, cex = 2, col = "#000000", pos = 1)
 }
 ```
 
-## Muchas gracias {.smaller}
-
 ```{r meme, fig.width = 5, fig.align = "center"}
-PNG.MEME.GENERATOR(
+png_meme_generator(
   "http://i2.kym-cdn.com/photos/images/original/000/208/140/1322357772581.png",
   "Tu cara cuando ves", 
   "un meme hecho en R")
 ```
+
+## Colofón {.smaller .left-margin}
+
+Esta presentación fue escrita en RMarkdown desde RStudio y compilada por `rmarkdown` en la plantilla `ioslides` de Google gracias a `knitr` y `pandoc`. Publicada en la web en GitHub gracias a GitHub Pages.
