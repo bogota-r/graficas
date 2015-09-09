@@ -160,7 +160,7 @@ ggplot(mtcars) + aes(factor(cyl), mpg) + geom_boxplot()
 ggplot(mtcars) + aes(factor(cyl)) + geom_bar(stat = "bin")
 ```
 
-## `r geom_slide_title("geom_bar")`(stat_identity)
+## `r geom_slide_title("geom_bar")` (stat_identity)
 
 ```{r geom_bar_identity, img.link = "http://docs.ggplot2.org/0.9.3.1/geom_bar.html"} 
 df <- as.data.frame(table(factor(mtcars$cyl)))
