@@ -168,6 +168,12 @@ ggplot(df) + aes(x = Var1, y = Freq) + geom_bar(stat = "identity")
 ```
 
 
+## `r geom_slide_title("geom_point")` (stat_qq)
+
+```{r geom_point_qq,  img.link = "http://docs.ggplot2.org/current/stat_qq.html"}
+ggplot(iris) + aes(sample = Petal.Length) + geom_point(stat = "qq")
+```
+
 ## `r geom_slide_title("geom_point")`
 
 ```{r geom_point}
@@ -177,20 +183,39 @@ ggplot(diamonds) + aes(price, depth) + geom_point()
 ## `r geom_slide_title("geom_bin2d")` (stat_bin2d)
 
 ```{r geom_bin2d}
-ggplot(diamonds) + aes(price, depth)   + geom_bin2d()
+ggplot(diamonds) + aes(price, depth) + geom_bin2d()
 ```
 
-## `r geom_slide_title("geom_hex")` (stat_hex)
+## `r geom_slide_title("geom_bin2d")` (stat_summary2d)
+
+```{r summary2d, img.link = "http://docs.ggplot2.org/0.9.3.1/stat_summary2d.html"}
+ggplot(diamonds) + aes(price, depth, z = table) + geom_bin2d(stat = "summary2d")
+```
+
+## `r geom_slide_title("geom_hex")` (stat_binhex)
 
 ```{r geom_hex}
 #install.packages("hexbin")
-ggplot(diamonds) + aes(price, depth) + stat_binhex()
+ggplot(diamonds) + aes(price, depth) + geom_hex(stat = "binhex")
+```
+
+## `r geom_slide_title("geom_hex")` (stat_summary_hex)
+
+```{r stat_summary_hex}
+#install.packages("hexbin")
+ggplot(diamonds) + aes(price, depth, z = table) + stat_summary_hex()
 ```
 
 ## `r geom_slide_title("geom_points")`
 
 ```{r geom_points2}
 ggplot(mpg) + aes(displ, hwy) + geom_point()
+```
+
+## `r geom_slide_title("geom_points")` (stat_spoke)
+
+```{r geom_points2_spoke}
+ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + geom_point() + stat_spoke(radius = 0.5)
 ```
 
 ## `r geom_slide_title("geom_jitter")` (the overploting problem)
@@ -231,7 +256,26 @@ ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path()
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()
 ```
 
-## Graficos de rangos
+## `r geom_slide_title("geom_path")` stat_ellipse
+
+```{r geom_points_ellipse}
+ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path(stat = "ellipse")
+```
+
+## `r geom_slide_title("geom_point")` stat_unique
+
+```{r geom_points_unique}
+ggplot(mpg) + aes(displ, hwy) + geom_point(stat = "unique")
+```
+
+
+## Graficos de rangos 
+
+- stat_summary
+- stat_sum_df
+- stat_sum_single
+
+## Gráficos de rangos
 
 ```{r base-boxplot, img.link = NULL, echo = FALSE}
 boxplot(diamonds$price ~ diamonds$color, plot = TRUE, axes = FALSE, outline=FALSE) %$%
@@ -302,13 +346,21 @@ intervalos %>% select(-names) %>% gather(stat, value) %>%
 ggplot(mtcars) + aes(x = mpg) + geom_density()
 ```
 
-## `r geom_slide_title("geom_freqpoly")`(stat_bin)
+## `r geom_slide_title("geom_density")` (stat_density + stat_function)
+
+```{r geom_density_function}
+ggplot(mtcars) + aes(x = mpg) + geom_density() +
+  stat_function(fun = dnorm, colour = "red", 
+                arg = list(mean = mean(mtcars$mpg), sd = sd(mtcars$mpg)))
+```
+
+## `r geom_slide_title("geom_freqpoly")` (stat_bin)
 
 ```{r geom_freqpoly}
 ggplot(mtcars) + aes(x = mpg) + geom_freqpoly(binwidth = 2)
 ```
 
-## `r geom_slide_title("geom_histogram")`(stat_bin)
+## `r geom_slide_title("geom_histogram")` (stat_bin)
 
 ```{r geom_histogram}
 ggplot(mtcars) + aes(x = mpg) + geom_histogram(binwidth = 2)
@@ -364,6 +416,12 @@ ggplot(data.example) + aes(xmin = x, ymin = y, xmax = x + vx, ymax = y + vy) +
 
 ```{r geom_step}
 data.frame(x = sort(rnorm(47))) %>% ggplot + aes(seq_along(x), x) + geom_step()
+```
+
+## `r geom_slide_title("geom_step")` (stat_edf)
+
+```{r geom_step_ecdf}
+data.frame(x = rnorm(100)) %>% ggplot + aes(x) + geom_step(stat = "ecdf")
 ```
 
 ## `r geom_slide_title("geom_text")`
@@ -431,3 +489,5 @@ ggplot(volcano3d, aes(x, y, z = z)) +
   stat_contour(binwidth = 2, size = 0.5, colour = "grey50") +
   stat_contour(binwidth = 10, size = 1)
 ```
+
+
