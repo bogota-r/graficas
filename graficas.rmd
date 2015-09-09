@@ -50,13 +50,13 @@ theme_update(plot.background = element_rect(fill = "transparent",
 ## Contenido (I)
 <!-- Esto es solo para guiarnos luego miramos si lo dejamos o no --> 
 
-- Que es R (por si acaso)
+- Qué es R (por si acaso)
 - Gráficas Base
     * Métodos - Todo de una: `plot()`
     * Componentes de bajo nivel
     * Ejemplos
 - Grid
-    * Que es grid (o por qué otro sistema?)
+    * Qué es grid (o por qué otro sistema?)
     * Componentes (solo hay de bajo nivel)
 
 ## Contenido (II)
@@ -65,12 +65,12 @@ theme_update(plot.background = element_rect(fill = "transparent",
     * ...
     * Ejemplos
 - ggplot2
-    * Una gramatica de graficas
-    * Capas, geometrias y componentes æsteticos
+    * Una gramática de gráficas
+    * Capas, geometrías y componentes estéticos
     * Ejemplos
 
 ## Contenido (III)
-- Maś allá: graficas interactivas
+- Maś allá: gráficas interactivas
     * ggvis y shiny
     * Integración con JS y htmlwidgets
     * Ayuda y otros recursos
@@ -92,9 +92,9 @@ Entre otras cosas R incluye:
 ```{r graphics-diagram, child = "graficas_files/graphics-diagram.rmd"}
 ```
 
-Grafica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
+Gráfica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
 
-## Basicamente
+## Básicamente
 
 ```r
 library("graphics")
@@ -112,7 +112,7 @@ library("ggplot2")
 ## Métodos (o todo de una):
 
 - `plot()` para "diagramas de dispersión"
-- `barplot()` para graficas de barra
+- `barplot()` para gráficas de barra
 - `hist()` para histogramas
 - `boxplot()` (y `bxp()`)  para diagramas de cajas y bigotes
 - `pie()` - mejor evitarlos
@@ -139,7 +139,7 @@ for (type in types){
 
 ## `plot()`
 
-`plot()` es una función generica. Hay muchas formas de pasarle los datos y dependiendo de lo que se le pase se generara uno u otro tipo de gráfico.
+`plot()` es una función genérica. Hay muchas formas de especificar los datos y dependiendo de lo que se le pase se genera uno u otro tipo de gráfico.
 
 Veamos unos ejemplos usando el conjunto de datos `ìris`:
 
@@ -228,12 +228,12 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 ```{r boxplot, echo = FALSE}
 ```
 
-## Gráficas para 3 o más dimensiones
+## Gráficas para 3 ó más dimensiones
 
 - `persp()` superficies.
 - `contour()` y `filled.contour()` contornos.
-- `image()` cuadricula con colores en $z$.
-- `symbols()` diagramas de dispersión con simbolos de tamaño variable.
+- `image()` cuadrícula con colores en $z$.
+- `symbols()` diagramas de dispersión con símbolos de tamaño variable.
 - `fourfoldplot()` para tablas de contingencia $2\times 2\times k$.
 - `mosaicplot()`
 - `stars()` para una visualización de varias variables cuantitativas.
@@ -266,23 +266,43 @@ mosaicplot(~ FINS_ESTRATOVIVIENDAENERGIA + FINS_NIVELEDUCATIVOMADRE,
 - `stripchart()` gráfica de dispersión en una sola dimensión.
 - `curve()` para gráficar funciones (como `plot.function()`).
 
-## Algunas más modernas o especificas:
-Además de los metodos especificos para `plot()`:
+## Algunas más modernas o específicas:
+Además de los métodos específicos para `plot()`:
 
-- `dotchart()` para resumir una variable cuantitativa cruzada con una o más variables categoricas.
+- `dotchart()` para resumir una variable cuantitativa cruzada con una o más variables categóricas.
 - `coplot()` gráficas condicionales (Trellis).
 - `sunflowerplot()` para diagramas de dispersión con datos superpuestos - alternativas para esto son `image()` o `hexbin::hexbin()`. 
-- `assocplot()` visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - `vcd` extiende esto y ofrece más herramientas para datos categoricos.
+- `assocplot()` visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - `vcd` extiende esto y ofrece más herramientas para datos categóricos.
 
 ## `par()` y algunos parametros gráficos 
 
 # Grid
 
-## Que es grid?
+## Qué es grid?
 
 ## Componentes de bajo nivel
 
 ## Lattice
+
+For example ~x|A means display numeric variable x for each level of factor A. y~x | A*B means display the relationship between numeric variables y and x separately for every combination of factor A and B levels.
+
+Gráfica       | Descripción                        | Ejemplo de fórmula | 
+--------------|------------------------------------|--------------------|
+histogram()   | Histogram                          | ~x                 |  
+densityplot() | Kernel Density Plot                | ~x|A*B             |
+qqmath()      | Theoretical Quantile Plot          |                    |
+qq()          | Two-sample Quantile Plot           |                    |  
+stripplot()   | Stripchart                         | A~x or x~A         |
+bwplot()      | Comparative Box-and-Whisker Plots  | x~A or A~x         |
+dotplot()     | Cleveland Dot Plot                 | ~x|A               |
+barchart()    | Bar Plot                           | x~A or A~x         |
+xyplot()      | Scatter Plot                       | y~x|A              |
+splom()       | Scatter-Plot Matrix                | data frame         |
+contourplot() | Contour Plot of Surfaces           | z~x*y              |
+levelplot()   | False Color Level Plot of Surfaces | z~y*x              |
+wireframe()   | 3D Perspective Plot of Surfaces    | z~y*x              |
+cloud()       | 3D Scatter Plot                    | z~x*y|A            |
+parallel()    | Parallel Coordinates Plot          | data frame         |
 
 # ggplot
 
