@@ -75,6 +75,8 @@ knit_hooks$set(plot = plot_hook)
 
 opts_chunk$set(message = FALSE,
                comment = "#>",
+               fig.align ="center",
+               cache = TRUE, 
                dev.args = list(bg = "transparent"),
                img.link = link_geom)
 
@@ -152,9 +154,7 @@ ggplot(diamonds) + aes(price, depth) + stat_binhex()
 ggplot(mpg) + aes(displ, hwy) + geom_point()
 ```
 
-## `r geom_slide_title("geom_jitter")`
-
-Points, jittered to reduce overplotting.
+## `r geom_slide_title("geom_jitter")` (the overploting problem)
 
 ```{r geom_jitter}
 set.seed(86420)
@@ -192,9 +192,9 @@ ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path()
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()
 ```
 
-## ????
+## Graficos de rangos
 
-```{r base-boxplot, img.link = NULL}
+```{r base-boxplot, img.link = NULL, echo = FALSE}
 boxplot(diamonds$price ~ diamonds$color, plot = TRUE) %$%
   stats %>% matrix(5, 7) %>% t %>% as.data.frame.matrix() %>%
   setNames(c("min", "q1", "med", "q3", "max")) %>%
@@ -307,37 +307,6 @@ ggplot() +
 ```{r geom_abline, echo = FALSE}
 ```
 
-## `r geom_slide_title("geom_map")` {.smaller}
-
-```{r geom_map}
-require("colmaps")
-map_df <- fortify(departamentos)
-ggplot(map_df, aes(map_id = id)) +
-  geom_map(map = map_df, color = "white", size = 0.1) +
-  expand_limits(x = map_df$long, y = map_df$lat) +
-  coord_map()
-```
-
-## `r geom_slide_title("geom_map")` {.smaller}
-
-```{r colmap-cache, cache = TRUE}
-require("colmaps")
-colombia <- colmap(municipios) +
-  theme(plot.background = element_rect(fill = "transparent",
-                                       colour = "transparent"))
-```
-
-```{r colmap, img.link = "http://github.com/nebulae-co/colmaps"}
-print(colombia)
-```
-
-## `r geom_slide_title("geom_polygon")`
-
-```{r geom_polygon}
-map_df %>% filter(id == 25) %>% ggplot + aes(x = long, y = lat) +
-  geom_polygon() + coord_fixed()
-```
-
 ## `r geom_slide_title("geom_raster")`
 
 ```{r geom_raster}
@@ -371,6 +340,43 @@ data.frame(x = sort(rnorm(47))) %>% ggplot + aes(seq_along(x), x) + geom_step()
 ggplot(mtcars) + aes(x = wt, y = mpg, label = rownames(mtcars)) + geom_text()
 ```
 
+## `r geom_slide_title("geom_map")` {.smaller}
+
+```{r geom_map, eval = FALSE}
+require("colmaps")
+map_df <- fortify(departamentos)
+ggplot(map_df, aes(map_id = id)) +
+  geom_map(map = map_df, color = "white", size = 0.1) +
+  expand_limits(x = map_df$long, y = map_df$lat) +
+  coord_map()
+```
+
+## `r geom_slide_title("geom_map")` {.smaller}
+
+```{r geom_map, echo = FALSE}
+```
+
+## `r geom_slide_title("geom_map")` {.smaller}
+
+```{r colmap-cache, cache = TRUE}
+require("colmaps")
+colombia <- colmap(municipios) +
+  theme(plot.background = element_rect(fill = "transparent",
+                                       colour = "transparent"))
+```
+
+## `r geom_slide_title("geom_map")` {.smaller}
+
+```{r colmap, img.link = "http://github.com/nebulae-co/colmaps", echo = FALSE}
+print(colombia)
+```
+
+## `r geom_slide_title("geom_polygon")`
+
+```{r geom_polygon}
+map_df %>% filter(id == 25) %>% ggplot + aes(x = long, y = lat) +
+  geom_polygon() + coord_fixed()
+```
 ## `r geom_slide_title("geom_tile")`
 
 ```{r geom_tile}
