@@ -172,22 +172,26 @@ methods("plot")
 plot_methods
 ```
 
-## `barplot()`
+## `barplot()` ... 
 
-```{r saber-data, include = FALSE, cache = TRUE}
-# library("saber")  # Ver github.com/nebulae-co/saber
+... pero antes unos datos más interesantes
 
-data(SB11_20142)
-
-estratos <- SB11_20142 %$%
-  table(PERS_GENERO, FINS_ESTRATOVIVIENDAENERGIA)
-
-educacion_madre <- SB11_20142 %$%
-  table(PERS_GENERO, FINS_NIVELEDUCATIVOMADRE)
+```{r saber, eval = FALSE}
+library("saber")  # Ver github.com/nebulae-co/saber
 ```
 
+```{r saber-data, cache = TRUE}
+data(SB11_20142)
+glimpse(SB11_20142)
+
+estratos <- with(SB11_20142, table(PERS_GENERO, FINS_ESTRATOVIVIENDAENERGIA))
+educacion_madre <- SB11_20142 %$% table(PERS_GENERO, FINS_NIVELEDUCATIVOMADRE)
+```
+
+## `barplot()`
+
 ```{r barplot, eval = FALSE}
-par(mfrow = c(2, 1), mar = c(3, 3, 1, 1), cex = 0.6)
+par(mfrow = c(2, 1), mar = c(4, 4, 1, 1), cex = 0.75)
 
 barplot(estratos, angle = c(45, 135), density = 20, col = "grey",
         names = colnames(estratos), xlab = "Estrato")
@@ -224,7 +228,7 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 ```{r boxplot, echo = FALSE}
 ```
 
-## Gráficas para 3 dimensiones o más
+## Gráficas para 3 o más dimensiones
 
 - `persp()` superficies.
 - `contour()` y `filled.contour()` contornos.
@@ -234,7 +238,7 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 - `mosaicplot()`
 - `stars()` para una visualización de varias variables cuantitativas.
 
-```{r , eval = FALSE, echo = FALSE}
+```{r misc, eval = FALSE, echo = FALSE}
 # persp-plot
 y <- x <- seq(-10, 10, length= 30)
 z <- outer(x, y, function(x, y){r <- sqrt(x^2+y^2); 10 * sin(r)/r})
