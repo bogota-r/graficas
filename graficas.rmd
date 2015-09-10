@@ -362,7 +362,7 @@ ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 
 ## Ayuda y otros recursos {.build}
 
-La vista de tareas con la que empezamos: [_Vista de Tareas_/Gráficas](http://cran.r-project.org/web/views/Graphics).
+La vista de tareas con la que empezamos: [_Vista de Tareas_/Gráficas](http://cran.r-project.org/web/views/Graphics.html).
 
 Canales: [en twitter #rstats](https://twitter.com/hashtag/rstats) y en [StackOverflow el tag R](http://stackoverflow.com/questions/tagged/r). También pueden [googlea-R](https://www.google.com.co/#q=R) R + "pregunta".  
 
