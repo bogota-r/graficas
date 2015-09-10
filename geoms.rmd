@@ -8,6 +8,7 @@ library("grid")
 library("ggplot2")
 
 # Lo de siempre
+library("reshape2")
 library("magrittr")
 library("dplyr")
 library("tidyr")
@@ -129,7 +130,7 @@ ls(pattern = '^stat_', env = as.environment('package:ggplot2')) %>%
 ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 ```
 
-## `r gg2_title("geom_dotplot")` (`r gg2_title("stat_bindot")`")
+## `r gg2_title("geom_dotplot")` (`r gg2_title("stat_bindot")`)
 
 ```{r geom_dotplot}
 ggplot(mtcars) + aes(x = factor(cyl), y = mpg) +
@@ -203,7 +204,8 @@ ggplot(mpg) + aes(displ, hwy) + geom_point()
 ## `r gg2_title("geom_points")` (`r gg2_title("stat_spoke")`)
 
 ```{r geom_points2_spoke}
-ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + geom_point() + stat_spoke(radius = 0.5)
+ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + 
+  geom_point() + stat_spoke(radius = 0.5)
 ```
 
 ## `r gg2_title("geom_jitter")` (the overploting problem)
@@ -477,6 +479,41 @@ ggplot(volcano3d, aes(x, y, z = z)) +
   stat_contour(binwidth = 10, size = 1)
 ```
 
+## Faceting
+
+```{r facet_wrap, eval = FALSE}
+iris %>% melt("Species") %>% ggplot + 
+  aes(x=value) + 
+  geom_density() +
+  xlab("Valores") + 
+  ylab("Densidad") +
+  facet_wrap(~variable, scale = "free")
+```
+
+## Facetting
+
+```{r facet_wrap, echo = FALSE}
+```
+
+
+## Faceting
+
+```{r facet, eval = FALSE}
+
+iris %>% melt("Species") %>% ggplot + 
+  aes(x=value) + 
+  geom_density() +
+  xlab("Valores") + 
+  ylab("Densidad") +
+  facet_wrap(~variable*Species, scale = "free", ncol = 3)
+
+```
+
+## Facetting
+
+```{r facet, echo = FALSE}
+```
+
 ## `r gg2_title("geom_tile")` The Mandelbrot Set {.smaller}
 
 ```{r geom_tile2, eval = FALSE}
@@ -504,6 +541,8 @@ ggplot(mandelbrot) +
         panel.background = element_rect(fill = "#132B43"),
         panel.grid = element_blank())
 ```
+
+## `r gg2_title("geom_tile")` The Mandelbrot Set {.smaller}
 
 ```{r geom_tile2, img.link = link_gg2("geom_tile"), echo = FALSE}
 ```
