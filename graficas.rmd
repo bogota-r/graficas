@@ -50,24 +50,23 @@ theme_update(plot.background = element_rect(fill = "transparent",
 ## Contenido (I)
 <!-- Esto es solo para guiarnos luego miramos si lo dejamos o no --> 
 
-- Qué es R (por si acaso)
+- Qué es R: [bogota-r.github.io/intro](http://bogota-r.github.io/intro)
 - Gráficas Base
     * Métodos - Todo de una: `plot()`
-    * Componentes de bajo nivel
-    * Ejemplos
+    * El modelo base
+    * Estado y parametros graficos: `par()`
+    
 - Grid
     * Qué es grid (o por qué otro sistema?)
-    * Componentes (solo hay de bajo nivel)
+    * El modelo grid
+    * Componentes
 
 ## Contenido (II)
 - lattice
     * Trellis plots
-    * ...
-    * Ejemplos
+    
 - ggplot2
-    * Una gramática de gráficas
-    * Capas, geometrías y componentes estéticos
-    * Ejemplos
+    * Una gramática de gráficas: Capas, geometrías y componentes estéticos
 
 ## Contenido (III)
 - Maś allá: gráficas interactivas
@@ -182,7 +181,7 @@ library("saber")  # Ver github.com/nebulae-co/saber
 
 ```{r saber-data, cache = TRUE}
 data(SB11_20142)
-glimpse(SB11_20142)
+# glimpse(SB11_20142)
 
 estratos <- with(SB11_20142, table(PERS_GENERO, FINS_ESTRATOVIVIENDAENERGIA))
 educacion_madre <- SB11_20142 %$% table(PERS_GENERO, FINS_NIVELEDUCATIVOMADRE)
@@ -209,7 +208,7 @@ barplot(educacion_madre, angle = c(45, 135), density = 20,
 ```{r barplot, echo = FALSE}
 ```
 
-## `boxplot()` (o `bxp()`)
+## `boxplot()` - `bxp()` 
 
 ```{r boxplot, eval = FALSE}
 par(mfrow = c(1, 2), mar = c(4, 4, 4, 2), cex = 0.8)
@@ -223,7 +222,7 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
         xlab = "Estrato", ylab = "Puntaje de matematicas")
 ```
 
-## `boxplot()` (o `bxp()`)
+## `boxplot()` - `bxp()`
 
 ```{r boxplot, echo = FALSE}
 ```
@@ -284,27 +283,40 @@ Además de los métodos específicos para `plot()`:
 
 ## Lattice
 
-For example ~x|A means display numeric variable x for each level of factor A. y~x | A*B means display the relationship between numeric variables y and x separately for every combination of factor A and B levels.
+* Interfaz de formula:
+  - `~ x | A`:  graficar la variable `x` para cada nivel de `A`.
+  - `y ~ x | A * B` graficar la relación entre las variables numericas `y` y `x` para cada combinación de niveles de los "facores" `A` y `B`.
 
-Gráfica       | Descripción                        | Ejemplo de fórmula | 
---------------|------------------------------------|--------------------|
-histogram()   | Histogram                          | ~x                 |  
-densityplot() | Kernel Density Plot                | ~x|A*B             |
-qqmath()      | Theoretical Quantile Plot          |                    |
-qq()          | Two-sample Quantile Plot           |                    |  
-stripplot()   | Stripchart                         | A~x or x~A         |
-bwplot()      | Comparative Box-and-Whisker Plots  | x~A or A~x         |
-dotplot()     | Cleveland Dot Plot                 | ~x|A               |
-barchart()    | Bar Plot                           | x~A or A~x         |
-xyplot()      | Scatter Plot                       | y~x|A              |
-splom()       | Scatter-Plot Matrix                | data frame         |
-contourplot() | Contour Plot of Surfaces           | z~x*y              |
-levelplot()   | False Color Level Plot of Surfaces | z~y*x              |
-wireframe()   | 3D Perspective Plot of Surfaces    | z~y*x              |
-cloud()       | 3D Scatter Plot                    | z~x*y|A            |
-parallel()    | Parallel Coordinates Plot          | data frame         |
+* ...
 
-# ggplot
+* ...
+
+## Lattice - Funciones de alto nivel {.small}
+
+Gráfica       | Descripción                            | Ejemplo de fórmula  | 
+--------------|----------------------------------------|---------------------|
+histogram()   | Histograma                             | `~ x`               |
+densityplot() | Gráfica de "Densidad Kernel"           | `~ x | A * B`       |
+qqmath()      | Gráfica de Cuantiles Teoricos          |                     |
+qq()          | Gráfica de Cuantiles para dos Muestras |                     |
+stripplot()   | Stripchart                             | `A ~ x`  ó  `x ~ A` |
+bwplot()      | Box-Plots Comparativos                 | `x ~ A` ó `A ~ x`   |
+dotplot()     | Gráfica de Puntos (de Cleveland)       | `~ x | A`           |
+barchart()    | Gráfica de Barras                      | `x ~ A` ó `A ~ x`   |
+
+## Lattice - Funciones de alto nivel {.small}
+
+Gráfica       | Descripción                            | Ejemplo de fórmula  | 
+--------------|----------------------------------------|---------------------|
+xyplot()      | Diagrama de Dispersión                 | `y ~ x | A`         |
+splom()       | Matriz de Diagramas de Dispersión      | `data.frame`        |
+contourplot() | Gráfica de Contornos para Superficies  | `z ~ x * y`         |
+levelplot()   | _False Color Level Plot of Surfaces_   | `z ~ y * x`         |
+wireframe()   | Gráfica de Perspectiva 3D              | `z ~ y * x`         |
+cloud()       | Diagrama de Dispersión 3D              | `z ~ x * y | A`     |
+parallel()    | Gráfica de Coordinadas Paralelas       | `data.frame`        |
+
+# ggplot2
 
 ## R moderno o el ["Hadleyverse"](https://barryrowlingson.github.io/hadleyverse/) {.build}
 
@@ -314,11 +326,22 @@ parallel()    | Parallel Coordinates Plot          | data frame         |
 - `dplyr` y `tidyr` manipulación y limpieza de datos.
 - `ggplot2` *una gramática de gráficas - util para abstraer y construir visualizaciones*.
 
-## ggplot2
+## ggplot2 - Una Gramatica de Graficas
 
- - Gráficos por capas
- - Gestión de la gráfica como objeto
- - Graficar, guardar, abrir y editar.
+- Capas:
+  * Datos +
+  * Estadisticas +
+  * Componentes Æsteticos +
+  * Geometria
+    
+```{r, eval = FALSE} 
+ggplot(...) +
+  layer(...) +
+  layer(...) +
+  helper(...) +
+  helper(...) +
+  theme(...)
+```
 
 ```{r qplot, echo = FALSE, fig.height = 3.5}
 qplot(mpg, wt, data=mtcars, colour=factor(cyl), size=carb)

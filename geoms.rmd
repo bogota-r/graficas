@@ -1,5 +1,5 @@
 ---
-title: "ggplot2 - Geoms"
+title: "ggplot2: geoms + stats"
 ---
 
 ```{r setup, echo = FALSE, include = FALSE}
@@ -18,7 +18,7 @@ library("colmaps")
 # Algunas opciones de knitr y ggplot2
 library("knitr")
 
-link_geom <- function(geom_name){
+link_gg2 <- function(geom_name){
   paste0("http://docs.ggplot2.org/current/", geom_name, ".html")
 }
 
@@ -34,8 +34,8 @@ link_html <- function(x, link){
   }
 }
 
-geom_slide_title <- function(geom_name){
-  link_md(x = geom_name, link = link_geom(geom_name))
+gg2_title <- function(geom_name){
+  link_md(x = geom_name, link = link_gg2(geom_name))
 }
 
 # knitr:::hook_plot_md_base
@@ -78,12 +78,10 @@ opts_chunk$set(message = FALSE,
                fig.align ="center",
                cache = TRUE, 
                dev.args = list(bg = "transparent"),
-               img.link = link_geom)
+               img.link = link_gg2)
 
 theme_update(plot.background = element_rect(fill = "transparent",
                                             colour = "transparent"))
-
-graph_path <- file.path("geoms", "graph")
 ```
 
 ```{r datos, echo = FALSE, include = FALSE, cache = TRUE}
@@ -105,62 +103,54 @@ df1 <- data.frame(a = rnorm(10, 25), b = rnorm(10, 0))
 ```
 
 ## ggplot2
-```{r, eval=FALSE}
-ggplot(...) +
-  layer(...) +
-  layer(...) +
-  helper(...) +
-  helper(...) +
-  theme(...)
-```
-
-## ggplot2
 
 Mostrar datos vs mostrar información.
 
 - **stats:** Qué mostrar
 - **geoms:** Como mostrar
 
-## Geoms {.smaller}
+## Geoms {.smaller }
 
 ```{r geoms-table, echo = FALSE}
 ls(pattern = '^geom_', env = as.environment('package:ggplot2')) %>%
-  setdiff("geom_violin") %>% matrix(9) %>% kable
+  setdiff("geom_violin") matrix(9) %>%
+  kable(col.names = rep("", ncol(.)))
 ```
 
-## Stats {.smaller}
+## Stats {.smaller }
 
 ```{r stats-table, echo = FALSE}
 ls(pattern = '^stat_', env = as.environment('package:ggplot2')) %>%
-  setdiff("stat_abline") %>% matrix(6) %>% kable
+  setdiff("stat_abline") %>% matrix(6) %>%
+  kable(col.names = rep("", ncol(.)))
 ```
 
-## `r geom_slide_title("geom_violin")` (stat_ydensty)
+## `r gg2_title("geom_violin")` (`r gg2_title("stat_ydensty")`)
 
 ```{r geom_violin}
 ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 ```
 
-## `r geom_slide_title("geom_dotplot")` (stat_bindot)
+## `r gg2_title("geom_dotplot")` (`r gg2_title("stat_bindot")`")
 
 ```{r geom_dotplot}
 ggplot(mtcars) + aes(x = factor(cyl), y = mpg) +
   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 1)
 ```
 
-## `r geom_slide_title("geom_boxplot")` (stat_boxplot)
+## `r gg2_title("geom_boxplot")` (`r gg2_title("stat_boxplot")`)
 
 ```{r geom_boxplot}
 ggplot(mtcars) + aes(factor(cyl), mpg) + geom_boxplot()
 ```
 
-## `r geom_slide_title("geom_bar")` (stat_bin)
+## `r gg2_title("geom_bar")` (`r gg2_title("stat_bin")`)
 
 ```{r geom_bar_bin, img.link = "http://docs.ggplot2.org/0.9.3.1/geom_bar.html"} 
 ggplot(mtcars) + aes(factor(cyl)) + geom_bar(stat = "bin")
 ```
 
-## `r geom_slide_title("geom_bar")` (stat_identity)
+## `r gg2_title("geom_bar")` (`r gg2_title("stat_identity")`)
 
 ```{r geom_bar_identity, img.link = "http://docs.ggplot2.org/0.9.3.1/geom_bar.html"} 
 df <- as.data.frame(table(factor(mtcars$cyl)))
@@ -168,101 +158,101 @@ ggplot(df) + aes(x = Var1, y = Freq) + geom_bar(stat = "identity")
 ```
 
 
-## `r geom_slide_title("geom_point")` (stat_qq)
+## `r gg2_title("geom_point")` (`r gg2_title("stat_qq")`)
 
 ```{r geom_point_qq,  img.link = "http://docs.ggplot2.org/current/stat_qq.html"}
 ggplot(iris) + aes(sample = Petal.Length) + geom_point(stat = "qq")
 ```
 
-## `r geom_slide_title("geom_point")`
+## `r gg2_title("geom_point")`
 
 ```{r geom_point}
 ggplot(diamonds) + aes(price, depth) + geom_point()
 ```
 
-## `r geom_slide_title("geom_bin2d")` (stat_bin2d)
+## `r gg2_title("geom_bin2d")` (`r gg2_title("stat_bin2d")`)
 
 ```{r geom_bin2d}
 ggplot(diamonds) + aes(price, depth) + geom_bin2d()
 ```
 
-## `r geom_slide_title("geom_bin2d")` (stat_summary2d)
+## `r gg2_title("geom_bin2d")` (`r gg2_title("stat_summary2d")`)
 
 ```{r summary2d, img.link = "http://docs.ggplot2.org/0.9.3.1/stat_summary2d.html"}
 ggplot(diamonds) + aes(price, depth, z = table) + geom_bin2d(stat = "summary2d")
 ```
 
-## `r geom_slide_title("geom_hex")` (stat_binhex)
+## `r gg2_title("geom_hex")` (`r gg2_title("stat_binhex")`)
 
 ```{r geom_hex}
 #install.packages("hexbin")
 ggplot(diamonds) + aes(price, depth) + geom_hex(stat = "binhex")
 ```
 
-## `r geom_slide_title("geom_hex")` (stat_summary_hex)
+## `r gg2_title("geom_hex")` (`r gg2_title("stat_summary_hex")`)
 
 ```{r stat_summary_hex}
 #install.packages("hexbin")
 ggplot(diamonds) + aes(price, depth, z = table) + stat_summary_hex()
 ```
 
-## `r geom_slide_title("geom_points")`
+## `r gg2_title("geom_points")`
 
 ```{r geom_points2}
 ggplot(mpg) + aes(displ, hwy) + geom_point()
 ```
 
-## `r geom_slide_title("geom_points")` (stat_spoke)
+## `r gg2_title("geom_points")` (`r gg2_title("stat_spoke")`)
 
 ```{r geom_points2_spoke}
 ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + geom_point() + stat_spoke(radius = 0.5)
 ```
 
-## `r geom_slide_title("geom_jitter")` (the overploting problem)
+## `r gg2_title("geom_jitter")` (the overploting problem)
 
 ```{r geom_jitter}
 set.seed(86420)
 ggplot(mpg) + aes(displ, hwy) + geom_jitter()
 ```
 
-## `r geom_slide_title("geom_quantile")` (stat_quantile)
+## `r gg2_title("geom_quantile")` (`r gg2_title("stat_quantile")`)
 
 ```{r geom_quantile}
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_quantile()
 ```
 
-## `r geom_slide_title("geom_smooth")` (stat_smooth)
+## `r gg2_title("geom_smooth")` (`r gg2_title("stat_smooth")`)
 
 ```{r geom_smooth}
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_smooth()
 ```
 
-## `r geom_slide_title("geom_density2d")` (stat_density2d)
+## `r gg2_title("geom_density2d")` (`r gg2_title("stat_density2d")`)
 
 ```{r geom_density2d}
 set.seed(98765)
 ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()
 ```
 
-## `r geom_slide_title("geom_path")`
+## `r gg2_title("geom_path")`
 
 ```{r geom_path}
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path()
 ```
 
-## `r geom_slide_title("geom_rug")`
+## `r gg2_title("geom_rug")`
 
 ```{r geom_rug}
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_rug()
 ```
 
-## `r geom_slide_title("geom_path")` stat_ellipse
+## `r gg2_title("geom_path")` (`r gg2_title("stat_ellipse")`)
 
 ```{r geom_points_ellipse}
 ggplot(mpg) + aes(displ, hwy) + geom_point() + geom_path(stat = "ellipse")
 ```
 
-## `r geom_slide_title("geom_point")` stat_unique
+## `r gg2_title("geom_point")` (`r gg2_title("stat_unique")`)
 
 ```{r geom_points_unique}
 ggplot(mpg) + aes(displ, hwy) + geom_point(stat = "unique")
@@ -284,69 +274,69 @@ boxplot(diamonds$price ~ diamonds$color, plot = TRUE, axes = FALSE, outline=FALS
   mutate(names = levels(diamonds$color)) -> intervalos
 ```
 
-## `r geom_slide_title("geom_crossbar")` 
+## `r gg2_title("geom_crossbar")` 
 
 ```{r geom_crossbar}
 ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_crossbar()
 ```
 
-## `r geom_slide_title("geom_linerange")`
+## `r gg2_title("geom_linerange")`
 
 ```{r geom_linerange}
 ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_linerange()
 ```
 
-## `r geom_slide_title("geom_pointrange")`
+## `r gg2_title("geom_pointrange")`
 
 ```{r geom_pointrange}
 ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_pointrange()
 ```
 
-## `r geom_slide_title("geom_errorbar")`
+## `r gg2_title("geom_errorbar")`
 
 ```{r geom_errorbar}
 ggplot(intervalos) + aes(x = names, ymin = q1, ymax = q3, y = med) +
   geom_errorbar()
 ```
 
-## `r geom_slide_title("geom_errorbarh")`
+## `r gg2_title("geom_errorbarh")`
 
 ```{r geom_errorbarh}
 ggplot(intervalos) + aes(y = names, xmin = q1, xmax = q3, x = med) +
   geom_errorbarh()
 ```
 
-## `r geom_slide_title("geom_ribbon")`
+## `r gg2_title("geom_ribbon")`
 
 ```{r geom_ribbon}
 ggplot(intervalos) + aes(x = 1:7, ymin = q1, ymax = q3, y = med) +
   geom_ribbon(alpha = I(1/3)) + geom_pointrange()
 ```
 
-## `r geom_slide_title("geom_area")`
+## `r gg2_title("geom_area")`
 
 ```{r geom_area}
 intervalos %>% select(-names) %>% gather(stat, value) %>%
   ggplot + aes(y = value, x = rep(1:7, 5), fill= stat) + geom_area()
 ```
 
-## `r geom_slide_title("geom_line")`
+## `r gg2_title("geom_line")`
 
 ```{r geom_line}
 intervalos %>% select(-names) %>% gather(stat, value) %>%
   ggplot + aes(y = value, x = rep(1:7, 5), colour= stat) + geom_line()
 ```
 
-## `r geom_slide_title("geom_density")` (stat_density)
+## `r gg2_title("geom_density")` (`r gg2_title("stat_density")`)
 
 ```{r geom_density}
 ggplot(mtcars) + aes(x = mpg) + geom_density()
 ```
 
-## `r geom_slide_title("geom_density")` (stat_density + stat_function)
+## `r gg2_title("geom_density")` (`r gg2_title("stat_density")` + `r gg2_title("stat_function")`)
 
 ```{r geom_density_function}
 ggplot(mtcars) + aes(x = mpg) + geom_density() +
@@ -354,19 +344,19 @@ ggplot(mtcars) + aes(x = mpg) + geom_density() +
                 arg = list(mean = mean(mtcars$mpg), sd = sd(mtcars$mpg)))
 ```
 
-## `r geom_slide_title("geom_freqpoly")` (stat_bin)
+## `r gg2_title("geom_freqpoly")` (`r gg2_title("stat_bin")`)
 
 ```{r geom_freqpoly}
 ggplot(mtcars) + aes(x = mpg) + geom_freqpoly(binwidth = 2)
 ```
 
-## `r geom_slide_title("geom_histogram")` (stat_bin)
+## `r gg2_title("geom_histogram")` (`r gg2_title("stat_bin")`)
 
 ```{r geom_histogram}
 ggplot(mtcars) + aes(x = mpg) + geom_histogram(binwidth = 2)
 ```
 
-## `r geom_slide_title("geom_abline")` (stat_abline)
+## `r gg2_title("geom_abline")` (`r gg2_title("stat_abline")`)
 
 ```{r geom_abline, eval = FALSE}
 ggplot() +
@@ -379,58 +369,58 @@ ggplot() +
   geom_vline(data = data.example, mapping = aes(xintercept = vy))
 ```
 
-## `r geom_slide_title("geom_abline")` (stat_abline)
+## `r gg2_title("geom_abline")` (`r gg2_title("stat_abline")`)
 
 ```{r geom_abline, echo = FALSE}
 ```
 
-## `r geom_slide_title("geom_blank")`
+## `r gg2_title("geom_blank")`
 
 ```{r geom_blank}
 ggplot(mtcars) + aes(x = wt, y = mpg) + geom_point() +
   geom_abline(aes(intercept = a, slope = b), data = df1)
 ```
 
-## `r geom_slide_title("geom_blank")`
+## `r gg2_title("geom_blank")`
 
-```{r geom_blank-a, img.link = "http://docs.ggplot2.org/0.9.3.1/geom_blank.html"}
-ggplot(mtcars) + aes(x = wt, y = mpg, colour = factor(cyl), size = hp) + geom_blank() +
-  geom_abline(aes(intercept = a, slope = b), data = df1)
+```{r geom_blank-a, img.link = link_gg2("geom_blank")}
+ggplot(mtcars) + aes(x = wt, y = mpg, colour = factor(cyl), size = hp) + 
+  geom_blank() + geom_abline(aes(intercept = a, slope = b), data = df1)
 ```
 
-## `r geom_slide_title("geom_segment")`
+## `r gg2_title("geom_segment")`
 
 ```{r geom_segment}
 ggplot(data.example) + aes(x = x, y = y, xend = x + vx, yend = y + vy) +
   geom_segment(arrow = arrow(), size = 2, color = "blue")
 ```
 
-## `r geom_slide_title("geom_rect")`
+## `r gg2_title("geom_rect")`
 
 ```{r geom_rect}
 ggplot(data.example) + aes(xmin = x, ymin = y, xmax = x + vx, ymax = y + vy) +
   geom_rect(fill = "blue")
 ```
 
-## `r geom_slide_title("geom_step")`
+## `r gg2_title("geom_step")`
 
 ```{r geom_step}
 data.frame(x = sort(rnorm(47))) %>% ggplot + aes(seq_along(x), x) + geom_step()
 ```
 
-## `r geom_slide_title("geom_step")` (stat_edf)
+## `r gg2_title("geom_step")` (`r gg2_title("stat_edf")`)
 
 ```{r geom_step_ecdf}
 data.frame(x = rnorm(100)) %>% ggplot + aes(x) + geom_step(stat = "ecdf")
 ```
 
-## `r geom_slide_title("geom_text")`
+## `r gg2_title("geom_text")`
 
 ```{r geom_text}
 ggplot(mtcars) + aes(x = wt, y = mpg, label = rownames(mtcars)) + geom_text()
 ```
 
-## `r geom_slide_title("geom_map")` {.smaller}
+## `r gg2_title("geom_map")`
 
 ```{r geom_map, eval = FALSE}
 require("colmaps")
@@ -441,53 +431,50 @@ ggplot(map_df, aes(map_id = id)) +
   coord_map()
 ```
 
-## `r geom_slide_title("geom_map")` {.smaller}
+## `r gg2_title("geom_map")`
 
 ```{r geom_map, echo = FALSE}
 ```
 
-## `r geom_slide_title("geom_map")` {.smaller}
+## `r gg2_title("geom_map")`
 
 ```{r colmap-cache, cache = TRUE}
 require("colmaps")
 colombia <- colmap(municipios) +
-  theme(plot.background = element_rect(fill = "transparent",
-                                       colour = "transparent"))
+  theme(plot.background = element_rect(fill = "transparent", colour = "transparent"))
 ```
 
-## `r geom_slide_title("geom_map")` {.smaller}
+## `r gg2_title("geom_map")` {.smaller}
 
 ```{r colmap, img.link = "http://github.com/nebulae-co/colmaps", echo = FALSE}
 print(colombia)
 ```
 
-## `r geom_slide_title("geom_polygon")`
+## `r gg2_title("geom_polygon")`
 
 ```{r geom_polygon}
 map_df %>% filter(id == 25) %>% ggplot + aes(x = long, y = lat) +
   geom_polygon() + coord_fixed()
 ```
 
-## `r geom_slide_title("geom_tile")`
+## `r gg2_title("geom_tile")`
 
 ```{r geom_tile}
 diamonds %$% table(color, clarity) %>% as.data.frame %>% ggplot +
   aes(x = color, y = clarity, fill = Freq) + geom_tile()
 ```
 
-## `r geom_slide_title("geom_raster")` 
+## `r gg2_title("geom_raster")` 
 
 ```{r geom_raster}
 diamonds %$% table(color, clarity) %>% as.data.frame %>% ggplot +
   aes(x = color, y = clarity, fill = Freq) + geom_raster()
 ```
 
-## `r geom_slide_title("geom_countour")`
+## `r gg2_title("geom_countour")`
 
 ```{r geom_countour}
 ggplot(volcano3d, aes(x, y, z = z)) +
   stat_contour(binwidth = 2, size = 0.5, colour = "grey50") +
   stat_contour(binwidth = 10, size = 1)
 ```
-
-
