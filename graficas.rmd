@@ -364,8 +364,8 @@ plot.newclass <- function(x, y = NULL, main = "", sub = "",  xlim = NULL,
 ## Cómo hacer una función gráfica? {.smaller}
 
 ```{r png_meme_generator}
-png_meme_generator <- function(web_path, over_text, under_text){
-  con <- url(web_path, open = 'rb')
+png_meme_generator <- function(x, main, sub){
+  con <- url(x, open = 'rb')
   rawpng <- readBin(con, what = 'raw', n = 50000)
   close(con)
   
@@ -381,8 +381,8 @@ png_meme_generator <- function(web_path, over_text, under_text){
   usr <- par("usr")    
   rasterImage(img, usr[1], usr[3], usr[2], usr[4])
   
-  text(.5, 1.05,  over_text, cex = 2, col = "#000000", pos = 3)
-  text(.5, -.05, under_text, cex = 2, col = "#000000", pos = 1)
+  text(.5, 1.05,  main, cex = 2, col = "#000000", pos = 3)
+  text(.5, -.05,   sub, cex = 2, col = "#000000", pos = 1)
 }
 ```
 
@@ -407,7 +407,18 @@ Tres componentes:
 - unidades
 - parámetros gráficos
 
+- Estructura de arbol. Objetos grafics o `grob`s.
+
+## Grid
+
+```{r grid-0}
+v <- viewport(x = 0.6, y = 0.6, w = unit(1, "inches"), h = unit(1, "inches"))
+grid.show.viewport(v)
+```
+
 ## Componentes de bajo nivel
+
+Grid solo ofrece componentes de bajo nivel.
 
 ## Lattice
 
@@ -427,41 +438,16 @@ Laticce es una libreria que proporciona funciones gráficas de alto nivel basada
 
 * ...
 
-## Lattice - Funciones de alto nivel
+## Lattice
 
-Gráfica       | Descripción                            | Ejemplo de fórmula  | 
---------------|----------------------------------------|---------------------|
-histogram()   | Histograma                             | `~ x`               |
-densityplot() | Gráfica de "densidad kernel"           | `~ x | A * B`       |
-qqmath()      | Gráfica de cuantiles teóricos          |                     |
-qq()          | Gráfica de cuantiles para dos muestras |                     |
-stripplot()   | Stripchart                             | `A ~ x`  ó  `x ~ A` |
-bwplot()      | Box-Plots comparativos                 | `x ~ A` ó `A ~ x`   |
-dotplot()     | Gráfica de puntos (de Cleveland)       | `~ x | A`           |
-barchart()    | Gráfica de barras                      | `x ~ A` ó `A ~ x`   |
-
-## Lattice - Funciones de alto nivel
-
-Gráfica       | Descripción                            | Ejemplo de fórmula  | 
---------------|----------------------------------------|---------------------|
-xyplot()      | Diagrama de dispersión                 | `y ~ x | A`         |
-splom()       | Matriz de diagramas de dispersión      | `data.frame`        |
-contourplot() | Gráfica de contornos para superficies  | `z ~ x * y`         |
-levelplot()   | _False color level plot of surfaces_   | `z ~ y * x`         |
-wireframe()   | Gráfica de perspectiva 3D              | `z ~ y * x`         |
-cloud()       | Diagrama de dispersión 3D              | `z ~ x * y | A`     |
-parallel()    | Gráfica de coordenadas paralelas       | `data.frame`        |
-
-## Lattice - Funciones de alto nivel
-
-```{r lattice, echo = FALSE}
+```{r lattice-0, echo = FALSE}
 x <- 1:5
 y <- 1:5
 g <- factor(1:5)
 types <- c("barchart", "bwplot", "densityplot", "dotplot",
            "histogram", "qqmath", "stripplot", "qq",
            "xyplot", "levelplot", "contourplot",
-           "cloud", "wireframe", "splom", "parallel")
+           "cloud", "wireframe", "splom", "parallelplot")
 angle <- seq(0, 2*pi, length=19)[-19]
 xx <- cos(angle)
 yy <- sin(angle)
@@ -500,7 +486,7 @@ plot[[13]] <- doplot("wireframe", zzz ~ xxx + yyy | 1, zlab=NULL, zoom=0.9,
                      colorkey=FALSE)
 plot[[14]] <- doplot("splom", ~ data.frame(x=xx[1:10], y=yy[1:10]) | 1, 
                      pscales=0)
-plot[[15]] <- doplot("parallel", ~ as.data.frame(split(yy, gg)) | 1)
+plot[[15]] <- doplot("parallelplot", ~ as.data.frame(split(yy, gg)) | 1)
 
 grid.newpage()
 pushViewport(viewport(layout=grid.layout(4, 4)))
@@ -515,40 +501,88 @@ for (i in 1:15) {
 popViewport()
 ```
 
+## Lattice - Funciones de alto nivel
+
+Gráfica       | Descripción                            | Ejemplo de fórmula  | 
+--------------|----------------------------------------|---------------------|
+histogram()   | Histograma                             | `~ x`               |
+densityplot() | Gráfica de "densidad kernel"           | `~ x | A * B`       |
+qqmath()      | Gráfica de cuantiles teóricos          |                     |
+qq()          | Gráfica de cuantiles para dos muestras |                     |
+stripplot()   | Stripchart                             | `A ~ x`  ó  `x ~ A` |
+bwplot()      | Box-Plots comparativos                 | `x ~ A` ó `A ~ x`   |
+dotplot()     | Gráfica de puntos (de Cleveland)       | `~ x | A`           |
+barchart()    | Gráfica de barras                      | `x ~ A` ó `A ~ x`   |
+
+## Lattice - Funciones de alto nivel
+
+Gráfica         | Descripción                            | Ejemplo de fórmula  | 
+----------------|----------------------------------------|---------------------|
+xyplot()        | Diagrama de dispersión                 | `y ~ x | A`         |
+splom()         | Matriz de diagramas de dispersión      | `data.frame`        |
+contourplot()   | Gráfica de contornos para superficies  | `z ~ x * y`         |
+levelplot()     | _False color level plot of surfaces_   | `z ~ y * x`         |
+wireframe()     | Gráfica de perspectiva 3D              | `z ~ y * x`         |
+cloud()         | Diagrama de dispersión 3D              | `z ~ x * y | A`     |
+parallelplot()  | Gráfica de coordenadas paralelas       | `data.frame`        |
+
 ## Lattice - Ejemplo (I)
 
-```{r lattice, echo = FALSE}
+```{r lattice-1, eval = FALSE}
 histogram(~ MATEMATICAS_PUNT, data = SB11_20142, xlab = "Puntaje Matemáticas", 
           ylab = "Frecuencia relativa")
 ```
 
+## Lattice - Ejemplo (I)
+
+```{r lattice-1, echo = FALSE}
+```
+
 ## Lattice - Ejemplo (II)
 
-```{r lattice, echo = FALSE}
+```{r lattice-2, eval = FALSE}
 histogram(~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA),
           data = SB11_20142, xlab = "Puntaje Matemáticas", 
           ylab = "Frecuencia relativa")
 ```
 
+## Lattice - Ejemplo (II)
+
+```{r lattice-2, echo = FALSE}
+```
+
 ## Lattice - Ejemplo (III)
 
-```{r lattice, echo = FALSE}
+```{r lattice-3, eval = FALSE}
 densityplot(~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA),
             data = SB11_20142, groups = PERS_GENERO,
             plot.points = FALSE, auto.key = TRUE, xlab = "Puntaje Matemáticas",
             ylab = "Densidad")
 ```
 
+## Lattice - Ejemplo (III)
+
+```{r lattice-3, echo = FALSE}
+```
+
 ## Lattice - Ejemplo (IV)
 
-```{r lattice, echo = FALSE}
-xyplot(LECTURA_CRITICA_PUNT ~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA) * factor(PERS_GENERO),
-            data = SB11_20142, xlab = "Puntaje Matemáticas", ylab = "Puntaje Lectura Crítica")
+```{r lattice-4, eval = FALSE}
+xyplot(LECTURA_CRITICA_PUNT ~ MATEMATICAS_PUNT | 
+       factor(FINS_ESTRATOVIVIENDAENERGIA) * factor(PERS_GENERO),
+       data = SB11_20142, xlab = "Puntaje Matemáticas", 
+       ylab = "Puntaje Lectura Crítica")
 ```
+
+## Lattice - Ejemplo (IV)
+
+```{r lattice-4, echo = FALSE}
+```
+
 
 # ggplot2
 
-## R moderno o el ["Hadleyverse"](https://barryrowlingson.github.io/hadleyverse/) {.build}
+## R moderno o el ["Hadleyverse"](https://barryrowlingson.github.io/hadleyverse/)
 
 - `readr`, `readxl` y `haven` lectura de archivos.
 - `lubridate` manejo de fechas y tiempo.
@@ -593,7 +627,7 @@ ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 
 # Integración con JS - htmlwidgets
 
-## Ayuda y otros recursos {.build}
+## Ayuda y otros recursos
 
 La vista de tareas con la que empezamos: [_Vista de Tareas_/Gráficas](http://cran.r-project.org/web/views/Graphics.html).
 

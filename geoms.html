@@ -193,14 +193,14 @@
 <td align="left">stat_bin2d</td>
 <td align="left">stat_density2d</td>
 <td align="left">stat_qq</td>
-<td align="left">stat_summary2d</td>
+<td align="left">stat_summary_hex</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">stat_bindot</td>
 <td align="left">stat_ecdf</td>
 <td align="left">stat_quantile</td>
-<td align="left">stat_summary_hex</td>
+<td align="left">stat_summary2d</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -231,7 +231,7 @@
 
 <p><a href="http://docs.ggplot2.org/current/geom_violin.html"> <img src="geoms_files/figure-html/geom_violin-1.png" title="geom_violin" alt="geom_violin" width="720" style="display: block; margin: auto;" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_dotplot.html' title=''>geom_dotplot</a> (<a href='http://docs.ggplot2.org/current/stat_bindot.html' title=''>stat_bindot</a>&quot;)</h2></hgroup><article  id="geom_dotplot-stat_bindot">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_dotplot.html' title=''>geom_dotplot</a> (<a href='http://docs.ggplot2.org/current/stat_bindot.html' title=''>stat_bindot</a>)</h2></hgroup><article  id="geom_dotplot-stat_bindot">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(x = factor(cyl), y = mpg) +
   geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;, binwidth = 1)</pre>
@@ -303,7 +303,8 @@ ggplot(diamonds) + aes(price, depth, z = table) + stat_summary_hex()</pre>
 
 </article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_points.html' title=''>geom_points</a> (<a href='http://docs.ggplot2.org/current/stat_spoke.html' title=''>stat_spoke</a>)</h2></hgroup><article  id="geom_points-stat_spoke">
 
-<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + geom_point() + stat_spoke(radius = 0.5)</pre>
+<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + 
+  geom_point() + stat_spoke(radius = 0.5)</pre>
 
 <p><a href="http://docs.ggplot2.org/current/geom_points2_spoke.html"> <img src="geoms_files/figure-html/geom_points2_spoke-1.png" title="geom_points2_spoke" alt="geom_points2_spoke" width="720" style="display: block; margin: auto;" /> </a></p>
 
@@ -564,7 +565,33 @@ colombia &lt;- colmap(municipios) +
 
 <p><a href="http://docs.ggplot2.org/current/geom_countour.html"> <img src="geoms_files/figure-html/geom_countour-1.png" title="geom_countour" alt="geom_countour" width="720" style="display: block; margin: auto;" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_tile.html' title=''>geom_tile</a> The Mandelbrot Set</h2></hgroup><article  id="geom_tile-the-mandelbrot-set" class="smaller">
+</article></slide><slide class=''><hgroup><h2>Faceting</h2></hgroup><article  id="faceting">
+
+<pre class = 'prettyprint lang-r'>iris %&gt;% melt(&quot;Species&quot;) %&gt;% ggplot + 
+  aes(x=value) + 
+  geom_density() +
+  xlab(&quot;Valores&quot;) + 
+  ylab(&quot;Densidad&quot;) +
+  facet_wrap(~variable, scale = &quot;free&quot;)</pre>
+
+</article></slide><slide class=''><hgroup><h2>Facetting</h2></hgroup><article  id="facetting">
+
+<p><a href="http://docs.ggplot2.org/current/facet_wrap.html"> <img src="geoms_files/figure-html/facet_wrap-1.png" title="facet_wrap" alt="facet_wrap" width="720" style="display: block; margin: auto;" /> </a></p>
+
+</article></slide><slide class=''><hgroup><h2>Faceting</h2></hgroup><article  id="faceting-1">
+
+<pre class = 'prettyprint lang-r'>iris %&gt;% melt(&quot;Species&quot;) %&gt;% ggplot + 
+  aes(x=value) + 
+  geom_density() +
+  xlab(&quot;Valores&quot;) + 
+  ylab(&quot;Densidad&quot;) +
+  facet_wrap(~variable*Species, scale = &quot;free&quot;, ncol = 3)</pre>
+
+</article></slide><slide class=''><hgroup><h2>Facetting</h2></hgroup><article  id="facetting-1">
+
+<p><a href="http://docs.ggplot2.org/current/facet.html"> <img src="geoms_files/figure-html/facet-1.png" title="facet" alt="facet" width="720" style="display: block; margin: auto;" /> </a></p>
+
+</article></slide><slide class=''><hgroup><h2>The Mandelbrot Set - <a href='http://docs.ggplot2.org/current/geom_tile.html' title=''>geom_tile</a></h2></hgroup><article  id="the-mandelbrot-set---geom_tile" class="smaller">
 
 <pre class = 'prettyprint lang-r'># Create a grid of complex numbers
 c.points &lt;- outer(seq(-2.5, 1, by = 0.007), 1i*seq(-1.5, 1.5, by = 0.007),&#39;+&#39;)
@@ -589,6 +616,8 @@ ggplot(mandelbrot) +
         axis.title.y = element_blank(), 
         panel.background = element_rect(fill = &quot;#132B43&quot;),
         panel.grid = element_blank())</pre>
+
+</article></slide><slide class=''><hgroup><h2>The Mandelbrot Set - <a href='http://docs.ggplot2.org/current/geom_tile.html' title=''>geom_tile</a></h2></hgroup><article  id="the-mandelbrot-set---geom_tile-1" class="smaller">
 
 <p><a href="http://docs.ggplot2.org/current/geom_tile.html"> <img src="geoms_files/figure-html/geom_tile2-1.png" title="geom_tile2" alt="geom_tile2" width="720" style="display: block; margin: auto;" /> </a></p></article></slide>
 

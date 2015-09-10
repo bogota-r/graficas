@@ -514,7 +514,7 @@ iris %>% melt("Species") %>% ggplot +
 ```{r facet, echo = FALSE}
 ```
 
-## `r gg2_title("geom_tile")` The Mandelbrot Set {.smaller}
+## The Mandelbrot Set - `r gg2_title("geom_tile")`  {.smaller}
 
 ```{r geom_tile2, eval = FALSE}
 # Create a grid of complex numbers
@@ -542,7 +542,7 @@ ggplot(mandelbrot) +
         panel.grid = element_blank())
 ```
 
-## `r gg2_title("geom_tile")` The Mandelbrot Set {.smaller}
+## The Mandelbrot Set - `r gg2_title("geom_tile")`  {.smaller}
 
 ```{r geom_tile2, img.link = link_gg2("geom_tile"), echo = FALSE}
 ```

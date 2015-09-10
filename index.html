@@ -116,7 +116,7 @@
 <ul>
 <li>Métodos - Todo de una: <code>plot()</code></li>
 <li>El modelo base</li>
-<li>Estado y parametros graficos: <code>par()</code></li>
+<li>Estado y parámetros graficos: <code>par()</code></li>
 </ul></li>
 <li>Grid
 
@@ -219,7 +219,7 @@ for (type in types){
 
 <p><code>plot()</code> es una función genérica. Hay muchas formas de especificar los datos y dependiendo de lo que se le pase se genera uno u otro tipo de gráfico.</p>
 
-<p>Veamos unos ejemplos usando el conjunto de datos <code>ìris</code>:</p>
+<p>Veamos unos ejemplos usando el conjunto de datos <code>iris</code>:</p>
 
 <pre class = 'prettyprint lang-r'>str(iris)</pre>
 
@@ -280,7 +280,7 @@ educacion_madre &lt;- SB11_20142 %$% table(PERS_GENERO, FINS_NIVELEDUCATIVOMADRE
 barplot(estratos, angle = c(45, 135), density = 20, col = &quot;grey&quot;,
         names = colnames(estratos), xlab = &quot;Estrato&quot;)
 
-legend(&quot;topright&quot;, title = &quot;Genero&quot;, rownames(estratos), cex = 1.5,
+legend(&quot;topright&quot;, title = &quot;Género&quot;, rownames(estratos), cex = 1.5,
        angle = c(45, 135), density = 20, fill = &quot;gray&quot;)
 
 barplot(educacion_madre, angle = c(45, 135), density = 20, 
@@ -300,8 +300,8 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 
 boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
         pch = 1:6, boxwex = 0.5, boxfill = &quot;lightblue&quot;, frame.plot = FALSE,
-        main = &quot;Distribución del puntaje\n de matematicas por estrato&quot;,
-        xlab = &quot;Estrato&quot;, ylab = &quot;Puntaje de matematicas&quot;)</pre>
+        main = &quot;Distribución del puntaje\n de matemáticas por estrato&quot;,
+        xlab = &quot;Estrato&quot;, ylab = &quot;Puntaje de matemáticas&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2><code>boxplot()</code> - <code>bxp()</code></h2></hgroup><article  id="boxplot---bxp-1">
 
@@ -378,29 +378,29 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 <li><code>assocplot()</code> visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - <code>vcd</code> extiende esto y ofrece más herramientas para datos categóricos.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>El modelo grafico base</h2></hgroup><article  id="el-modelo-grafico-base">
+</article></slide><slide class=''><hgroup><h2>El modelo gráfico base</h2></hgroup><article  id="el-modelo-grafico-base">
 
 <ul>
-<li>Margenes externas</li>
+<li>Márgenes externas</li>
 <li>Región de la figura</li>
 <li>Región de la gráfica \(\rightarrow\) Sistema coordenado (<code>xlim</code> y <code>ylim</code> en funciones de alto nivel o <code>par(&quot;usr&quot;)</code>)</li>
-<li>Margen de la figura (Region de la gráfica - Region de la gráfica)</li>
+<li>Margen de la figura (Región de la figura - Región de la gráfica)</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>El modelo grafico base</h2></hgroup><article  id="el-modelo-grafico-base-1">
+</article></slide><slide class=''><hgroup><h2>El modelo gráfico base</h2></hgroup><article  id="el-modelo-grafico-base-1">
 
 <p><img src="graficas_files/figure-html/modelo-1.png" title="" alt="" width="720" /></p>
 
-<p>Gráfica basada en <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R' title=''>codigo</a> del libro <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html' title=''><em>R Graphics</em> de Paul Murrell</a></p>
+<p>Gráfica basada en <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R' title=''>código</a> del libro <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html' title=''><em>R Graphics</em> de Paul Murrell</a></p>
 
-</article></slide><slide class=''><hgroup><h2><code>par()</code> y algunos parametros gráficos</h2></hgroup><article  id="par-y-algunos-parametros-graficos">
+</article></slide><slide class=''><hgroup><h2><code>par()</code> y algunos parámetros gráficos</h2></hgroup><article  id="par-y-algunos-parametros-graficos">
 
 <p>El sistema base mantiene un estado que se consulta y modifica con <code>par()</code>.</p>
 
-<p>Podemos clasificar los parametros de acuerdo a que componentes de las graficas afectan y si son de alto nivel, bajo nivel o solo lectura.</p>
+<p>Podemos clasificar los parámetros de acuerdo a los componentes de las gráficas afectan y si son de alto nivel, bajo nivel o solo lectura.</p>
 
 <ul>
-<li>Alto nivel: pueden ser con llamados a los metodos gráficos o con <code>par()</code>.</li>
+<li>Alto nivel: pueden ser con llamados a los métodos gráficos o con <code>par()</code>.</li>
 <li>Bajo nivel: solo pueden ser modificados a través de <code>par()</code></li>
 </ul>
 
@@ -568,7 +568,7 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 
 <p><code>bg</code> y <code>cex</code> tambien pueden afectar los simbolos</p>
 
-</article></slide><slide class=''><hgroup><h2>Ejes</h2></hgroup><article  id="ejes">
+</article></slide><slide class=''><hgroup><h2>Ejes</h2></hgroup><article  id="ejes" class="smaller">
 
 <table class = 'rmdtable'>
 <tr class="header">
@@ -771,7 +771,7 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 
 layout.show(nf)</pre>
 
-<p><img src="graficas_files/figure-html/layout-example-1.png" title="" alt="" width="720" /></p>
+<p><img src="graficas_files/figure-html/layout-example-1.png" title="" alt="" width="384" /></p>
 
 </article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
 
@@ -782,7 +782,7 @@ layout.show(nf)</pre>
 </tr>
 <tr class="odd">
 <td align="left"><code>lines()</code> y <code>matlines()</code></td>
-<td align="left">Lineas</td>
+<td align="left">Líneas</td>
 </tr>
 <tr class="even">
 <td align="left"><code>points()</code> y <code>matpoints()</code></td>
@@ -790,11 +790,11 @@ layout.show(nf)</pre>
 </tr>
 <tr class="odd">
 <td align="left"><code>rect()</code></td>
-<td align="left">Rectangulos</td>
+<td align="left">Rectángulos</td>
 </tr>
 <tr class="even">
 <td align="left"><code>poly()</code></td>
-<td align="left">Polygonos</td>
+<td align="left">Polígonos</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>segments()</code></td>
@@ -815,7 +815,7 @@ layout.show(nf)</pre>
 </tr>
 <tr class="odd">
 <td align="left"><code>grid()</code></td>
-<td align="left">Cuadriculas</td>
+<td align="left">Cuadrículas</td>
 </tr>
 <tr class="even">
 <td align="left"><code>abline()</code></td>
@@ -835,11 +835,11 @@ layout.show(nf)</pre>
 </tr>
 <tr class="even">
 <td align="left"><code>mtext()</code></td>
-<td align="left">Texto en las Margenes</td>
+<td align="left">Texto en las márgenes</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>title()</code></td>
-<td align="left">Titulos y etiquetas de ejes</td>
+<td align="left">Títulos y etiquetas de ejes</td>
 </tr>
 <tr class="even">
 <td align="left"><code>legend()</code></td>
@@ -868,23 +868,23 @@ layout.show(nf)</pre>
 </tr>
 <tr class="even">
 <td align="left"><code>xinch()</code></td>
-<td align="left">Transformaciónes a coordenadas</td>
+<td align="left">Transformaciones a coordenadas</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>yinch()</code></td>
-<td align="left">Transformaciónes a coordenadas</td>
+<td align="left">Transformaciones a coordenadas</td>
 </tr>
 <tr class="even">
 <td align="left"><code>xyinch()</code></td>
-<td align="left">Transformaciónes a coordenadas</td>
+<td align="left">Transformaciones a coordenadas</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>cm()</code></td>
-<td align="left">Transformaciónes a coordenadas</td>
+<td align="left">Transformaciones a coordenadas</td>
 </tr>
 </table>
 
-</article></slide><slide class=''><hgroup><h2>Como hacer una función gráfica?</h2></hgroup><article  id="como-hacer-una-funcion-grafica" class="smaller">
+</article></slide><slide class=''><hgroup><h2>Cómo hacer una función gráfica?</h2></hgroup><article  id="como-hacer-una-funcion-grafica" class="smaller">
 
 <pre class = 'prettyprint lang-r'>plot.newclass &lt;- function(x, y = NULL, main = &quot;&quot;, sub = &quot;&quot;,  xlim = NULL, 
                           ylim = NULL, axes = TRUE, ann = par(&quot;ann&quot;),
@@ -909,12 +909,12 @@ layout.show(nf)</pre>
           xlab = xy$xlab, ylab = xy$ylab, ...)
 }</pre>
 
-<p><a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/custombase-template.R' title=''>Codigo por Paul Murrell</a></p>
+<p><a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/custombase-template.R' title=''>Código por Paul Murrell</a></p>
 
-</article></slide><slide class=''><hgroup><h2>Como hacer una función gráfica?</h2></hgroup><article  id="como-hacer-una-funcion-grafica-1" class="smaller">
+</article></slide><slide class=''><hgroup><h2>Cómo hacer una función gráfica?</h2></hgroup><article  id="como-hacer-una-funcion-grafica-1" class="smaller">
 
-<pre class = 'prettyprint lang-r'>png_meme_generator &lt;- function(web_path, over_text, under_text){
-  con &lt;- url(web_path, open = &#39;rb&#39;)
+<pre class = 'prettyprint lang-r'>png_meme_generator &lt;- function(x, main, sub){
+  con &lt;- url(x, open = &#39;rb&#39;)
   rawpng &lt;- readBin(con, what = &#39;raw&#39;, n = 50000)
   close(con)
   
@@ -930,8 +930,8 @@ layout.show(nf)</pre>
   usr &lt;- par(&quot;usr&quot;)    
   rasterImage(img, usr[1], usr[3], usr[2], usr[4])
   
-  text(.5, 1.05,  over_text, cex = 2, col = &quot;#000000&quot;, pos = 3)
-  text(.5, -.05, under_text, cex = 2, col = &quot;#000000&quot;, pos = 1)
+  text(.5, 1.05,  main, cex = 2, col = &quot;#000000&quot;, pos = 3)
+  text(.5, -.05,   sub, cex = 2, col = &quot;#000000&quot;, pos = 1)
 }</pre>
 
 </article></slide><slide class=''><hgroup><h2>Una nueva función gráfica:</h2></hgroup><article  id="una-nueva-funcion-grafica">
@@ -954,16 +954,26 @@ layout.show(nf)</pre>
 <ul>
 <li>&quot;puertos&quot; (<em>viewports</em>)</li>
 <li>unidades</li>
-<li>parametros gráficos</li>
+<li><p>parámetros gráficos</p></li>
+<li><p>Estructura de arbol. Objetos grafics o <code>grob</code>s.</p></li>
 </ul>
 
+</article></slide><slide class=''><hgroup><h2>Grid</h2></hgroup><article  id="grid-1">
+
+<pre class = 'prettyprint lang-r'>v &lt;- viewport(x = 0.6, y = 0.6, w = unit(1, &quot;inches&quot;), h = unit(1, &quot;inches&quot;))
+grid.show.viewport(v)</pre>
+
+<p><img src="graficas_files/figure-html/grid-0-1.png" title="" alt="" width="720" /></p>
+
 </article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel-1">
+
+<p>Grid solo ofrece componentes de bajo nivel.</p>
 
 </article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice">
 
 </article></slide><slide class=''><hgroup><h2>Que es lattice?</h2></hgroup><article  id="que-es-lattice">
 
-<p>Laticce es una libreria que proporciona funciones graficas de alto nivel basadas en <code>grid</code> y utiles para generar gráficas para datos multivariados a través de condicionamiento (<em>Trellis plots</em>) basado en trabajo e ideas de <a href='http://www.stat.purdue.edu/~wsc/' title=''>William Cleveland</a>.</p>
+<p>Laticce es una libreria que proporciona funciones gráficas de alto nivel basadas en <code>grid</code> y útiles para generar gráficas para datos multivariados a través de condicionamiento (<em>Trellis plots</em>) basado en trabajo e ideas de <a href='http://www.stat.purdue.edu/~wsc/' title=''>William Cleveland</a>.</p>
 
 <img src='graficas_files/lattice.jpeg' title=''/>
 
@@ -972,10 +982,14 @@ layout.show(nf)</pre>
 <ul>
 <li>Interfaz de formula:</li>
 <li><code>~ x | A</code>: graficar la variable <code>x</code> para cada nivel de <code>A</code>.</li>
-<li><p><code>y ~ x | A * B</code> graficar la relación entre las variables numericas <code>y</code> y <code>x</code> para cada combinación de niveles de los &quot;facores&quot; <code>A</code> y <code>B</code>.</p></li>
+<li><p><code>y ~ x | A * B</code> graficar la relación entre las variables numéricas <code>y</code> y <code>x</code> para cada combinación de niveles de los &quot;factores&quot; <code>A</code> y <code>B</code>.</p></li>
 <li><p>&#8230;</p></li>
 <li><p>&#8230;</p></li>
 </ul>
+
+</article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice-2">
+
+<p><img src="graficas_files/figure-html/lattice-0-1.png" title="" alt="" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>Lattice - Funciones de alto nivel</h2></hgroup><article  id="lattice---funciones-de-alto-nivel">
 
@@ -992,17 +1006,17 @@ layout.show(nf)</pre>
 </tr>
 <tr class="even">
 <td align="left">densityplot()</td>
-<td align="left">Gráfica de &quot;Densidad Kernel&quot;</td>
+<td align="left">Gráfica de &quot;densidad kernel&quot;</td>
 <td align="left"><code>~ x | A * B</code></td>
 </tr>
 <tr class="odd">
 <td align="left">qqmath()</td>
-<td align="left">Gráfica de Cuantiles Teoricos</td>
+<td align="left">Gráfica de cuantiles teóricos</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">qq()</td>
-<td align="left">Gráfica de Cuantiles para dos Muestras</td>
+<td align="left">Gráfica de cuantiles para dos muestras</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
@@ -1012,17 +1026,17 @@ layout.show(nf)</pre>
 </tr>
 <tr class="even">
 <td align="left">bwplot()</td>
-<td align="left">Box-Plots Comparativos</td>
+<td align="left">Box-Plots comparativos</td>
 <td align="left"><code>x ~ A</code> ó <code>A ~ x</code></td>
 </tr>
 <tr class="odd">
 <td align="left">dotplot()</td>
-<td align="left">Gráfica de Puntos (de Cleveland)</td>
+<td align="left">Gráfica de puntos (de Cleveland)</td>
 <td align="left"><code>~ x | A</code></td>
 </tr>
 <tr class="even">
 <td align="left">barchart()</td>
-<td align="left">Gráfica de Barras</td>
+<td align="left">Gráfica de barras</td>
 <td align="left"><code>x ~ A</code> ó <code>A ~ x</code></td>
 </tr>
 </table>
@@ -1037,44 +1051,85 @@ layout.show(nf)</pre>
 </tr>
 <tr class="odd">
 <td align="left">xyplot()</td>
-<td align="left">Diagrama de Dispersión</td>
+<td align="left">Diagrama de dispersión</td>
 <td align="left"><code>y ~ x | A</code></td>
 </tr>
 <tr class="even">
 <td align="left">splom()</td>
-<td align="left">Matriz de Diagramas de Dispersión</td>
+<td align="left">Matriz de diagramas de dispersión</td>
 <td align="left"><code>data.frame</code></td>
 </tr>
 <tr class="odd">
 <td align="left">contourplot()</td>
-<td align="left">Gráfica de Contornos para Superficies</td>
+<td align="left">Gráfica de contornos para superficies</td>
 <td align="left"><code>z ~ x * y</code></td>
 </tr>
 <tr class="even">
 <td align="left">levelplot()</td>
-<td align="left"><em>False Color Level Plot of Surfaces</em></td>
+<td align="left"><em>False color level plot of surfaces</em></td>
 <td align="left"><code>z ~ y * x</code></td>
 </tr>
 <tr class="odd">
 <td align="left">wireframe()</td>
-<td align="left">Gráfica de Perspectiva 3D</td>
+<td align="left">Gráfica de perspectiva 3D</td>
 <td align="left"><code>z ~ y * x</code></td>
 </tr>
 <tr class="even">
 <td align="left">cloud()</td>
-<td align="left">Diagrama de Dispersión 3D</td>
+<td align="left">Diagrama de dispersión 3D</td>
 <td align="left"><code>z ~ x * y | A</code></td>
 </tr>
 <tr class="odd">
-<td align="left">parallel()</td>
-<td align="left">Gráfica de Coordinadas Paralelas</td>
+<td align="left">parallelplot()</td>
+<td align="left">Gráfica de coordenadas paralelas</td>
 <td align="left"><code>data.frame</code></td>
 </tr>
 </table>
 
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (I)</h2></hgroup><article  id="lattice---ejemplo-i">
+
+<pre class = 'prettyprint lang-r'>histogram(~ MATEMATICAS_PUNT, data = SB11_20142, xlab = &quot;Puntaje Matemáticas&quot;, 
+          ylab = &quot;Frecuencia relativa&quot;)</pre>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (I)</h2></hgroup><article  id="lattice---ejemplo-i-1">
+
+<p><img src="graficas_files/figure-html/lattice-1-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (II)</h2></hgroup><article  id="lattice---ejemplo-ii">
+
+<pre class = 'prettyprint lang-r'>histogram(~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA),
+          data = SB11_20142, xlab = &quot;Puntaje Matemáticas&quot;, 
+          ylab = &quot;Frecuencia relativa&quot;)</pre>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (II)</h2></hgroup><article  id="lattice---ejemplo-ii-1">
+
+<p><img src="graficas_files/figure-html/lattice-2-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (III)</h2></hgroup><article  id="lattice---ejemplo-iii">
+
+<pre class = 'prettyprint lang-r'>densityplot(~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA),
+            data = SB11_20142, groups = PERS_GENERO,
+            plot.points = FALSE, auto.key = TRUE, xlab = &quot;Puntaje Matemáticas&quot;,
+            ylab = &quot;Densidad&quot;)</pre>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (III)</h2></hgroup><article  id="lattice---ejemplo-iii-1">
+
+<p><img src="graficas_files/figure-html/lattice-3-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (IV)</h2></hgroup><article  id="lattice---ejemplo-iv">
+
+<pre class = 'prettyprint lang-r'>xyplot(LECTURA_CRITICA_PUNT ~ MATEMATICAS_PUNT | 
+       factor(FINS_ESTRATOVIVIENDAENERGIA) * factor(PERS_GENERO),
+       data = SB11_20142, xlab = &quot;Puntaje Matemáticas&quot;, 
+       ylab = &quot;Puntaje Lectura Crítica&quot;)</pre>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Ejemplo (IV)</h2></hgroup><article  id="lattice---ejemplo-iv-1">
+
+<p><img src="graficas_files/figure-html/lattice-4-1.png" title="" alt="" width="720" /></p>
+
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>ggplot2</h2></hgroup><article  id="ggplot2">
 
-</article></slide><slide class=''><hgroup><h2>R moderno o el <a href='https://barryrowlingson.github.io/hadleyverse/' title=''>&quot;Hadleyverse&quot;</a></h2></hgroup><article  id="r-moderno-o-el-hadleyverse" class="build">
+</article></slide><slide class=''><hgroup><h2>R moderno o el <a href='https://barryrowlingson.github.io/hadleyverse/' title=''>&quot;Hadleyverse&quot;</a></h2></hgroup><article  id="r-moderno-o-el-hadleyverse">
 
 <ul>
 <li><code>readr</code>, <code>readxl</code> y <code>haven</code> lectura de archivos.</li>
@@ -1091,9 +1146,9 @@ layout.show(nf)</pre>
 
 <ul>
 <li>Datos +</li>
-<li>Estadisticas +</li>
-<li>Componentes Æsteticos +</li>
-<li>Geometria</li>
+<li>Estadísticas +</li>
+<li>Componentes estéticos +</li>
+<li>Geometría</li>
 </ul></li>
 </ul>
 
@@ -1104,11 +1159,11 @@ layout.show(nf)</pre>
   helper(...) +
   theme(...)</pre>
 
-</article></slide><slide class=''><hgroup><h2>ggplot2 - Una Gramatica de Graficas</h2></hgroup><article  id="ggplot2---una-gramatica-de-graficas-1">
+</article></slide><slide class=''><hgroup><h2>ggplot2 - Una Gramática de Gráficas</h2></hgroup><article  id="ggplot2---una-gramatica-de-graficas">
 
 <p><img src="graficas_files/figure-html/qplot-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2><a href='geoms.html' title=''>ggplot2 - geometrias y estadísticas</a></h2></hgroup><article  id="ggplot2---geometrias-y-estadisticas">
+</article></slide><slide class=''><hgroup><h2><a href='geoms.html' title=''>ggplot2 - geometrías y estadísticas</a></h2></hgroup><article  id="ggplot2---geometrias-y-estadisticas">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()</pre>
 
@@ -1120,7 +1175,7 @@ layout.show(nf)</pre>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Integración con JS - htmlwidgets</h2></hgroup><article  id="integracion-con-js---htmlwidgets">
 
-</article></slide><slide class=''><hgroup><h2>Ayuda y otros recursos</h2></hgroup><article  id="ayuda-y-otros-recursos" class="build">
+</article></slide><slide class=''><hgroup><h2>Ayuda y otros recursos</h2></hgroup><article  id="ayuda-y-otros-recursos">
 
 <p>La vista de tareas con la que empezamos: <a href='http://cran.r-project.org/web/views/Graphics.html' title=''><em>Vista de Tareas</em>/Gráficas</a>.</p>
 
