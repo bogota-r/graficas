@@ -326,10 +326,10 @@ parallel()    | Gráfica de Coordinadas Paralelas       | `data.frame`        |
 ## ggplot2 - Una Gramatica de Graficas
 
 - Capas:
-  * Datos +
-  * Estadisticas +
-  * Componentes Æsteticos +
-  * Geometria
+    * Datos +
+    * Estadisticas +
+    * Componentes Æsteticos +
+    * Geometria
     
 ```{r, eval = FALSE} 
 ggplot(...) +
