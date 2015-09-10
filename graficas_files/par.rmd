@@ -1,0 +1,126 @@
+## Colores
+
+Parametro   | Descripción                   | Nivel   |          
+------------|-------------------------------|---------|
+`bg`        | Color del fondo               | Bajo    |
+`col`       | Colores de simbolos y lineas  | Alto    |            
+`fg`        | Color del frente              | Alto    |
+`gamma`     | Correción gamma de colores    | Alto    |
+
+
+`col` y `fg` tienen sufijos `.axis`, `.lab`, `.main` y `.sub`
+
+## Colores
+
+Algunas funciones para trabajar con colores:
+
+- `colors()` nombres de colores
+- `pallete()` la paleta numerica de colores
+- `rgb()`, `hsv()`, `convertColor()` `colorspace` espacios de colores
+- `heat` `terrain` `topo` `cm` `.colors()` paletas de colores
+- `rainbow()` `gray()` mas paletas en `RcolorBrewer`
+- `colorRamp()` y `colorRampPallete()`  crear paletas
+
+## Lineas
+
+Parametro   | Descripción                   | Nivel   |
+------------|-------------------------------|---------|
+`lend`      | Forma de la terminación       | Bajo    |
+`ljoin`     | Forma de la unión             | Bajo    |
+`lmitre`    | Algo como enrredado           | Bajo    |
+`lty`       | Tipo de linea                 | Alto    |
+`lwd`       | Grosor de la linea            | Alto    |
+
+## Texto {.smaller}
+
+Parametro   | Descripción                       | Nivel   |
+------------|-----------------------------------|---------|
+`adj`       | Justificacion del texto           | Alto    |
+`ann`       | "Anotar" el grafico?              | Alto    |
+`cex`       | Tamaño del texto                  | Alto    |
+`family`    | Familia de la fuente              | Bajo    |
+`font`      | Tipo de fuente (negrita, etc)     | Alto    |
+`las`       | Rotación del texto en margenes    | Alto    |
+`lheight`   | Espacio entre lineas              | Bajo    |
+`ps`        | Tamaño de la fuente               | Bajo    |
+`srt`       | Rotación del texto en el grafico  | Alto    |
+`tmag`      | Tamaño del titulo del grafico 	| Bajo    |
+
+`cex` y `ps` tienen sufijos `.axis`, `.lab`, `.main` y `.sub`
+
+## Simbolos
+
+Parametro   | Descripción           | Nivel   |
+------------|-----------------------|---------|
+`pch`       | Simbolo para datos    | Alto    |
+`type`      | Tipo de gráfica       | Alto    |
+
+`bg` y `cex` tambien pueden afectar los simbolos
+
+## Ejes
+
+Parametro   | Descripción                       | Nivel   |
+------------|-----------------------------------|---------|
+`lab`       | Numero de marcas                  | Alto    |
+`mgp`       | Posición de marcas y etiquetas    | ALto    |
+`tck`       | Lonitud de las marcas             | Alto    |
+`tcl`       | Lonitud de las marcas             | Alto    |
+`[x|y]axp`  | Numero de marcas                  | Alto    |
+`[x|y]axs`  | Rango del eje                     | Alto    |
+`[x|y]axt`  | Estilo del eje                    | Alto    |
+`[x|y]log`  | Escala logaritmica?               | Bajo    |
+
+Tambien es relevante `[x|y]lim` que pasa desde las funciones de alto nivel.
+
+## Regiones y sistemas coordenados {.smaller}
+
+ Parametro  | Descripción                           | Nivel   |
+------------|---------------------------------------|---------|
+`oma`       | Margenes externas (lineas)            | Bajo    |
+`omi`       | Margenes externas  (inch)             | Bajo    |
+`omd`       | Margenes externas  (porporciones)     | Bajo    |
+`fig`       | Ubicación de la figura (vertices)     | Bajo    |
+`fin`       | Ubicación de la figura (centro)       | Bajo    |
+`mar`       | Margenes de la figura (lineas)        | Bajo    |
+`mai`       | Margenes de la figura (inch)          | Bajo    |
+`mex`       | Tamaño de linea en margenes           | Bajo    |
+`plt`       | Ubicación del gráfico (proporciones)  | Bajo    |    
+
+## Regiones y sistemas coordenados {.smaller}
+
+ Parametro  | Descripción                           | Nivel   |
+------------|---------------------------------------|---------|
+`pin`       | Ubicación del gráfico (centro)        | Bajo    |  
+`pty`       | Ubicación del gráfico ("m", "s")      | Bajo    |  
+`xpd`       | _Clipping_                            | Alto    |
+`cin`       | Tamaño de un caracter (inch)          | Lectura |  
+`usr`       | Rango de los Ejes                     | Bajo    |
+`din`       | Tamaño del dispositivo grafico (inch) | Lectura |
+`cra`       | Tamaño de un caracter ("pixels")      | Lectura |
+`cxy`       | Tamaño de un caracter ("usr")         | Lectura |
+
+Tambien es relevante `[x|y]lim` que pasa desde las funciones de alto nivel.
+
+
+## Nuevas graficas y multiples graficos
+
+ Parametro   | Descripción                       | Nivel |
+------------|------------------------------------|-------|
+`ask`       | Preguntar por nueva pagina?        | Bajo  |
+`new`       | Empezo una gráfica nueva?          | Bajo  |
+`mfg`       | Que figura (fila, col) se usa      | Bajo  |
+`mfrow`     | Varias en una la pagina (por fila) | Bajo  |
+`mfcol`     | Varias en una la pagina (por col)  | Bajo  |
+
+Algunas funciones reciben al argumento `add`
+Tambien esta la función `layout()` y `split.screen()`.
+
+## Nuevas graficas y multiples graficos
+
+```{r, layout-example}
+nf <- layout(mat = matrix(c(2, 0, 1, 3), 2, 2, byrow = TRUE), widths = c(3, 1),
+             heights = c(1, 3), respect = TRUE)
+
+layout.show(nf)
+```
+

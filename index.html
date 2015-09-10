@@ -319,6 +319,46 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 <li><code>stars()</code> para una visualización de varias variables cuantitativas.</li>
 </ul>
 
+</article></slide><slide class=''><hgroup><h2><code>persp()</code></h2></hgroup><article  id="persp">
+
+<p><img src="graficas_files/figure-html/persp-a-1.png" title="" alt="" width="864" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>persp()</code></h2></hgroup><article  id="persp-1">
+
+<p><img src="graficas_files/figure-html/persp-b-1.png" title="" alt="" width="864" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>contour()</code></h2></hgroup><article  id="contour">
+
+<p><img src="graficas_files/figure-html/contour-a-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>contour()</code></h2></hgroup><article  id="contour-1">
+
+<p><img src="graficas_files/figure-html/contour-b-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>image()</code></h2></hgroup><article  id="image">
+
+<p><img src="graficas_files/figure-html/image-1.png" title="" alt="" width="768" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>symbols()</code></h2></hgroup><article  id="symbols">
+
+<p><img src="graficas_files/figure-html/symbols-1.png" title="" alt="" width="768" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>fourfoldplot()</code></h2></hgroup><article  id="fourfoldplot">
+
+<p><img src="graficas_files/figure-html/fourfoldplot-1.png" title="" alt="" width="768" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>mosaicplot()</code></h2></hgroup><article  id="mosaicplot">
+
+<p><img src="graficas_files/figure-html/mosaincplot-1.png" title="" alt="" width="768" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>stars()</code></h2></hgroup><article  id="stars">
+
+<p><img src="graficas_files/figure-html/stars-a-1.png" title="" alt="" width="768" /></p>
+
+</article></slide><slide class=''><hgroup><h2><code>stars()</code></h2></hgroup><article  id="stars-1">
+
+<p><img src="graficas_files/figure-html/stars-b-1.png" title="" alt="" width="768" /></p>
+
 </article></slide><slide class=''><hgroup><h2>Otras funciones gráficas de alto nivel:</h2></hgroup><article  id="otras-funciones-graficas-de-alto-nivel">
 
 <ul>
@@ -338,15 +378,596 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 <li><code>assocplot()</code> visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - <code>vcd</code> extiende esto y ofrece más herramientas para datos categóricos.</li>
 </ul>
 
+</article></slide><slide class=''><hgroup><h2>El modelo grafico base</h2></hgroup><article  id="el-modelo-grafico-base">
+
+<ul>
+<li>Margenes externas</li>
+<li>Región de la figura</li>
+<li>Región de la gráfica \(\rightarrow\) Sistema coordenado (<code>xlim</code> y <code>ylim</code> en funciones de alto nivel o <code>par(&quot;usr&quot;)</code>)</li>
+<li>Margen de la figura (Region de la gráfica - Region de la gráfica)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>El modelo grafico base</h2></hgroup><article  id="el-modelo-grafico-base-1">
+
+<p><img src="graficas_files/figure-html/modelo-1.png" title="" alt="" width="720" /></p>
+
+<p>Gráfica basada en <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R' title=''>codigo</a> del libro <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html' title=''><em>R Graphics</em> de Paul Murrell</a></p>
+
 </article></slide><slide class=''><hgroup><h2><code>par()</code> y algunos parametros gráficos</h2></hgroup><article  id="par-y-algunos-parametros-graficos">
+
+<p>El sistema base mantiene un estado que se consulta y modifica con <code>par()</code>.</p>
+
+<p>Podemos clasificar los parametros de acuerdo a que componentes de las graficas afectan y si son de alto nivel, bajo nivel o solo lectura.</p>
+
+<ul>
+<li>Alto nivel: pueden ser con llamados a los metodos gráficos o con <code>par()</code>.</li>
+<li>Bajo nivel: solo pueden ser modificados a través de <code>par()</code></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Colores</h2></hgroup><article  id="colores">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>bg</code></td>
+<td align="left">Color del fondo</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>col</code></td>
+<td align="left">Colores de simbolos y lineas</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>fg</code></td>
+<td align="left">Color del frente</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>gamma</code></td>
+<td align="left">Correción gamma de colores</td>
+<td align="left">Alto</td>
+</tr>
+</table>
+
+<p><code>col</code> y <code>fg</code> tienen sufijos <code>.axis</code>, <code>.lab</code>, <code>.main</code> y <code>.sub</code></p>
+
+</article></slide><slide class=''><hgroup><h2>Colores</h2></hgroup><article  id="colores-1">
+
+<p>Algunas funciones para trabajar con colores:</p>
+
+<ul>
+<li><code>colors()</code> nombres de colores</li>
+<li><code>pallete()</code> la paleta numerica de colores</li>
+<li><code>rgb()</code>, <code>hsv()</code>, <code>convertColor()</code> <code>colorspace</code> espacios de colores</li>
+<li><code>heat</code> <code>terrain</code> <code>topo</code> <code>cm</code> <code>.colors()</code> paletas de colores</li>
+<li><code>rainbow()</code> <code>gray()</code> mas paletas en <code>RcolorBrewer</code></li>
+<li><code>colorRamp()</code> y <code>colorRampPallete()</code> crear paletas</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Lineas</h2></hgroup><article  id="lineas">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>lend</code></td>
+<td align="left">Forma de la terminación</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ljoin</code></td>
+<td align="left">Forma de la unión</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>lmitre</code></td>
+<td align="left">Algo como enrredado</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>lty</code></td>
+<td align="left">Tipo de linea</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>lwd</code></td>
+<td align="left">Grosor de la linea</td>
+<td align="left">Alto</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Texto</h2></hgroup><article  id="texto" class="smaller">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>adj</code></td>
+<td align="left">Justificacion del texto</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ann</code></td>
+<td align="left">&quot;Anotar&quot; el grafico?</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>cex</code></td>
+<td align="left">Tamaño del texto</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>family</code></td>
+<td align="left">Familia de la fuente</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>font</code></td>
+<td align="left">Tipo de fuente (negrita, etc)</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>las</code></td>
+<td align="left">Rotación del texto en margenes</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>lheight</code></td>
+<td align="left">Espacio entre lineas</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ps</code></td>
+<td align="left">Tamaño de la fuente</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>srt</code></td>
+<td align="left">Rotación del texto en el grafico</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>tmag</code></td>
+<td align="left">Tamaño del titulo del grafico</td>
+<td align="left">Bajo</td>
+</tr>
+</table>
+
+<p><code>cex</code> y <code>ps</code> tienen sufijos <code>.axis</code>, <code>.lab</code>, <code>.main</code> y <code>.sub</code></p>
+
+</article></slide><slide class=''><hgroup><h2>Simbolos</h2></hgroup><article  id="simbolos">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>pch</code></td>
+<td align="left">Simbolo para datos</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>type</code></td>
+<td align="left">Tipo de gráfica</td>
+<td align="left">Alto</td>
+</tr>
+</table>
+
+<p><code>bg</code> y <code>cex</code> tambien pueden afectar los simbolos</p>
+
+</article></slide><slide class=''><hgroup><h2>Ejes</h2></hgroup><article  id="ejes">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>lab</code></td>
+<td align="left">Numero de marcas</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>mgp</code></td>
+<td align="left">Posición de marcas y etiquetas</td>
+<td align="left">ALto</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>tck</code></td>
+<td align="left">Lonitud de las marcas</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>tcl</code></td>
+<td align="left">Lonitud de las marcas</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[x|y]axp</code></td>
+<td align="left">Numero de marcas</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[x|y]axs</code></td>
+<td align="left">Rango del eje</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[x|y]axt</code></td>
+<td align="left">Estilo del eje</td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[x|y]log</code></td>
+<td align="left">Escala logaritmica?</td>
+<td align="left">Bajo</td>
+</tr>
+</table>
+
+<p>Tambien es relevante <code>[x|y]lim</code> que pasa desde las funciones de alto nivel.</p>
+
+</article></slide><slide class=''><hgroup><h2>Regiones y sistemas coordenados</h2></hgroup><article  id="regiones-y-sistemas-coordenados" class="smaller">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>oma</code></td>
+<td align="left">Margenes externas (lineas)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>omi</code></td>
+<td align="left">Margenes externas (inch)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>omd</code></td>
+<td align="left">Margenes externas (porporciones)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>fig</code></td>
+<td align="left">Ubicación de la figura (vertices)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>fin</code></td>
+<td align="left">Ubicación de la figura (centro)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>mar</code></td>
+<td align="left">Margenes de la figura (lineas)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mai</code></td>
+<td align="left">Margenes de la figura (inch)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>mex</code></td>
+<td align="left">Tamaño de linea en margenes</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plt</code></td>
+<td align="left">Ubicación del gráfico (proporciones)</td>
+<td align="left">Bajo</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Regiones y sistemas coordenados</h2></hgroup><article  id="regiones-y-sistemas-coordenados-1" class="smaller">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>pin</code></td>
+<td align="left">Ubicación del gráfico (centro)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>pty</code></td>
+<td align="left">Ubicación del gráfico (&quot;m&quot;, &quot;s&quot;)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>xpd</code></td>
+<td align="left"><em>Clipping</em></td>
+<td align="left">Alto</td>
+</tr>
+<tr class="even">
+<td align="left"><code>cin</code></td>
+<td align="left">Tamaño de un caracter (inch)</td>
+<td align="left">Lectura</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>usr</code></td>
+<td align="left">Rango de los Ejes</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>din</code></td>
+<td align="left">Tamaño del dispositivo grafico (inch)</td>
+<td align="left">Lectura</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>cra</code></td>
+<td align="left">Tamaño de un caracter (&quot;pixels&quot;)</td>
+<td align="left">Lectura</td>
+</tr>
+<tr class="even">
+<td align="left"><code>cxy</code></td>
+<td align="left">Tamaño de un caracter (&quot;usr&quot;)</td>
+<td align="left">Lectura</td>
+</tr>
+</table>
+
+<p>Tambien es relevante <code>[x|y]lim</code> que pasa desde las funciones de alto nivel.</p>
+
+</article></slide><slide class=''><hgroup><h2>Nuevas graficas y multiples graficos</h2></hgroup><article  id="nuevas-graficas-y-multiples-graficos">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parametro</th>
+<th align="left">Descripción</th>
+<th align="left">Nivel</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>ask</code></td>
+<td align="left">Preguntar por nueva pagina?</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>new</code></td>
+<td align="left">Empezo una gráfica nueva?</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mfg</code></td>
+<td align="left">Que figura (fila, col) se usa</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="even">
+<td align="left"><code>mfrow</code></td>
+<td align="left">Varias en una la pagina (por fila)</td>
+<td align="left">Bajo</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mfcol</code></td>
+<td align="left">Varias en una la pagina (por col)</td>
+<td align="left">Bajo</td>
+</tr>
+</table>
+
+<p>Algunas funciones reciben al argumento <code>add</code> Tambien esta la función <code>layout()</code> y <code>split.screen()</code>.</p>
+
+</article></slide><slide class=''><hgroup><h2>Nuevas graficas y multiples graficos</h2></hgroup><article  id="nuevas-graficas-y-multiples-graficos-1">
+
+<pre class = 'prettyprint lang-r'>nf &lt;- layout(mat = matrix(c(2, 0, 1, 3), 2, 2, byrow = TRUE), widths = c(3, 1),
+             heights = c(1, 3), respect = TRUE)
+
+layout.show(nf)</pre>
+
+<p><img src="graficas_files/figure-html/layout-example-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Función</th>
+<th align="left">Descripción</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>lines()</code> y <code>matlines()</code></td>
+<td align="left">Lineas</td>
+</tr>
+<tr class="even">
+<td align="left"><code>points()</code> y <code>matpoints()</code></td>
+<td align="left">Puntos</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>rect()</code></td>
+<td align="left">Rectangulos</td>
+</tr>
+<tr class="even">
+<td align="left"><code>poly()</code></td>
+<td align="left">Polygonos</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>segments()</code></td>
+<td align="left">Segmentos</td>
+</tr>
+<tr class="even">
+<td align="left"><code>text()</code></td>
+<td align="left">Texto</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Utilidades</h2></hgroup><article  id="utilidades">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Función</th>
+<th align="left">Descripción</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>grid()</code></td>
+<td align="left">Cuadriculas</td>
+</tr>
+<tr class="even">
+<td align="left"><code>abline()</code></td>
+<td align="left">Rectas</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>arrows()</code></td>
+<td align="left">Flechas</td>
+</tr>
+<tr class="even">
+<td align="left"><code>box()</code></td>
+<td align="left">Borde</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>rug()</code></td>
+<td align="left">&quot;Rug&quot; en ejes</td>
+</tr>
+<tr class="even">
+<td align="left"><code>mtext()</code></td>
+<td align="left">Texto en las Margenes</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>title()</code></td>
+<td align="left">Titulos y etiquetas de ejes</td>
+</tr>
+<tr class="even">
+<td align="left"><code>legend()</code></td>
+<td align="left">Leyenda</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Utilidades</h2></hgroup><article  id="utilidades-1">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Función</th>
+<th align="left">Descripción</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>axis()</code> y <code>axTicks()</code></td>
+<td align="left">Ejes</td>
+</tr>
+<tr class="even">
+<td align="left"><code>strheight()</code></td>
+<td align="left">Tamaños de caracteres</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>strwidth()</code></td>
+<td align="left">Tamaños de caracteres</td>
+</tr>
+<tr class="even">
+<td align="left"><code>xinch()</code></td>
+<td align="left">Transformaciónes a coordenadas</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>yinch()</code></td>
+<td align="left">Transformaciónes a coordenadas</td>
+</tr>
+<tr class="even">
+<td align="left"><code>xyinch()</code></td>
+<td align="left">Transformaciónes a coordenadas</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>cm()</code></td>
+<td align="left">Transformaciónes a coordenadas</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Como hacer una función gráfica?</h2></hgroup><article  id="como-hacer-una-funcion-grafica" class="smaller">
+
+<pre class = 'prettyprint lang-r'>plot.newclass &lt;- function(x, y = NULL, main = &quot;&quot;, sub = &quot;&quot;,  xlim = NULL, 
+                          ylim = NULL, axes = TRUE, ann = par(&quot;ann&quot;),
+                          col = par(&quot;col&quot;), ...){
+  xy &lt;- xy.coords(x, y)
+  if (is.null(xlim))
+    xlim &lt;- range(xy$x[is.finite(xy$x)])
+  if (is.null(ylim))
+    ylim &lt;- range(xy$y[is.finite(xy$y)])
+  opar &lt;- par(no.readonly = TRUE)
+  on.exit(par(opar))
+  plot.new()
+  plot.window(xlim, ylim, ...)
+  points(xy$x, xy$y, col = col, ...)
+  if (axes) {
+    axis(1)
+    axis(2)
+    box()
+  }
+  if (ann) 
+    title(main = main, sub = sub, 
+          xlab = xy$xlab, ylab = xy$ylab, ...)
+}</pre>
+
+<p><a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/custombase-template.R' title=''>Codigo por Paul Murrell</a></p>
+
+</article></slide><slide class=''><hgroup><h2>Como hacer una función gráfica?</h2></hgroup><article  id="como-hacer-una-funcion-grafica-1" class="smaller">
+
+<pre class = 'prettyprint lang-r'>png_meme_generator &lt;- function(web_path, over_text, under_text){
+  con &lt;- url(web_path, open = &#39;rb&#39;)
+  rawpng &lt;- readBin(con, what = &#39;raw&#39;, n = 50000)
+  close(con)
+  
+  img &lt;- png::readPNG(rawpng)
+  
+  old_par &lt;- par(no.readonly = TRUE)
+  on.exit(par(old_par))
+  par(xpd = NA, mgp = c(0, 0, 0), oma = c(0, 0, 0, 0), ann = F)
+  
+  plot.new()
+  plot.window(0:1, 0:1)
+  
+  usr &lt;- par(&quot;usr&quot;)    
+  rasterImage(img, usr[1], usr[3], usr[2], usr[4])
+  
+  text(.5, 1.05,  over_text, cex = 2, col = &quot;#000000&quot;, pos = 3)
+  text(.5, -.05, under_text, cex = 2, col = &quot;#000000&quot;, pos = 1)
+}</pre>
+
+</article></slide><slide class=''><hgroup><h2>Una nueva función gráfica:</h2></hgroup><article  id="una-nueva-funcion-grafica">
+
+<pre class = 'prettyprint lang-r'>png_meme_generator(
+  &quot;http://i2.kym-cdn.com/photos/images/original/000/208/140/1322357772581.png&quot;,
+  &quot;Tu cara cuando ves&quot;, 
+  &quot;un meme hecho en R&quot;)</pre>
+
+<p><img src="graficas_files/figure-html/meme-1.png" title="" alt="" width="480" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Grid</h2></hgroup><article  id="grid">
 
 </article></slide><slide class=''><hgroup><h2>Qué es grid?</h2></hgroup><article  id="que-es-grid">
 
-</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
+<p>Un sistema gráfico alternativo, flexible y poderoso.</p>
+
+<p>Tres componentes:</p>
+
+<ul>
+<li>&quot;puertos&quot; (<em>viewports</em>)</li>
+<li>unidades</li>
+<li>parametros gráficos</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel-1">
 
 </article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice">
+
+</article></slide><slide class=''><hgroup><h2>Que es lattice?</h2></hgroup><article  id="que-es-lattice">
+
+<p>Laticce es una libreria que proporciona funciones graficas de alto nivel basadas en <code>grid</code> y utiles para generar gráficas para datos multivariados a través de condicionamiento (<em>Trellis plots</em>) basado en trabajo e ideas de <a href='http://www.stat.purdue.edu/~wsc/' title=''>William Cleveland</a>.</p>
+
+<img src='graficas_files/lattice.jpeg' title=''/>
+
+</article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice-1">
 
 <ul>
 <li>Interfaz de formula:</li>
@@ -513,38 +1134,6 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 <li><a href='https://www.stat.auckland.ac.nz/~paul/' title=''>La pagina de Paul Murrel</a></li>
 <li>&#8230;</li>
 </ul>
-
-</article></slide><slide class=''><hgroup><h2>Preguntas?</h2></hgroup><article  id="preguntas" class="smaller">
-
-<pre class = 'prettyprint lang-r'>png_meme_generator &lt;- function(web_path, over_text, under_text){
-  con &lt;- url(web_path, open = &#39;rb&#39;)
-  rawpng &lt;- readBin(con, what = &#39;raw&#39;, n = 50000)
-  close(con)
-  
-  img &lt;- png::readPNG(rawpng)
-  
-  old_par &lt;- par(no.readonly = TRUE)
-  on.exit(par(old_par))
-  par(xpd = NA, mgp = c(0, 0, 0), oma = c(0, 0, 0, 0), ann = F)
-  
-  plot.new()
-  plot.window(0:1, 0:1)
-  
-  usr &lt;- par(&quot;usr&quot;)    
-  rasterImage(img, usr[1], usr[3], usr[2], usr[4])
-  
-  text(.5, 1.05,  over_text, cex = 2, col = &quot;#000000&quot;, pos = 3)
-  text(.5, -.05, under_text, cex = 2, col = &quot;#000000&quot;, pos = 1)
-}</pre>
-
-</article></slide><slide class=''><hgroup><h2>Preguntas?</h2></hgroup><article  id="preguntas-1">
-
-<pre class = 'prettyprint lang-r'>png_meme_generator(
-  &quot;http://i2.kym-cdn.com/photos/images/original/000/208/140/1322357772581.png&quot;,
-  &quot;Tu cara cuando ves&quot;, 
-  &quot;un meme hecho en R&quot;)</pre>
-
-<p><img src="graficas_files/figure-html/meme-1.png" title="" alt="" width="480" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class=''><hgroup><h2>Colofón</h2></hgroup><article  id="colofon" class="smaller left-margin">
 

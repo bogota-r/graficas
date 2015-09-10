@@ -562,7 +562,35 @@ colombia &lt;- colmap(municipios) +
   stat_contour(binwidth = 2, size = 0.5, colour = &quot;grey50&quot;) +
   stat_contour(binwidth = 10, size = 1)</pre>
 
-<p><a href="http://docs.ggplot2.org/current/geom_countour.html"> <img src="geoms_files/figure-html/geom_countour-1.png" title="geom_countour" alt="geom_countour" width="720" style="display: block; margin: auto;" /> </a></p></article></slide>
+<p><a href="http://docs.ggplot2.org/current/geom_countour.html"> <img src="geoms_files/figure-html/geom_countour-1.png" title="geom_countour" alt="geom_countour" width="720" style="display: block; margin: auto;" /> </a></p>
+
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_tile.html' title=''>geom_tile</a> The Mandelbrot Set</h2></hgroup><article  id="geom_tile-the-mandelbrot-set" class="smaller">
+
+<pre class = 'prettyprint lang-r'># Create a grid of complex numbers
+c.points &lt;- outer(seq(-2.5, 1, by = 0.007), 1i*seq(-1.5, 1.5, by = 0.007),&#39;+&#39;)
+z &lt;- 0
+
+for (k in 1:30) z &lt;- z^2 + c.points # Iterations of fractal&#39;s formula
+
+c.points &lt;- data.frame(reshape2::melt(c.points))
+colnames(c.points) &lt;- c(&quot;r.id&quot;, &quot;c.id&quot;, &quot;point&quot;)
+
+z.points &lt;- data.frame(reshape2::melt(z))
+colnames(z.points) &lt;- c(&quot;r.id&quot;, &quot;c.id&quot;, &quot;z.point&quot;)
+
+mandelbrot &lt;- merge(c.points, z.points, by = c(&quot;r.id&quot;,&quot;c.id&quot;)) # Mandelbrot Set
+mandelbrot &lt;- subset(mandelbrot, is.finite(-abs(z.point)))
+
+# Plotting only finite-module numbers
+ggplot(mandelbrot) +
+  aes(Re(point), Im(point), fill = exp(-abs(z.point))) +
+  geom_tile() +
+  theme(legend.position = &quot;none&quot;, axis.title.x = element_blank(), 
+        axis.title.y = element_blank(), 
+        panel.background = element_rect(fill = &quot;#132B43&quot;),
+        panel.grid = element_blank())</pre>
+
+<p><a href="http://docs.ggplot2.org/current/geom_tile.html"> <img src="geoms_files/figure-html/geom_tile2-1.png" title="geom_tile2" alt="geom_tile2" width="720" style="display: block; margin: auto;" /> </a></p></article></slide>
 
 
   <slide class="backdrop"></slide>

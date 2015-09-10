@@ -32,6 +32,8 @@ data("mtcars")
 # Algunas opciones de knitr
 library("knitr")
 
+opts_knit$set(child.path = "graficas_files/")
+
 opts_chunk$set(message = FALSE,
                comment = "#>",
                dev.args = list(bg = "transparent"))
@@ -42,7 +44,7 @@ theme_update(plot.background = element_rect(fill = "transparent",
 
 ## Motivación
 
-```{r motivacion, child = "graficas_files/motivacion.rmd"}
+```{r motivacion, child = "motivacion.rmd"}
 ```
 
 ## Contenido (I)
@@ -85,7 +87,7 @@ Entre otras cosas R incluye:
 
 ## [El ambiente para graficas de R](https://cran.r-project.org/web/views/Graphics.html) {.smaller}
 
-```{r graphics-diagram, child = "graficas_files/graphics-diagram.rmd"}
+```{r graphics-diagram, child = "graphics-diagram.rmd"}
 ```
 
 Gráfica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
@@ -234,26 +236,7 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 - `mosaicplot()`
 - `stars()` para una visualización de varias variables cuantitativas.
 
-```{r misc, eval = FALSE, echo = FALSE}
-# persp-plot
-y <- x <- seq(-10, 10, length= 30)
-z <- outer(x, y, function(x, y){r <- sqrt(x^2+y^2); 10 * sin(r)/r})
-z[is.na(z)] <- 1
-
-persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue")
-
-# contour-image-plot
-image(x, y, volcano, col = terrain.colors(100), axes = FALSE)
-contour(x, y, volcano, levels = seq(90, 200, by = 5),
-        add = TRUE, col = "peru")
-axis(1, at = seq(100, 800, by = 100))
-axis(2, at = seq(100, 600, by = 100))
-box()
-title(main = "Maunga Whau Volcano", font.main = 4)
-
-# mosaic-plot
-mosaicplot(~ FINS_ESTRATOVIVIENDAENERGIA + FINS_NIVELEDUCATIVOMADRE, 
-           data = SB11_20142)
+```{r multidimensional-plots, child = "multidimensional-plots.rmd"}
 ```
 
 ## Otras funciones gráficas de alto nivel:
@@ -270,13 +253,169 @@ Además de los métodos específicos para `plot()`:
 - `sunflowerplot()` para diagramas de dispersión con datos superpuestos - alternativas para esto son `image()` o `hexbin::hexbin()`. 
 - `assocplot()` visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - `vcd` extiende esto y ofrece más herramientas para datos categóricos.
 
-## `par()` y algunos parametros gráficos 
+## El modelo grafico base
+
+- Margenes externas
+- Región de la figura
+- Región de la gráfica $\rightarrow$ Sistema coordenado (`xlim` y `ylim` en funciones de alto nivel o `par("usr")`)
+- Margen de la figura (Region de la gráfica - Region de la gráfica)
+
+## El modelo grafico base
+
+```{r modelo, echo = FALSE}
+par(oma = rep(3, 4), bg = "grey80")
+plot(c(0, 1), c(0, 1), type = "n", ann = FALSE, axes = FALSE)
+box("outer", col = "grey")
+# set clipping to figure region
+par(xpd = TRUE)
+# deliberately draw a stupidly large rectangle
+rect(-1, -1, 2, 2, col = "grey90")
+box("figure")
+# set clipping back to plot region
+par(xpd = FALSE)
+# deliberately draw a stupidly large rectangle
+rect(-1, -1, 2, 2, col = "grey80")
+box("plot", lty = "dashed")
+text(.5, .5, "Plot Region")
+mtext("Figure Region", side = 3, line = 2)
+for (i in 1:4)
+    mtext(paste("Outer margin", i), side = i, line = 1, outer = TRUE)
+```
+
+Gráfica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
+
+##  `par()` y algunos parametros gráficos
+
+El sistema base mantiene un estado que se consulta y modifica con `par()`.
+
+Podemos clasificar los parametros de acuerdo a que componentes de las graficas afectan y si son de alto nivel, bajo nivel o solo lectura. 
+
+- Alto nivel: pueden ser con llamados a los metodos gráficos o con `par()`.
+- Bajo nivel: solo pueden ser modificados a través de `par()`
+
+```{r par, child = "par.rmd"}
+```
+
+## Componentes de bajo nivel
+
+Función                     | Descripción   |
+----------------------------|---------------|
+`lines()` y `matlines()`    | Lineas        |
+`points()` y `matpoints()`  | Puntos        |
+`rect()`                    | Rectangulos   |
+`poly()`                    | Polygonos     |
+`segments()`                | Segmentos     |
+`text()`                    | Texto         |
+
+## Utilidades
+
+Función                 | Descripción                     |
+------------------------|---------------------------------|
+`grid()`                | Cuadriculas                     |
+`abline()`              | Rectas                          |
+`arrows()`              | Flechas                         |
+`box()`                 | Borde                           |
+`rug()`                 | "Rug" en ejes                   |	
+`mtext()`               | Texto en las Margenes           |	
+`title()`               | Titulos y etiquetas de ejes     |	
+`legend()`              | Leyenda                         |	
+
+## Utilidades
+
+Función                 | Descripción                     |
+------------------------|---------------------------------|
+`axis()` y `axTicks()`  | Ejes                            |	
+`strheight()`           | Tamaños de caracteres           |	
+`strwidth()`            | Tamaños de caracteres           |	
+`xinch()`               | Transformaciónes a coordenadas  |	
+`yinch()`               | Transformaciónes a coordenadas  |	
+`xyinch()`              | Transformaciónes a coordenadas  |	
+`cm()`                  | Transformaciónes a coordenadas  |
+
+## Como hacer una función gráfica? {.smaller}
+
+```{r template, eval = FALSE}
+plot.newclass <- function(x, y = NULL, main = "", sub = "",  xlim = NULL, 
+                          ylim = NULL, axes = TRUE, ann = par("ann"),
+                          col = par("col"), ...){
+  xy <- xy.coords(x, y)
+  if (is.null(xlim))
+    xlim <- range(xy$x[is.finite(xy$x)])
+  if (is.null(ylim))
+    ylim <- range(xy$y[is.finite(xy$y)])
+  opar <- par(no.readonly = TRUE)
+  on.exit(par(opar))
+  plot.new()
+  plot.window(xlim, ylim, ...)
+  points(xy$x, xy$y, col = col, ...)
+  if (axes) {
+    axis(1)
+    axis(2)
+    box()
+  }
+  if (ann) 
+    title(main = main, sub = sub, 
+          xlab = xy$xlab, ylab = xy$ylab, ...)
+}
+```
+
+[Codigo por Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/custombase-template.R)
+
+## Como hacer una función gráfica? {.smaller}
+
+```{r png_meme_generator}
+png_meme_generator <- function(web_path, over_text, under_text){
+  con <- url(web_path, open = 'rb')
+  rawpng <- readBin(con, what = 'raw', n = 50000)
+  close(con)
+  
+  img <- png::readPNG(rawpng)
+  
+  old_par <- par(no.readonly = TRUE)
+  on.exit(par(old_par))
+  par(xpd = NA, mgp = c(0, 0, 0), oma = c(0, 0, 0, 0), ann = F)
+  
+  plot.new()
+  plot.window(0:1, 0:1)
+  
+  usr <- par("usr")    
+  rasterImage(img, usr[1], usr[3], usr[2], usr[4])
+  
+  text(.5, 1.05,  over_text, cex = 2, col = "#000000", pos = 3)
+  text(.5, -.05, under_text, cex = 2, col = "#000000", pos = 1)
+}
+```
+
+##  Una nueva función gráfica:
+
+```{r meme, fig.width = 5, fig.align = "center"}
+png_meme_generator(
+  "http://i2.kym-cdn.com/photos/images/original/000/208/140/1322357772581.png",
+  "Tu cara cuando ves", 
+  "un meme hecho en R")
+```
 
 # Grid
 
 ## Qué es grid?
 
+Un sistema gráfico alternativo, flexible y poderoso.
+
+Tres componentes:
+
+- "puertos" (_viewports_)
+- unidades
+- parametros gráficos
+
 ## Componentes de bajo nivel
+
+## Lattice
+
+## Que es lattice?
+
+Laticce es una libreria que proporciona funciones graficas de alto nivel basadas en `grid` y utiles para generar gráficas para datos multivariados a través de condicionamiento (_Trellis plots_) basado en trabajo e ideas de [William Cleveland](http://www.stat.purdue.edu/~wsc/).    
+
+![Lattice](graficas_files/lattice.jpeg)
 
 ## Lattice
 
@@ -372,40 +511,6 @@ Algunas buenas referencias:
 - [Springer - Use R Series](http://www.springer.com/series/6991?detailsPage=titles) R en la práctica en diferentes contextos.
 - [La pagina de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/)
 - ...
-
-## Preguntas? {.smaller}
-
-```{r png_meme_generator}
-png_meme_generator <- function(web_path, over_text, under_text){
-  con <- url(web_path, open = 'rb')
-  rawpng <- readBin(con, what = 'raw', n = 50000)
-  close(con)
-  
-  img <- png::readPNG(rawpng)
-  
-  old_par <- par(no.readonly = TRUE)
-  on.exit(par(old_par))
-  par(xpd = NA, mgp = c(0, 0, 0), oma = c(0, 0, 0, 0), ann = F)
-  
-  plot.new()
-  plot.window(0:1, 0:1)
-  
-  usr <- par("usr")    
-  rasterImage(img, usr[1], usr[3], usr[2], usr[4])
-  
-  text(.5, 1.05,  over_text, cex = 2, col = "#000000", pos = 3)
-  text(.5, -.05, under_text, cex = 2, col = "#000000", pos = 1)
-}
-```
-
-## Preguntas?
-
-```{r meme, fig.width = 5, fig.align = "center"}
-png_meme_generator(
-  "http://i2.kym-cdn.com/photos/images/original/000/208/140/1322357772581.png",
-  "Tu cara cuando ves", 
-  "un meme hecho en R")
-```
 
 ## Colofón {.smaller .left-margin}
 
