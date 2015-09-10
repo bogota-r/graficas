@@ -54,7 +54,7 @@ theme_update(plot.background = element_rect(fill = "transparent",
 - Gráficas Base
     * Métodos - Todo de una: `plot()`
     * El modelo base
-    * Estado y parametros graficos: `par()`
+    * Estado y parámetros graficos: `par()`
     
 - Grid
     * Qué es grid (o por qué otro sistema?)
@@ -139,7 +139,7 @@ for (type in types){
 
 `plot()` es una función genérica. Hay muchas formas de especificar los datos y dependiendo de lo que se le pase se genera uno u otro tipo de gráfico.
 
-Veamos unos ejemplos usando el conjunto de datos `ìris`:
+Veamos unos ejemplos usando el conjunto de datos `iris`:
 
 ```{r iris-str}
 str(iris)
@@ -194,7 +194,7 @@ par(mfrow = c(2, 1), mar = c(3, 5.5, 1, 1), cex = 0.95)
 barplot(estratos, angle = c(45, 135), density = 20, col = "grey",
         names = colnames(estratos), xlab = "Estrato")
 
-legend("topright", title = "Genero", rownames(estratos), cex = 1.5,
+legend("topright", title = "Género", rownames(estratos), cex = 1.5,
        angle = c(45, 135), density = 20, fill = "gray")
 
 barplot(educacion_madre, angle = c(45, 135), density = 20, 
@@ -217,8 +217,8 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 
 boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
         pch = 1:6, boxwex = 0.5, boxfill = "lightblue", frame.plot = FALSE,
-        main = "Distribución del puntaje\n de matematicas por estrato",
-        xlab = "Estrato", ylab = "Puntaje de matematicas")
+        main = "Distribución del puntaje\n de matemáticas por estrato",
+        xlab = "Estrato", ylab = "Puntaje de matemáticas")
 ```
 
 ## `boxplot()` - `bxp()`
@@ -253,14 +253,14 @@ Además de los métodos específicos para `plot()`:
 - `sunflowerplot()` para diagramas de dispersión con datos superpuestos - alternativas para esto son `image()` o `hexbin::hexbin()`. 
 - `assocplot()` visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - `vcd` extiende esto y ofrece más herramientas para datos categóricos.
 
-## El modelo grafico base
+## El modelo gráfico base
 
-- Margenes externas
+- Márgenes externas
 - Región de la figura
 - Región de la gráfica $\rightarrow$ Sistema coordenado (`xlim` y `ylim` en funciones de alto nivel o `par("usr")`)
-- Margen de la figura (Region de la gráfica - Region de la gráfica)
+- Margen de la figura (Región de la figura - Región de la gráfica)
 
-## El modelo grafico base
+## El modelo gráfico base
 
 ```{r modelo, echo = FALSE}
 par(oma = rep(3, 4), bg = "grey80")
@@ -282,15 +282,15 @@ for (i in 1:4)
     mtext(paste("Outer margin", i), side = i, line = 1, outer = TRUE)
 ```
 
-Gráfica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
+Gráfica basada en [código](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
 
-##  `par()` y algunos parametros gráficos
+##  `par()` y algunos parámetros gráficos
 
 El sistema base mantiene un estado que se consulta y modifica con `par()`.
 
-Podemos clasificar los parametros de acuerdo a que componentes de las graficas afectan y si son de alto nivel, bajo nivel o solo lectura. 
+Podemos clasificar los parámetros de acuerdo a los componentes de las gráficas afectan y si son de alto nivel, bajo nivel o solo lectura. 
 
-- Alto nivel: pueden ser con llamados a los metodos gráficos o con `par()`.
+- Alto nivel: pueden ser con llamados a los métodos gráficos o con `par()`.
 - Bajo nivel: solo pueden ser modificados a través de `par()`
 
 ```{r par, child = "par.rmd"}
@@ -300,10 +300,10 @@ Podemos clasificar los parametros de acuerdo a que componentes de las graficas a
 
 Función                     | Descripción   |
 ----------------------------|---------------|
-`lines()` y `matlines()`    | Lineas        |
+`lines()` y `matlines()`    | Líneas        |
 `points()` y `matpoints()`  | Puntos        |
-`rect()`                    | Rectangulos   |
-`poly()`                    | Polygonos     |
+`rect()`                    | Rectángulos   |
+`poly()`                    | Polígonos     |
 `segments()`                | Segmentos     |
 `text()`                    | Texto         |
 
@@ -311,13 +311,13 @@ Función                     | Descripción   |
 
 Función                 | Descripción                     |
 ------------------------|---------------------------------|
-`grid()`                | Cuadriculas                     |
+`grid()`                | Cuadrículas                     |
 `abline()`              | Rectas                          |
 `arrows()`              | Flechas                         |
 `box()`                 | Borde                           |
 `rug()`                 | "Rug" en ejes                   |	
-`mtext()`               | Texto en las Margenes           |	
-`title()`               | Titulos y etiquetas de ejes     |	
+`mtext()`               | Texto en las márgenes           |	
+`title()`               | Títulos y etiquetas de ejes     |	
 `legend()`              | Leyenda                         |	
 
 ## Utilidades
@@ -327,12 +327,12 @@ Función                 | Descripción                     |
 `axis()` y `axTicks()`  | Ejes                            |	
 `strheight()`           | Tamaños de caracteres           |	
 `strwidth()`            | Tamaños de caracteres           |	
-`xinch()`               | Transformaciónes a coordenadas  |	
-`yinch()`               | Transformaciónes a coordenadas  |	
-`xyinch()`              | Transformaciónes a coordenadas  |	
-`cm()`                  | Transformaciónes a coordenadas  |
+`xinch()`               | Transformaciones a coordenadas  |	
+`yinch()`               | Transformaciones a coordenadas  |	
+`xyinch()`              | Transformaciones a coordenadas  |	
+`cm()`                  | Transformaciones a coordenadas  |
 
-## Como hacer una función gráfica? {.smaller}
+## Cómo hacer una función gráfica? {.smaller}
 
 ```{r template, eval = FALSE}
 plot.newclass <- function(x, y = NULL, main = "", sub = "",  xlim = NULL, 
@@ -359,9 +359,9 @@ plot.newclass <- function(x, y = NULL, main = "", sub = "",  xlim = NULL,
 }
 ```
 
-[Codigo por Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/custombase-template.R)
+[Código por Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/custombase-template.R)
 
-## Como hacer una función gráfica? {.smaller}
+## Cómo hacer una función gráfica? {.smaller}
 
 ```{r png_meme_generator}
 png_meme_generator <- function(web_path, over_text, under_text){
@@ -405,7 +405,7 @@ Tres componentes:
 
 - "puertos" (_viewports_)
 - unidades
-- parametros gráficos
+- parámetros gráficos
 
 ## Componentes de bajo nivel
 
@@ -413,7 +413,7 @@ Tres componentes:
 
 ## Que es lattice?
 
-Laticce es una libreria que proporciona funciones graficas de alto nivel basadas en `grid` y utiles para generar gráficas para datos multivariados a través de condicionamiento (_Trellis plots_) basado en trabajo e ideas de [William Cleveland](http://www.stat.purdue.edu/~wsc/).    
+Laticce es una libreria que proporciona funciones gráficas de alto nivel basadas en `grid` y útiles para generar gráficas para datos multivariados a través de condicionamiento (_Trellis plots_) basado en trabajo e ideas de [William Cleveland](http://www.stat.purdue.edu/~wsc/).    
 
 ![Lattice](graficas_files/lattice.jpeg)
 
@@ -421,7 +421,7 @@ Laticce es una libreria que proporciona funciones graficas de alto nivel basadas
 
 * Interfaz de formula:
   - `~ x | A`:  graficar la variable `x` para cada nivel de `A`.
-  - `y ~ x | A * B` graficar la relación entre las variables numericas `y` y `x` para cada combinación de niveles de los "facores" `A` y `B`.
+  - `y ~ x | A * B` graficar la relación entre las variables numéricas `y` y `x` para cada combinación de niveles de los "factores" `A` y `B`.
 
 * ...
 
@@ -432,25 +432,119 @@ Laticce es una libreria que proporciona funciones graficas de alto nivel basadas
 Gráfica       | Descripción                            | Ejemplo de fórmula  | 
 --------------|----------------------------------------|---------------------|
 histogram()   | Histograma                             | `~ x`               |
-densityplot() | Gráfica de "Densidad Kernel"           | `~ x | A * B`       |
-qqmath()      | Gráfica de Cuantiles Teoricos          |                     |
-qq()          | Gráfica de Cuantiles para dos Muestras |                     |
+densityplot() | Gráfica de "densidad kernel"           | `~ x | A * B`       |
+qqmath()      | Gráfica de cuantiles teóricos          |                     |
+qq()          | Gráfica de cuantiles para dos muestras |                     |
 stripplot()   | Stripchart                             | `A ~ x`  ó  `x ~ A` |
-bwplot()      | Box-Plots Comparativos                 | `x ~ A` ó `A ~ x`   |
-dotplot()     | Gráfica de Puntos (de Cleveland)       | `~ x | A`           |
-barchart()    | Gráfica de Barras                      | `x ~ A` ó `A ~ x`   |
+bwplot()      | Box-Plots comparativos                 | `x ~ A` ó `A ~ x`   |
+dotplot()     | Gráfica de puntos (de Cleveland)       | `~ x | A`           |
+barchart()    | Gráfica de barras                      | `x ~ A` ó `A ~ x`   |
 
 ## Lattice - Funciones de alto nivel
 
 Gráfica       | Descripción                            | Ejemplo de fórmula  | 
 --------------|----------------------------------------|---------------------|
-xyplot()      | Diagrama de Dispersión                 | `y ~ x | A`         |
-splom()       | Matriz de Diagramas de Dispersión      | `data.frame`        |
-contourplot() | Gráfica de Contornos para Superficies  | `z ~ x * y`         |
-levelplot()   | _False Color Level Plot of Surfaces_   | `z ~ y * x`         |
-wireframe()   | Gráfica de Perspectiva 3D              | `z ~ y * x`         |
-cloud()       | Diagrama de Dispersión 3D              | `z ~ x * y | A`     |
-parallel()    | Gráfica de Coordinadas Paralelas       | `data.frame`        |
+xyplot()      | Diagrama de dispersión                 | `y ~ x | A`         |
+splom()       | Matriz de diagramas de dispersión      | `data.frame`        |
+contourplot() | Gráfica de contornos para superficies  | `z ~ x * y`         |
+levelplot()   | _False color level plot of surfaces_   | `z ~ y * x`         |
+wireframe()   | Gráfica de perspectiva 3D              | `z ~ y * x`         |
+cloud()       | Diagrama de dispersión 3D              | `z ~ x * y | A`     |
+parallel()    | Gráfica de coordenadas paralelas       | `data.frame`        |
+
+## Lattice - Funciones de alto nivel
+
+```{r lattice, echo = FALSE}
+x <- 1:5
+y <- 1:5
+g <- factor(1:5)
+types <- c("barchart", "bwplot", "densityplot", "dotplot",
+           "histogram", "qqmath", "stripplot", "qq",
+           "xyplot", "levelplot", "contourplot",
+           "cloud", "wireframe", "splom", "parallel")
+angle <- seq(0, 2*pi, length=19)[-19]
+xx <- cos(angle)
+yy <- sin(angle)
+gg <- factor(rep(1:3, each=6))
+
+aaa <- seq(0, pi, length=10)
+xxx <- rep(aaa, 10)
+yyy <- rep(aaa, each=10)
+zzz <- sin(xxx) + sin(yyy)
+
+
+doplot <- function(name, ...) {
+  do.call(name, 
+          list(..., scales=list(draw=FALSE), xlab=NULL, ylab=NULL,
+               strip=function(which.panel, ...) { 
+                 grid.rect(gp=gpar(fill="gray90")); grid.text(name) 
+               }))
+}
+plot <- vector("list", 15)
+plot[[1]] <- doplot("barchart", y ~ g | 1)
+plot[[2]] <- doplot("bwplot", yy ~ gg | 1, 
+                    par.settings=list(box.umbrella=list(lwd=0.5)))
+plot[[3]] <- doplot("densityplot", ~ yy | 1)
+plot[[4]] <- doplot("dotplot", g ~ y | 1)
+plot[[5]] <- doplot("histogram", ~ xx | 1)
+plot[[6]] <- doplot("qqmath", ~ yy | 1)
+plot[[7]] <- doplot("stripplot", yy ~ gg | 1)
+plot[[8]] <- doplot("qq", gg ~ yy | rep(1, 18), subset=gg != 3)
+plot[[9]] <- doplot("xyplot", xx ~ yy | 1)
+plot[[10]] <- doplot("levelplot", zzz ~ xxx + yyy | 1, colorkey=FALSE)
+plot[[11]] <- doplot("contourplot", zzz ~ xxx + yyy | 1, labels=FALSE, cuts=8)
+plot[[12]] <- doplot("cloud", zzz ~ xxx + yyy | 1, zlab=NULL, zoom=0.9, 
+                     par.settings=list(box.3d=list(lwd=0.1)))
+plot[[13]] <- doplot("wireframe", zzz ~ xxx + yyy | 1, zlab=NULL, zoom=0.9,
+                     drape=TRUE, par.settings=list(box.3d=list(lwd=0.1)),
+                     colorkey=FALSE)
+plot[[14]] <- doplot("splom", ~ data.frame(x=xx[1:10], y=yy[1:10]) | 1, 
+                     pscales=0)
+plot[[15]] <- doplot("parallel", ~ as.data.frame(split(yy, gg)) | 1)
+
+grid.newpage()
+pushViewport(viewport(layout=grid.layout(4, 4)))
+for (i in 1:15) {
+  pushViewport(viewport(layout.pos.col=((i - 1) %% 4) + 1,
+                        layout.pos.row=((i - 1) %/% 4) + 1))
+  print(plot[[i]], newpage=FALSE, 
+        panel.width=list(1.025, "inches"),
+        panel.height=list(1.025, "inches"))
+  popViewport()
+}
+popViewport()
+```
+
+## Lattice - Ejemplo (I)
+
+```{r lattice, echo = FALSE}
+histogram(~ MATEMATICAS_PUNT, data = SB11_20142, xlab = "Puntaje Matemáticas", 
+          ylab = "Frecuencia relativa")
+```
+
+## Lattice - Ejemplo (II)
+
+```{r lattice, echo = FALSE}
+histogram(~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA),
+          data = SB11_20142, xlab = "Puntaje Matemáticas", 
+          ylab = "Frecuencia relativa")
+```
+
+## Lattice - Ejemplo (III)
+
+```{r lattice, echo = FALSE}
+densityplot(~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA),
+            data = SB11_20142, groups = PERS_GENERO,
+            plot.points = FALSE, auto.key = TRUE, xlab = "Puntaje Matemáticas",
+            ylab = "Densidad")
+```
+
+## Lattice - Ejemplo (IV)
+
+```{r lattice, echo = FALSE}
+xyplot(LECTURA_CRITICA_PUNT ~ MATEMATICAS_PUNT | factor(FINS_ESTRATOVIVIENDAENERGIA) * factor(PERS_GENERO),
+            data = SB11_20142, xlab = "Puntaje Matemáticas", ylab = "Puntaje Lectura Crítica")
+```
 
 # ggplot2
 
@@ -466,9 +560,9 @@ parallel()    | Gráfica de Coordinadas Paralelas       | `data.frame`        |
 
 - Capas:
     * Datos +
-    * Estadisticas +
-    * Componentes Æsteticos +
-    * Geometria
+    * Estadísticas +
+    * Componentes estéticos +
+    * Geometría
     
 ```{r, eval = FALSE} 
 ggplot(...) +
@@ -479,7 +573,7 @@ ggplot(...) +
   theme(...)
 ```
 
-## ggplot2 - Una Gramatica de Graficas
+## ggplot2 - Una Gramática de Gráficas
 
 ```{r qplot, echo = FALSE, fig.height = 3.5}
 ggplot(mtcars) + 
@@ -487,7 +581,7 @@ ggplot(mtcars) +
   geom_point()
 ```
 
-## [ggplot2 - geometrias y estadísticas](geoms.html)
+## [ggplot2 - geometrías y estadísticas](geoms.html)
 
 ```{r geoms-intro}
 ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
