@@ -45,8 +45,6 @@ theme_update(plot.background = element_rect(fill = "transparent",
 ```{r motivacion, child = "graficas_files/motivacion.rmd"}
 ```
 
-# Gráficas en R
-
 ## Contenido (I)
 <!-- Esto es solo para guiarnos luego miramos si lo dejamos o no --> 
 
@@ -72,7 +70,6 @@ theme_update(plot.background = element_rect(fill = "transparent",
 - Maś allá: gráficas interactivas
     * ggvis y shiny
     * Integración con JS y htmlwidgets
-    * Ayuda y otros recursos
 
 ## Qué es R?
 
@@ -80,18 +77,18 @@ theme_update(plot.background = element_rect(fill = "transparent",
 
 Entre otras cosas R incluye:
 
-  - capacidad para almacenar y manipular datos **efectivamente**
+  - capacidad para almacenar y manipular datos efectivamente
   - un conjunto de operadores para hacer cálculos sobre arreglos, particularmente matrices
-  - una colección grande, **coherente** e integrada de herramientas para el análisis de datos
-  - **dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso**
-  - un lenguaje de programación bien desarrollado, **simple y eficaz**
+  - una colección grande, coherente e integrada de herramientas para el análisis de datos
+  - ### **dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso**
+  - un lenguaje de programación bien desarrollado, simple y eficaz
 
 ## [El ambiente para graficas de R](https://cran.r-project.org/web/views/Graphics.html) {.smaller}
 
 ```{r graphics-diagram, child = "graficas_files/graphics-diagram.rmd"}
 ```
 
-Gráfica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
+Gráfica basada en [codigo](https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R) del libro [*R Graphics* de Paul Murrell](https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
 
 ## Básicamente
 
@@ -190,7 +187,7 @@ educacion_madre <- SB11_20142 %$% table(PERS_GENERO, FINS_NIVELEDUCATIVOMADRE)
 ## `barplot()`
 
 ```{r barplot, eval = FALSE}
-par(mfrow = c(2, 1), mar = c(4, 4, 1, 1), cex = 0.75)
+par(mfrow = c(2, 1), mar = c(3, 5.5, 1, 1), cex = 0.95)
 
 barplot(estratos, angle = c(45, 135), density = 20, col = "grey",
         names = colnames(estratos), xlab = "Estrato")
@@ -291,7 +288,7 @@ Además de los métodos específicos para `plot()`:
 
 * ...
 
-## Lattice - Funciones de alto nivel {.small}
+## Lattice - Funciones de alto nivel
 
 Gráfica       | Descripción                            | Ejemplo de fórmula  | 
 --------------|----------------------------------------|---------------------|
@@ -304,7 +301,7 @@ bwplot()      | Box-Plots Comparativos                 | `x ~ A` ó `A ~ x`   |
 dotplot()     | Gráfica de Puntos (de Cleveland)       | `~ x | A`           |
 barchart()    | Gráfica de Barras                      | `x ~ A` ó `A ~ x`   |
 
-## Lattice - Funciones de alto nivel {.small}
+## Lattice - Funciones de alto nivel
 
 Gráfica       | Descripción                            | Ejemplo de fórmula  | 
 --------------|----------------------------------------|---------------------|
@@ -324,7 +321,7 @@ parallel()    | Gráfica de Coordinadas Paralelas       | `data.frame`        |
 - `lubridate` manejo de fechas y tiempo.
 - `stringr` interface a `stringi` para manejo de caracteres.
 - `dplyr` y `tidyr` manipulación y limpieza de datos.
-- `ggplot2` *una gramática de gráficas - util para abstraer y construir visualizaciones*.
+-  ### `ggplot2` **una gramática de gráficas - util para abstraer y construir visualizaciones**.
 
 ## ggplot2 - Una Gramatica de Graficas
 
@@ -343,48 +340,29 @@ ggplot(...) +
   theme(...)
 ```
 
+## ggplot2 - Una Gramatica de Graficas
+
 ```{r qplot, echo = FALSE, fig.height = 3.5}
-qplot(mpg, wt, data=mtcars, colour=factor(cyl), size=carb)
+ggplot(mtcars) + 
+  aes(x = mpg, y = wt , colour = factor(cyl)) + 
+  geom_point()
 ```
 
-## ggplot2 (geoms)
+## [ggplot2 - geometrias y estadísticas](geoms.html)
 
 ```{r geoms-intro}
 ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 ```
 
-## [ggplot2 (geoms)](geoms.html) {.smaller}
-
-```{r geoms-table, echo = FALSE}
-ls(pattern = '^geom_', env = as.environment('package:ggplot2')) %>%
-  setdiff("geom_violin") %>% matrix(9) %>% kable
-```
-
-## ggplot2 (stats)
-
-```{r stats-intro}
-ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
-```
-
 # Más allá: Gráficas interactivas
-
-Una deuda grande de R.
 
 # ggvis y shiny
 
 # Integración con JS - htmlwidgets
 
-## Una tabla
-
-Función    | Vectores      | Matrices                    | Arreglos         | 
------------|---------------|-----------------------------|------------------|
-Dimensión  | `length()`    | `ncol()` y `nrow()`         | `dim()`          |  
-Nombres    | `names()`     | `rownames()` y `colnames()` | `dimnames()`     |
-Concatenar | `c()`         | `cbind()` y `rbind()`       | `abind::abind()` |  
-
 ## Ayuda y otros recursos {.build}
 
-La vista de tareas con la que empezamos: [_Vista de Tareas_/Gráficas](http://cran.r-project.org/web/views/grafics).
+La vista de tareas con la que empezamos: [_Vista de Tareas_/Gráficas](http://cran.r-project.org/web/views/Graphics).
 
 Canales: [en twitter #rstats](https://twitter.com/hashtag/rstats) y en [StackOverflow el tag R](http://stackoverflow.com/questions/tagged/r). También pueden [googlea-R](https://www.google.com.co/#q=R) R + "pregunta".  
 
@@ -392,29 +370,31 @@ Algunas buenas referencias:
 
 - [Quick R - Gráficas](http://www.statmethods.net/graphs/index.html)
 - [Springer - Use R Series](http://www.springer.com/series/6991?detailsPage=titles) R en la práctica en diferentes contextos.
+- [La pagina de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/)
 - ...
 
-## Preguntas?
+## Preguntas? {.smaller}
 
-```{r}
-png_meme_generator <- function(web.path, over.text, under.text)
-{
-  con <- url(web.path, open = 'rb')
+```{r png_meme_generator}
+png_meme_generator <- function(web_path, over_text, under_text){
+  con <- url(web_path, open = 'rb')
   rawpng <- readBin(con, what = 'raw', n = 50000)
   close(con)
   
   img <- png::readPNG(rawpng)
   
+  old_par <- par(no.readonly = TRUE)
+  on.exit(par(old_par))
   par(xpd = NA, mgp = c(0, 0, 0), oma = c(0, 0, 0, 0), ann = F)
   
   plot.new()
   plot.window(0:1, 0:1)
   
-  usr<-par("usr")    
+  usr <- par("usr")    
   rasterImage(img, usr[1], usr[3], usr[2], usr[4])
   
-  text(.5, 1.05,  over.text, cex = 2, col = "#000000", pos = 3)
-  text(.5, -.05, under.text, cex = 2, col = "#000000", pos = 1)
+  text(.5, 1.05,  over_text, cex = 2, col = "#000000", pos = 3)
+  text(.5, -.05, under_text, cex = 2, col = "#000000", pos = 1)
 }
 ```
 
@@ -430,3 +410,5 @@ png_meme_generator(
 ## Colofón {.smaller .left-margin}
 
 Esta presentación fue escrita en RMarkdown desde RStudio y compilada por `rmarkdown` en la plantilla `ioslides` de Google gracias a `knitr` y `pandoc`. Publicada en la web en GitHub gracias a GitHub Pages.
+
+### [**bogota-r.github.io/graficas**](http://bogota-r.github.io/graficas)

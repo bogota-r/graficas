@@ -105,26 +105,25 @@
 
 <p><img src="graficas_files/figure-html/motivacion-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Gráficas en R</h2></hgroup><article  id="graficas-en-r">
-
 </article></slide><slide class=''><hgroup><h2>Contenido (I)</h2></hgroup><article  id="contenido-i">
 
 <!-- Esto es solo para guiarnos luego miramos si lo dejamos o no -->
 
 <ul>
-<li>Que es R (por si acaso)</li>
+<li>Qué es R: <a href='http://bogota-r.github.io/intro' title=''>bogota-r.github.io/intro</a></li>
 <li>Gráficas Base
 
 <ul>
 <li>Métodos - Todo de una: <code>plot()</code></li>
-<li>Componentes de bajo nivel</li>
-<li>Ejemplos</li>
+<li>El modelo base</li>
+<li>Estado y parametros graficos: <code>par()</code></li>
 </ul></li>
 <li>Grid
 
 <ul>
-<li>Que es grid (o por qué otro sistema?)</li>
-<li>Componentes (solo hay de bajo nivel)</li>
+<li>Qué es grid (o por qué otro sistema?)</li>
+<li>El modelo grid</li>
+<li>Componentes</li>
 </ul></li>
 </ul>
 
@@ -135,27 +134,22 @@
 
 <ul>
 <li>Trellis plots</li>
-<li>&#8230;</li>
-<li>Ejemplos</li>
 </ul></li>
 <li>ggplot2
 
 <ul>
-<li>Una gramatica de graficas</li>
-<li>Capas, geometrias y componentes æsteticos</li>
-<li>Ejemplos</li>
+<li>Una gramática de gráficas: Capas, geometrías y componentes estéticos</li>
 </ul></li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Contenido (III)</h2></hgroup><article  id="contenido-iii">
 
 <ul>
-<li>Maś allá: graficas interactivas
+<li>Maś allá: gráficas interactivas
 
 <ul>
 <li>ggvis y shiny</li>
 <li>Integración con JS y htmlwidgets</li>
-<li>Ayuda y otros recursos</li>
 </ul></li>
 </ul>
 
@@ -168,20 +162,20 @@
 <p>Entre otras cosas R incluye:</p>
 
 <ul>
-<li>capacidad para almacenar y manipular datos <strong>efectivamente</strong></li>
+<li>capacidad para almacenar y manipular datos efectivamente</li>
 <li>un conjunto de operadores para hacer cálculos sobre arreglos, particularmente matrices</li>
-<li>una colección grande, <strong>coherente</strong> e integrada de herramientas para el análisis de datos</li>
-<li><strong>dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso</strong></li>
-<li>un lenguaje de programación bien desarrollado, <strong>simple y eficaz</strong></li>
+<li>una colección grande, coherente e integrada de herramientas para el análisis de datos</li>
+<li><h3><strong>dispositivos gráficos para el análisis y visualización de datos, tanto en pantalla como en impreso</strong></h3></li>
+<li>un lenguaje de programación bien desarrollado, simple y eficaz</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2><a href='https://cran.r-project.org/web/views/Graphics.html' title=''>El ambiente para graficas de R</a></h2></hgroup><article  id="el-ambiente-para-graficas-de-r" class="smaller">
 
 <p><img src="graficas_files/figure-html/graphics-diagram-1.png" title="" alt="" width="720" /></p>
 
-<p>Grafica basada en <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R' title=''>codigo</a> del libro <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html' title=''><em>R Graphics</em> de Paul Murrel</a></p>
+<p>Gráfica basada en <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/organisation-graphicslevels.R' title=''>codigo</a> del libro <a href='https://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html' title=''><em>R Graphics</em> de Paul Murrell</a></p>
 
-</article></slide><slide class=''><hgroup><h2>Basicamente</h2></hgroup><article  id="basicamente">
+</article></slide><slide class=''><hgroup><h2>Básicamente</h2></hgroup><article  id="basicamente">
 
 <pre class = 'prettyprint lang-r'>library(&quot;graphics&quot;)
 library(&quot;grid&quot;)
@@ -198,7 +192,7 @@ library(&quot;ggplot2&quot;)</pre>
 
 <ul>
 <li><code>plot()</code> para &quot;diagramas de dispersión&quot;</li>
-<li><code>barplot()</code> para graficas de barra</li>
+<li><code>barplot()</code> para gráficas de barra</li>
 <li><code>hist()</code> para histogramas</li>
 <li><code>boxplot()</code> (y <code>bxp()</code>) para diagramas de cajas y bigotes</li>
 <li><code>pie()</code> - mejor evitarlos</li>
@@ -223,7 +217,7 @@ for (type in types){
 
 </article></slide><slide class=''><hgroup><h2><code>plot()</code></h2></hgroup><article  id="plot-2">
 
-<p><code>plot()</code> es una función generica. Hay muchas formas de pasarle los datos y dependiendo de lo que se le pase se generara uno u otro tipo de gráfico.</p>
+<p><code>plot()</code> es una función genérica. Hay muchas formas de especificar los datos y dependiendo de lo que se le pase se genera uno u otro tipo de gráfico.</p>
 
 <p>Veamos unos ejemplos usando el conjunto de datos <code>ìris</code>:</p>
 
@@ -274,72 +268,14 @@ plot(Petal.Length ~ Species, data = iris)</pre>
 <pre class = 'prettyprint lang-r'>library(&quot;saber&quot;)  # Ver github.com/nebulae-co/saber</pre>
 
 <pre class = 'prettyprint lang-r'>data(SB11_20142)
-glimpse(SB11_20142)</pre>
+# glimpse(SB11_20142)
 
-<pre >#&gt; Observations: 541874
-#&gt; Variables:
-#&gt; $ ESTU_CONSECUTIVO              (chr) &quot;SABER1120142308841&quot;, &quot;SABER1120...
-#&gt; $ PERS_GENERO                   (chr) &quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M...
-#&gt; $ PERS_FECHANACIMIENTO          (date) 1996-08-02, 1995-07-30, 1997-03...
-#&gt; $ PERS_ETNIA                    (int) 100, 99, 100, 100, 100, 100, 100...
-#&gt; $ DISC_COGNITIVA                (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ DISC_CONDICION_ESPECIAL       (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ DIS_MOTRIZ                    (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ DISC_INVIDENTE                (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ DISC_SORDO                    (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ DISC_SDOWN                    (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ DISC_AUTISMO                  (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ COD_MUNI_RESIDE               (int) 13001, 20383, 11001, 50223, 5088...
-#&gt; $ MUNI_RESIDE                   (chr) &quot;CARTAGENA&quot;, &quot;LA GLORIA&quot;, &quot;BOGOT...
-#&gt; $ DEPA_RESIDE                   (chr) &quot;BOLIVAR&quot;, &quot;CESAR&quot;, &quot;BOGOTA&quot;, &quot;M...
-#&gt; $ ZONA_RESIDE                   (int) 5, 10, 4, 10, 10, 10, 5, 10, 10,...
-#&gt; $ FINS_TIPOUBICACION            (chr) &quot;U&quot;, &quot;R&quot;, &quot;U&quot;, &quot;R&quot;, &quot;U&quot;, &quot;U&quot;, &quot;R...
-#&gt; $ CODIGO_DANE                   (chr) &quot;113001001450&quot;, &quot;220383000769&quot;, ...
-#&gt; $ CODIGO_ICFES                  (int) 144451, 69039, 114728, 11098, 13...
-#&gt; $ NOMBRE_SEDE                   (chr) &quot;INSTITUCION EDUCATIVA PEDRO DE ...
-#&gt; $ JORNADA                       (chr) &quot;M&quot;, &quot;M&quot;, &quot;T&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M...
-#&gt; $ FINS_VALORMENSUALPENSION      (int) 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3,...
-#&gt; $ FINS_REPETICIONEXAMEN         (int) 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
-#&gt; $ COD_MUNI_APLI                 (int) 13001, 20011, 11001, 50006, 5088...
-#&gt; $ MUNI_APLI                     (chr) &quot;CARTAGENA&quot;, &quot;AGUACHICA&quot;, &quot;BOGOT...
-#&gt; $ DEPA_APLI                     (chr) &quot;BOLIVAR&quot;, &quot;CESAR&quot;, &quot;BOGOTA&quot;, &quot;M...
-#&gt; $ FINS_NIVELEDUCATIVOPADRE      (int) 5, 2, 1, 5, 5, 9, 1, 2, 4, 5, 9,...
-#&gt; $ FINS_NIVELEDUCATIVOMADRE      (int) 2, 2, 7, 3, 5, 10, 2, 2, 4, 5, 9...
-#&gt; $ FINS_OCUPACIONPADRE           (int) 9, 7, 12, 7, 7, 5, 7, 7, 9, 9, 9...
-#&gt; $ FINS_OCUPACIONMADRE           (int) 10, 10, 3, 10, 1, 5, 10, 10, 10,...
-#&gt; $ FINS_ESTRATOVIVIENDAENERGIA   (int) 1, 1, 3, 1, 2, 4, 1, 1, 1, 2, 3,...
-#&gt; $ FINS_SISBEN                   (int) 1, 1, 2, 1, 1, 5, 1, 1, 1, 5, 5,...
-#&gt; $ FINS_PERSONASHOGARACTUAL      (int) 8, 5, 5, 5, 5, 3, 6, 5, 5, 4, 4,...
-#&gt; $ FINS_CUARTOSHOGARACTUAL       (int) 4, 2, 4, 2, 4, 3, 3, 3, 2, 3, 3,...
-#&gt; $ FINS_PISOSHOGAR               (int) 2, 1, 4, 2, 2, 4, 1, 2, 2, 4, 4,...
-#&gt; $ FINS_TIENETELEFONOFIJO        (chr) &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N...
-#&gt; $ FINS_TIENETELEFONOCELULAR     (chr) &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S...
-#&gt; $ FINS_TIENEINTERNET            (chr) &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N...
-#&gt; $ FINS_TIENETELEVISION          (chr) &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N...
-#&gt; $ FINS_TIENECOMPUTADOR          (chr) &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N...
-#&gt; $ FINS_TIENEDVD                 (chr) &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N&quot;, &quot;N...
-#&gt; $ FINS_TIENELAVADORAROPA        (chr) &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N...
-#&gt; $ FINS_TIENEHORNOMICROONDAS     (chr) &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N...
-#&gt; $ FINS_TIENENEVERA              (chr) &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S...
-#&gt; $ FINS_TIENEAUTOMOVILPARTICULAR (chr) &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N...
-#&gt; $ FINS_TIENEHORNOELECTRICOGAS   (chr) &quot;S&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;S&quot;, &quot;N&quot;, &quot;N...
-#&gt; $ FINS_INGRESOMENSUALHOGAR      (int) 1, 1, 3, 2, 2, 3, 1, 1, 2, 2, 2,...
-#&gt; $ FINS_TRABAJAACTUALMENTE       (int) 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1,...
-#&gt; $ FINS_SALARIOPORTRABAJO        (chr) NA, NA, NA, NA, NA, NA, NA, NA, ...
-#&gt; $ EVAL_PUESTO                   (int) 919, 908, 538, 672, 730, 534, 76...
-#&gt; $ LECTURA_CRITICA_PUNT          (int) 43, 41, 45, 47, 44, 50, 50, 41, ...
-#&gt; $ MATEMATICAS_PUNT              (dbl) 42, 33, 56, 47, 44, 49, 45, 38, ...
-#&gt; $ SOCIALES_CIUDADANAS_PUNT      (dbl) 37, 39, 46, 50, 47, 47, 39, 38, ...
-#&gt; $ CIENCIAS_NATURALES_PUNT       (dbl) 35, 45, 49, 37, 41, 48, 42, 36, ...
-#&gt; $ INGLES_PUNT                   (dbl) 38, 40, 41, 49, 48, 48, 39, 45, ...
-#&gt; $ INGLES_DESEM                  (chr) &quot;A-&quot;, &quot;A-&quot;, &quot;A-&quot;, &quot;A1&quot;, &quot;A-&quot;, &quot;A...</pre>
-
-<pre class = 'prettyprint lang-r'>estratos &lt;- with(SB11_20142, table(PERS_GENERO, FINS_ESTRATOVIVIENDAENERGIA))
+estratos &lt;- with(SB11_20142, table(PERS_GENERO, FINS_ESTRATOVIVIENDAENERGIA))
 educacion_madre &lt;- SB11_20142 %$% table(PERS_GENERO, FINS_NIVELEDUCATIVOMADRE)</pre>
 
 </article></slide><slide class=''><hgroup><h2><code>barplot()</code></h2></hgroup><article  id="barplot">
 
-<pre class = 'prettyprint lang-r'>par(mfrow = c(2, 1), mar = c(4, 4, 1, 1), cex = 0.75)
+<pre class = 'prettyprint lang-r'>par(mfrow = c(2, 1), mar = c(3, 5.5, 1, 1), cex = 0.95)
 
 barplot(estratos, angle = c(45, 135), density = 20, col = &quot;grey&quot;,
         names = colnames(estratos), xlab = &quot;Estrato&quot;)
@@ -355,7 +291,7 @@ barplot(educacion_madre, angle = c(45, 135), density = 20,
 
 <p><img src="graficas_files/figure-html/barplot-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2><code>boxplot()</code> (o <code>bxp()</code>)</h2></hgroup><article  id="boxplot-o-bxp">
+</article></slide><slide class=''><hgroup><h2><code>boxplot()</code> - <code>bxp()</code></h2></hgroup><article  id="boxplot---bxp">
 
 <pre class = 'prettyprint lang-r'>par(mfrow = c(1, 2), mar = c(4, 4, 4, 2), cex = 0.8)
 
@@ -367,17 +303,17 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
         main = &quot;Distribución del puntaje\n de matematicas por estrato&quot;,
         xlab = &quot;Estrato&quot;, ylab = &quot;Puntaje de matematicas&quot;)</pre>
 
-</article></slide><slide class=''><hgroup><h2><code>boxplot()</code> (o <code>bxp()</code>)</h2></hgroup><article  id="boxplot-o-bxp-1">
+</article></slide><slide class=''><hgroup><h2><code>boxplot()</code> - <code>bxp()</code></h2></hgroup><article  id="boxplot---bxp-1">
 
 <p><img src="graficas_files/figure-html/boxplot-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>Gráficas para 3 o más dimensiones</h2></hgroup><article  id="graficas-para-3-o-mas-dimensiones">
+</article></slide><slide class=''><hgroup><h2>Gráficas para 3 ó más dimensiones</h2></hgroup><article  id="graficas-para-3-o-mas-dimensiones">
 
 <ul>
 <li><code>persp()</code> superficies.</li>
 <li><code>contour()</code> y <code>filled.contour()</code> contornos.</li>
-<li><code>image()</code> cuadricula con colores en \(z\).</li>
-<li><code>symbols()</code> diagramas de dispersión con simbolos de tamaño variable.</li>
+<li><code>image()</code> cuadrícula con colores en \(z\).</li>
+<li><code>symbols()</code> diagramas de dispersión con símbolos de tamaño variable.</li>
 <li><code>fourfoldplot()</code> para tablas de contingencia \(2\times 2\times k\).</li>
 <li><code>mosaicplot()</code></li>
 <li><code>stars()</code> para una visualización de varias variables cuantitativas.</li>
@@ -391,28 +327,131 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 <li><code>curve()</code> para gráficar funciones (como <code>plot.function()</code>).</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Algunas más modernas o especificas:</h2></hgroup><article  id="algunas-mas-modernas-o-especificas">
+</article></slide><slide class=''><hgroup><h2>Algunas más modernas o específicas:</h2></hgroup><article  id="algunas-mas-modernas-o-especificas">
 
-<p>Además de los metodos especificos para <code>plot()</code>:</p>
+<p>Además de los métodos específicos para <code>plot()</code>:</p>
 
 <ul>
-<li><code>dotchart()</code> para resumir una variable cuantitativa cruzada con una o más variables categoricas.</li>
+<li><code>dotchart()</code> para resumir una variable cuantitativa cruzada con una o más variables categóricas.</li>
 <li><code>coplot()</code> gráficas condicionales (Trellis).</li>
 <li><code>sunflowerplot()</code> para diagramas de dispersión con datos superpuestos - alternativas para esto son <code>image()</code> o <code>hexbin::hexbin()</code>.</li>
-<li><code>assocplot()</code> visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - <code>vcd</code> extiende esto y ofrece más herramientas para datos categoricos.</li>
+<li><code>assocplot()</code> visualización de una prueba de independencia para una tabla de contingencia bi-dimensional - <code>vcd</code> extiende esto y ofrece más herramientas para datos categóricos.</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2><code>par()</code> y algunos parametros gráficos</h2></hgroup><article  id="par-y-algunos-parametros-graficos">
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Grid</h2></hgroup><article  id="grid">
 
-</article></slide><slide class=''><hgroup><h2>Que es grid?</h2></hgroup><article  id="que-es-grid">
+</article></slide><slide class=''><hgroup><h2>Qué es grid?</h2></hgroup><article  id="que-es-grid">
 
 </article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel">
 
 </article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice">
 
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>ggplot</h2></hgroup><article  id="ggplot">
+<ul>
+<li>Interfaz de formula:</li>
+<li><code>~ x | A</code>: graficar la variable <code>x</code> para cada nivel de <code>A</code>.</li>
+<li><p><code>y ~ x | A * B</code> graficar la relación entre las variables numericas <code>y</code> y <code>x</code> para cada combinación de niveles de los &quot;facores&quot; <code>A</code> y <code>B</code>.</p></li>
+<li><p>&#8230;</p></li>
+<li><p>&#8230;</p></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Funciones de alto nivel</h2></hgroup><article  id="lattice---funciones-de-alto-nivel">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Gráfica</th>
+<th align="left">Descripción</th>
+<th align="left">Ejemplo de fórmula</th>
+</tr>
+<tr class="odd">
+<td align="left">histogram()</td>
+<td align="left">Histograma</td>
+<td align="left"><code>~ x</code></td>
+</tr>
+<tr class="even">
+<td align="left">densityplot()</td>
+<td align="left">Gráfica de &quot;Densidad Kernel&quot;</td>
+<td align="left"><code>~ x | A * B</code></td>
+</tr>
+<tr class="odd">
+<td align="left">qqmath()</td>
+<td align="left">Gráfica de Cuantiles Teoricos</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">qq()</td>
+<td align="left">Gráfica de Cuantiles para dos Muestras</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">stripplot()</td>
+<td align="left">Stripchart</td>
+<td align="left"><code>A ~ x</code> ó <code>x ~ A</code></td>
+</tr>
+<tr class="even">
+<td align="left">bwplot()</td>
+<td align="left">Box-Plots Comparativos</td>
+<td align="left"><code>x ~ A</code> ó <code>A ~ x</code></td>
+</tr>
+<tr class="odd">
+<td align="left">dotplot()</td>
+<td align="left">Gráfica de Puntos (de Cleveland)</td>
+<td align="left"><code>~ x | A</code></td>
+</tr>
+<tr class="even">
+<td align="left">barchart()</td>
+<td align="left">Gráfica de Barras</td>
+<td align="left"><code>x ~ A</code> ó <code>A ~ x</code></td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Lattice - Funciones de alto nivel</h2></hgroup><article  id="lattice---funciones-de-alto-nivel-1">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Gráfica</th>
+<th align="left">Descripción</th>
+<th align="left">Ejemplo de fórmula</th>
+</tr>
+<tr class="odd">
+<td align="left">xyplot()</td>
+<td align="left">Diagrama de Dispersión</td>
+<td align="left"><code>y ~ x | A</code></td>
+</tr>
+<tr class="even">
+<td align="left">splom()</td>
+<td align="left">Matriz de Diagramas de Dispersión</td>
+<td align="left"><code>data.frame</code></td>
+</tr>
+<tr class="odd">
+<td align="left">contourplot()</td>
+<td align="left">Gráfica de Contornos para Superficies</td>
+<td align="left"><code>z ~ x * y</code></td>
+</tr>
+<tr class="even">
+<td align="left">levelplot()</td>
+<td align="left"><em>False Color Level Plot of Surfaces</em></td>
+<td align="left"><code>z ~ y * x</code></td>
+</tr>
+<tr class="odd">
+<td align="left">wireframe()</td>
+<td align="left">Gráfica de Perspectiva 3D</td>
+<td align="left"><code>z ~ y * x</code></td>
+</tr>
+<tr class="even">
+<td align="left">cloud()</td>
+<td align="left">Diagrama de Dispersión 3D</td>
+<td align="left"><code>z ~ x * y | A</code></td>
+</tr>
+<tr class="odd">
+<td align="left">parallel()</td>
+<td align="left">Gráfica de Coordinadas Paralelas</td>
+<td align="left"><code>data.frame</code></td>
+</tr>
+</table>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>ggplot2</h2></hgroup><article  id="ggplot2">
 
 </article></slide><slide class=''><hgroup><h2>R moderno o el <a href='https://barryrowlingson.github.io/hadleyverse/' title=''>&quot;Hadleyverse&quot;</a></h2></hgroup><article  id="r-moderno-o-el-hadleyverse" class="build">
 
@@ -421,130 +460,45 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 <li><code>lubridate</code> manejo de fechas y tiempo.</li>
 <li><code>stringr</code> interface a <code>stringi</code> para manejo de caracteres.</li>
 <li><code>dplyr</code> y <code>tidyr</code> manipulación y limpieza de datos.</li>
-<li><code>ggplot2</code> <em>una gramática de gráficas - util para abstraer y construir visualizaciones</em>.</li>
+<li><h3><code>ggplot2</code> <strong>una gramática de gráficas - util para abstraer y construir visualizaciones</strong>.</h3></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>ggplot2</h2></hgroup><article  id="ggplot2">
+</article></slide><slide class=''><hgroup><h2>ggplot2 - Una Gramatica de Graficas</h2></hgroup><article  id="ggplot2---una-gramatica-de-graficas">
 
 <ul>
-<li>Gráficos por capas</li>
-<li>Gestión de la gráfica como objeto</li>
-<li>Graficar, guardar, abrir y editar.</li>
+<li>Capas:</li>
+<li>Datos +</li>
+<li>Estadisticas +</li>
+<li>Componentes Æsteticos +</li>
+<li>Geometria</li>
 </ul>
+
+<pre class = 'prettyprint lang-r'>ggplot(...) +
+  layer(...) +
+  layer(...) +
+  helper(...) +
+  helper(...) +
+  theme(...)</pre>
+
+</article></slide><slide class=''><hgroup><h2>ggplot2 - Una Gramatica de Graficas</h2></hgroup><article  id="ggplot2---una-gramatica-de-graficas-1">
 
 <p><img src="graficas_files/figure-html/qplot-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>ggplot2 (geoms)</h2></hgroup><article  id="ggplot2-geoms">
+</article></slide><slide class=''><hgroup><h2><a href='geoms.html' title=''>ggplot2 - geometrias y estadísticas</a></h2></hgroup><article  id="ggplot2---geometrias-y-estadisticas">
 
 <pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()</pre>
 
 <p><img src="graficas_files/figure-html/geoms-intro-1.png" title="" alt="" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2><a href='geoms.html' title=''>ggplot2 (geoms)</a></h2></hgroup><article  id="ggplot2-geoms-1" class="smaller">
-
-<table class = 'rmdtable'>
-<tr class="odd">
-<td align="left">geom_abline</td>
-<td align="left">geom_density2d</td>
-<td align="left">geom_line</td>
-<td align="left">geom_rect</td>
-</tr>
-<tr class="even">
-<td align="left">geom_area</td>
-<td align="left">geom_dotplot</td>
-<td align="left">geom_linerange</td>
-<td align="left">geom_ribbon</td>
-</tr>
-<tr class="odd">
-<td align="left">geom_bar</td>
-<td align="left">geom_errorbar</td>
-<td align="left">geom_map</td>
-<td align="left">geom_rug</td>
-</tr>
-<tr class="even">
-<td align="left">geom_bin2d</td>
-<td align="left">geom_errorbarh</td>
-<td align="left">geom_path</td>
-<td align="left">geom_segment</td>
-</tr>
-<tr class="odd">
-<td align="left">geom_blank</td>
-<td align="left">geom_freqpoly</td>
-<td align="left">geom_point</td>
-<td align="left">geom_smooth</td>
-</tr>
-<tr class="even">
-<td align="left">geom_boxplot</td>
-<td align="left">geom_hex</td>
-<td align="left">geom_pointrange</td>
-<td align="left">geom_step</td>
-</tr>
-<tr class="odd">
-<td align="left">geom_contour</td>
-<td align="left">geom_histogram</td>
-<td align="left">geom_polygon</td>
-<td align="left">geom_text</td>
-</tr>
-<tr class="even">
-<td align="left">geom_crossbar</td>
-<td align="left">geom_hline</td>
-<td align="left">geom_quantile</td>
-<td align="left">geom_tile</td>
-</tr>
-<tr class="odd">
-<td align="left">geom_density</td>
-<td align="left">geom_jitter</td>
-<td align="left">geom_raster</td>
-<td align="left">geom_vline</td>
-</tr>
-</table>
-
-</article></slide><slide class=''><hgroup><h2>ggplot2 (stats)</h2></hgroup><article  id="ggplot2-stats">
-
-<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()</pre>
-
-<p><img src="graficas_files/figure-html/stats-intro-1.png" title="" alt="" width="720" /></p>
-
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Más allá: Gráficas interactivas</h2></hgroup><article  id="mas-alla-graficas-interactivas">
-
-<p>Una deuda grande de R.</p>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>ggvis y shiny</h2></hgroup><article  id="ggvis-y-shiny">
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Integración con JS - htmlwidgets</h2></hgroup><article  id="integracion-con-js---htmlwidgets">
 
-</article></slide><slide class=''><hgroup><h2>Una tabla</h2></hgroup><article  id="una-tabla">
-
-<table class = 'rmdtable'>
-<tr class="header">
-<th align="left">Función</th>
-<th align="left">Vectores</th>
-<th align="left">Matrices</th>
-<th align="left">Arreglos</th>
-</tr>
-<tr class="odd">
-<td align="left">Dimensión</td>
-<td align="left"><code>length()</code></td>
-<td align="left"><code>ncol()</code> y <code>nrow()</code></td>
-<td align="left"><code>dim()</code></td>
-</tr>
-<tr class="even">
-<td align="left">Nombres</td>
-<td align="left"><code>names()</code></td>
-<td align="left"><code>rownames()</code> y <code>colnames()</code></td>
-<td align="left"><code>dimnames()</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Concatenar</td>
-<td align="left"><code>c()</code></td>
-<td align="left"><code>cbind()</code> y <code>rbind()</code></td>
-<td align="left"><code>abind::abind()</code></td>
-</tr>
-</table>
-
 </article></slide><slide class=''><hgroup><h2>Ayuda y otros recursos</h2></hgroup><article  id="ayuda-y-otros-recursos" class="build">
 
-<p>La vista de tareas con la que empezamos: <a href='http://cran.r-project.org/web/views/grafics' title=''><em>Vista de Tareas</em>/Gráficas</a>.</p>
+<p>La vista de tareas con la que empezamos: <a href='http://cran.r-project.org/web/views/Graphics' title=''><em>Vista de Tareas</em>/Gráficas</a>.</p>
 
 <p>Canales: <a href='https://twitter.com/hashtag/rstats' title=''>en twitter #rstats</a> y en <a href='http://stackoverflow.com/questions/tagged/r' title=''>StackOverflow el tag R</a>. También pueden <a href='https://www.google.com.co/#q=R' title=''>googlea-R</a> R + &quot;pregunta&quot;.</p>
 
@@ -553,10 +507,34 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 <ul>
 <li><a href='http://www.statmethods.net/graphs/index.html' title=''>Quick R - Gráficas</a></li>
 <li><a href='http://www.springer.com/series/6991?detailsPage=titles' title=''>Springer - Use R Series</a> R en la práctica en diferentes contextos.</li>
+<li><a href='https://www.stat.auckland.ac.nz/~paul/' title=''>La pagina de Paul Murrel</a></li>
 <li>&#8230;</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Preguntas?</h2></hgroup><article  id="preguntas">
+</article></slide><slide class=''><hgroup><h2>Preguntas?</h2></hgroup><article  id="preguntas" class="smaller">
+
+<pre class = 'prettyprint lang-r'>png_meme_generator &lt;- function(web_path, over_text, under_text){
+  con &lt;- url(web_path, open = &#39;rb&#39;)
+  rawpng &lt;- readBin(con, what = &#39;raw&#39;, n = 50000)
+  close(con)
+  
+  img &lt;- png::readPNG(rawpng)
+  
+  old_par &lt;- par(no.readonly = TRUE)
+  on.exit(par(old_par))
+  par(xpd = NA, mgp = c(0, 0, 0), oma = c(0, 0, 0, 0), ann = F)
+  
+  plot.new()
+  plot.window(0:1, 0:1)
+  
+  usr &lt;- par(&quot;usr&quot;)    
+  rasterImage(img, usr[1], usr[3], usr[2], usr[4])
+  
+  text(.5, 1.05,  over_text, cex = 2, col = &quot;#000000&quot;, pos = 3)
+  text(.5, -.05, under_text, cex = 2, col = &quot;#000000&quot;, pos = 1)
+}</pre>
+
+</article></slide><slide class=''><hgroup><h2>Preguntas?</h2></hgroup><article  id="preguntas-1">
 
 <pre class = 'prettyprint lang-r'>png_meme_generator(
   &quot;http://i2.kym-cdn.com/photos/images/original/000/208/140/1322357772581.png&quot;,
@@ -567,7 +545,9 @@ boxplot(MATEMATICAS_PUNT ~ FINS_ESTRATOVIVIENDAENERGIA, data = SB11_20142,
 
 </article></slide><slide class=''><hgroup><h2>Colofón</h2></hgroup><article  id="colofon" class="smaller left-margin">
 
-<p>Esta presentación fue escrita en RMarkdown desde RStudio y compilada por <code>rmarkdown</code> en la plantilla <code>ioslides</code> de Google gracias a <code>knitr</code> y <code>pandoc</code>. Publicada en la web en GitHub gracias a GitHub Pages.</p></article></slide>
+<p>Esta presentación fue escrita en RMarkdown desde RStudio y compilada por <code>rmarkdown</code> en la plantilla <code>ioslides</code> de Google gracias a <code>knitr</code> y <code>pandoc</code>. Publicada en la web en GitHub gracias a GitHub Pages.</p>
+
+<h3><a href='http://bogota-r.github.io/graficas' title=''><strong>bogota-r.github.io/graficas</strong></a></h3></article></slide>
 
 
   <slide class="backdrop"></slide>

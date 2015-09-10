@@ -75,7 +75,7 @@ knit_hooks$set(plot = plot_hook)
 
 opts_chunk$set(message = FALSE,
                comment = "#>",
-               fig.align ="center",
+               fig.align = "center",
                cache = TRUE, 
                dev.args = list(bg = "transparent"),
                img.link = link_gg2)
@@ -109,20 +109,18 @@ Mostrar datos vs mostrar información.
 - **stats:** Qué mostrar
 - **geoms:** Como mostrar
 
-## Geoms {.smaller }
+## Geoms {.smaller}
 
-```{r geoms-table, echo = FALSE}
+```{r geoms-table, echo = FALSE, results = "asis"}
 ls(pattern = '^geom_', env = as.environment('package:ggplot2')) %>%
-  setdiff("geom_violin") matrix(9) %>%
-  kable(col.names = rep("", ncol(.)))
+  setdiff("geom_violin") %>% c(rep("", 9), .) %>% matrix(9) %>% kable
 ```
 
-## Stats {.smaller }
+## Stats {.smaller}
 
 ```{r stats-table, echo = FALSE}
 ls(pattern = '^stat_', env = as.environment('package:ggplot2')) %>%
-  setdiff("stat_abline") %>% matrix(6) %>%
-  kable(col.names = rep("", ncol(.)))
+  setdiff("stat_abline") %>% c(rep("", 6), .) %>% matrix(6) %>% kable
 ```
 
 ## `r gg2_title("geom_violin")` (`r gg2_title("stat_ydensty")`)

@@ -1,6 +1,6 @@
 R_OPTS = --vanilla --slave -e
 OUTPUTS = graficas_cache/* graficas_files/figure-html/* geoms_cache/* \
-					geoms_files/figure-html/*
+					geoms_files/figure-html/* *.html
 					
 all: index.html geoms.html
 
@@ -13,5 +13,4 @@ index.html: graficas.rmd _output.yaml graficas_files/* styles.css
 	mv graficas.html index.html
 
 geoms.html: geoms.rmd _output.yaml geoms_files/* styles.css
-	rm -r -f geoms_files/figure-html/*
 	R $(R_OPTS) "rmarkdown::render('geoms.rmd')"
