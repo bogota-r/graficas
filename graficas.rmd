@@ -396,7 +396,7 @@ Algunas buenas referencias:
 
 ## Preguntas?
 
-```{r echo = FALSE}
+```{r}
 png_meme_generator <- function(web.path, over.text, under.text)
 {
   con <- url(web.path, open = 'rb')
@@ -417,6 +417,8 @@ png_meme_generator <- function(web.path, over.text, under.text)
   text(.5, -.05, under.text, cex = 2, col = "#000000", pos = 1)
 }
 ```
+
+## Preguntas?
 
 ```{r meme, fig.width = 5, fig.align = "center"}
 png_meme_generator(
