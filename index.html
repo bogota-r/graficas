@@ -953,10 +953,18 @@ layout.show(nf)</pre>
 
 <ul>
 <li>&quot;puertos&quot; (<em>viewports</em>)</li>
-<li>unidades</li>
-<li><p>parámetros gráficos</p></li>
-<li><p>Estructura de arbol. Objetos grafics o <code>grob</code>s.</p></li>
+<li>unidades <code>?units</code></li>
+<li>parámetros gráficos <code>?gpar</code></li>
+<li>Estructura de arbol. Objetos grafics o <code>grob</code>s.</li>
 </ul>
+
+<p>Grid solo ofrece componentes de bajo nivel.</p>
+
+</article></slide><slide class=''><hgroup><h2>Puertos</h2></hgroup><article  id="puertos">
+
+<p>Region rectangular que proporciona un contexto para dibujar.</p>
+
+<p>Contexto para dibujar: - Contexto geometrico: sistema coordenado - Contexto gráfico: parametros gráficos</p>
 
 </article></slide><slide class=''><hgroup><h2>Grid</h2></hgroup><article  id="grid-1">
 
@@ -964,10 +972,6 @@ layout.show(nf)</pre>
 grid.show.viewport(v)</pre>
 
 <p><img src="graficas_files/figure-html/grid-0-1.png" title="" alt="" width="720" /></p>
-
-</article></slide><slide class=''><hgroup><h2>Componentes de bajo nivel</h2></hgroup><article  id="componentes-de-bajo-nivel-1">
-
-<p>Grid solo ofrece componentes de bajo nivel.</p>
 
 </article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice">
 
@@ -980,12 +984,14 @@ grid.show.viewport(v)</pre>
 </article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice-1">
 
 <ul>
-<li>Interfaz de formula:</li>
-<li><code>~ x | A</code>: graficar la variable <code>x</code> para cada nivel de <code>A</code>.</li>
-<li><p><code>y ~ x | A * B</code> graficar la relación entre las variables numéricas <code>y</code> y <code>x</code> para cada combinación de niveles de los &quot;factores&quot; <code>A</code> y <code>B</code>.</p></li>
-<li><p>&#8230;</p></li>
-<li><p>&#8230;</p></li>
+<li>Está basado en el paquete <code>grid</code> y por lo tanto hereda gran parte de sus características.</li>
+<li><p>La visualización con Trellis se define por el tipo de gráfica y los roles de las variables, los más comunes son:</p></li>
+<li>Variables primarias</li>
+<li>Variables que condicionan</li>
+<li><p>Variables de agrupamiento</p></li>
 </ul>
+
+<p><code>lattice</code> utiliza una interfaz de fórmula: - <code>~ x | A</code>: graficar la variable <code>x</code> para cada nivel de <code>A</code>. - <code>y ~ x | A * B</code> graficar la relación entre las variables numéricas <code>y</code> y <code>x</code> para cada combinación de niveles de los &quot;factores&quot; <code>A</code> y <code>B</code>.</p>
 
 </article></slide><slide class=''><hgroup><h2>Lattice</h2></hgroup><article  id="lattice-2">
 

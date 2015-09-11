@@ -404,10 +404,19 @@ Un sistema gráfico alternativo, flexible y poderoso.
 Tres componentes:
 
 - "puertos" (_viewports_)
-- unidades
-- parámetros gráficos
-
+- unidades `?units`
+- parámetros gráficos `?gpar`
 - Estructura de arbol. Objetos grafics o `grob`s.
+
+Grid solo ofrece componentes de bajo nivel.
+
+## Puertos
+
+Region rectangular que proporciona un contexto para dibujar.
+
+Contexto para dibujar:
+  - Contexto geometrico: sistema coordenado
+  - Contexto gráfico: parametros gráficos
 
 ## Grid
 
@@ -415,10 +424,6 @@ Tres componentes:
 v <- viewport(x = 0.6, y = 0.6, w = unit(1, "inches"), h = unit(1, "inches"))
 grid.show.viewport(v)
 ```
-
-## Componentes de bajo nivel
-
-Grid solo ofrece componentes de bajo nivel.
 
 ## Lattice
 
@@ -430,13 +435,16 @@ Laticce es una libreria que proporciona funciones gráficas de alto nivel basada
 
 ## Lattice
 
-* Interfaz de formula:
+* Está basado en el paquete `grid` y por lo tanto hereda gran parte de sus características.
+* La visualización con Trellis se define por el tipo de gráfica y los roles de las variables, los más comunes son:
+ 
+  * Variables primarias
+  * Variables que condicionan
+  * Variables de agrupamiento
+
+`lattice` utiliza una interfaz de fórmula:
   - `~ x | A`:  graficar la variable `x` para cada nivel de `A`.
   - `y ~ x | A * B` graficar la relación entre las variables numéricas `y` y `x` para cada combinación de niveles de los "factores" `A` y `B`.
-
-* ...
-
-* ...
 
 ## Lattice
 
