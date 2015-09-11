@@ -425,7 +425,7 @@ v <- viewport(x = 0.6, y = 0.6, w = unit(1, "inches"), h = unit(1, "inches"))
 grid.show.viewport(v)
 ```
 
-## Lattice
+# Lattice
 
 ## Que es lattice?
 
