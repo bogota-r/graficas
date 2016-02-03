@@ -11,7 +11,7 @@
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <link rel="stylesheet" media="all" href="libs/ioslides-13.5.1/fonts/fonts.css">
@@ -947,7 +947,7 @@ layout.show(nf)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Qué es grid?</h2></hgroup><article  id="que-es-grid">
 
-<p>Un sistema gráfico alternativo, flexible y poderoso.</p>
+<p><a href='https://www.stat.auckland.ac.nz/~paul/grid/grid.html' title=''>Grid</a> es un sistema gráfico alternativo, flexible y poderoso.</p>
 
 <p>Tres componentes:</p>
 
@@ -977,7 +977,7 @@ grid.show.viewport(v)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Que es lattice?</h2></hgroup><article  id="que-es-lattice">
 
-<p>Laticce es una libreria que proporciona funciones gráficas de alto nivel basadas en <code>grid</code> y útiles para generar gráficas para datos multivariados a través de condicionamiento (<em>Trellis plots</em>) basado en trabajo e ideas de <a href='http://www.stat.purdue.edu/~wsc/' title=''>William Cleveland</a>.</p>
+<p><a href='http://lattice.r-forge.r-project.org/' title=''>Laticce</a> es una libreria que proporciona funciones gráficas de alto nivel basadas en <code>grid</code> y útiles para generar gráficas para datos multivariados a través de condicionamiento (<em>Trellis plots</em>) basado en trabajo e ideas de <a href='http://www.stat.purdue.edu/~wsc/' title=''>William Cleveland</a>.</p>
 
 <img src='graficas_files/lattice.jpeg' title=''/>
 
@@ -1000,6 +1000,9 @@ grid.show.viewport(v)</pre>
 </article></slide><slide class=''><hgroup><h2>Lattice - Funciones de alto nivel</h2></hgroup><article  id="lattice---funciones-de-alto-nivel">
 
 <table class = 'rmdtable'>
+<col width="20%" />
+<col width="56%" />
+<col width="30%" />
 <tr class="header">
 <th align="left">Gráfica</th>
 <th align="left">Descripción</th>
@@ -1050,6 +1053,9 @@ grid.show.viewport(v)</pre>
 </article></slide><slide class=''><hgroup><h2>Lattice - Funciones de alto nivel</h2></hgroup><article  id="lattice---funciones-de-alto-nivel-1">
 
 <table class = 'rmdtable'>
+<col width="23%" />
+<col width="56%" />
+<col width="30%" />
 <tr class="header">
 <th align="left">Gráfica</th>
 <th align="left">Descripción</th>
@@ -1177,9 +1183,33 @@ grid.show.viewport(v)</pre>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Más allá: Gráficas interactivas</h2></hgroup><article  id="mas-alla-graficas-interactivas">
 
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>ggvis y shiny</h2></hgroup><article  id="ggvis-y-shiny">
+</article></slide><slide class=''><hgroup><h2>Más allá: Gráficas interactivas</h2></hgroup><article  id="mas-alla-graficas-interactivas-1">
 
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Integración con JS - htmlwidgets</h2></hgroup><article  id="integracion-con-js---htmlwidgets">
+<h3>Algunos precedentes:</h3>
+
+<ul>
+<li><a href='http://yihui.name/animation/' title=''>animation</a> - generación de graficos animados en diversos formatos.</li>
+<li><a href='https://github.com/mages/googleVis#googlevis' title=''>googleVis</a> - interface al <em>Google Charts API</em>.</li>
+<li><a href='http://www.ggobi.org/rggobi/' title=''>rggobi</a> - interface para <a href='http://www.ggobi.org/' title=''>ggobi</a>.</li>
+<li><a href='https://github.com/ramnathv/rCharts' title=''>rCharts</a> - el antecedente directo de <code>htmlwidgets</code>.</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Más allá: Gráficas interactivas</h2></hgroup><article  id="mas-alla-graficas-interactivas-2">
+
+<h3>Los desarrollos actuales de <a href='https://www.rstudio.com/' title=''><strong>RStudio</strong></a> <em>et al.</em>:</h3>
+
+<ul>
+<li><a href='http://shiny.rstudio.com/' title=''>shiny</a> - un <em>framework</em> para desarrollar aplicaciones <strong>web</strong> (JavaScript!) con <strong>componentes reactivos</strong> en R.</li>
+<li><a href='https://cran.r-project.org/web/packages/ggvis/index.html' title=''>ggvis</a> una gramatica de gráficas interactivas (impulsada por <a href='https://github.com/vega/vega' title=''>vega</a>) y pensada para explotar <code>shiny</code>.</li>
+<li>Integración con JavaScript: <a href='http://www.htmlwidgets.org/' title=''>htmlwidgets</a>.</li>
+</ul>
+
+<h3>Aun más:</h3>
+
+<ul>
+<li><p><a href='https://github.com/ropensci/plotly' title=''>plotly</a> aprovecha la libreria de JavaScript <a href='https://plot.ly/r' title=''>plot.ly</a> e inclusive traduce directamente objetos de ggplot2 - aprovecha <code>htmlwidgets</code> para su integración.</p></li>
+<li><p><a href='http://hafen.github.io/rbokeh/' title=''>rbokeh</a> una interfaz a la libreria de Python <a href='http://bokeh.pydata.org/en/latest/' title=''>bokeh</a> que tambien usa JavaScript para presentar graficos interactivos en navegadores modernos. Igual que <code>plotly</code> aprovecha <code>htmlwidgets</code> para integrarse.</p></li>
+</ul>
 
 </article></slide><slide class=''><hgroup><h2>Ayuda y otros recursos</h2></hgroup><article  id="ayuda-y-otros-recursos">
 
@@ -1193,14 +1223,20 @@ grid.show.viewport(v)</pre>
 <li><a href='http://www.statmethods.net/graphs/index.html' title=''>Quick R - Gráficas</a></li>
 <li><a href='http://www.springer.com/series/6991?detailsPage=titles' title=''>Springer - Use R Series</a> R en la práctica en diferentes contextos.</li>
 <li><a href='https://www.stat.auckland.ac.nz/~paul/' title=''>La pagina de Paul Murrel</a></li>
+<li><a href='http://courses.had.co.nz/12-effective-vis/' title=''>Hadley Whickham sobre visualización efectiva</a></li>
+<li>Karl Broman sobre gráficas interactivas <a href='https://www.biostat.wisc.edu/~kbroman/presentations/InteractiveGraphs/' title=''>aquí</a> y <a href='https://www.biostat.wisc.edu/~kbroman/presentations/ChiASA2015/' title=''>acá</a></li>
 <li>&#8230;</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Colofón</h2></hgroup><article  id="colofon" class="smaller left-margin">
 
-<p>Esta presentación fue escrita en RMarkdown desde RStudio y compilada por <code>rmarkdown</code> en la plantilla <code>ioslides</code> de Google gracias a <code>knitr</code> y <code>pandoc</code>. Publicada en la web en GitHub gracias a GitHub Pages.</p>
+<h3><a href='http://bogota-r.github.io/graficas' title=''><strong>bogota-r.github.io/graficas</strong></a></h3>
 
-<h3><a href='http://bogota-r.github.io/graficas' title=''><strong>bogota-r.github.io/graficas</strong></a></h3></article></slide>
+<p>Esta presentación fue escrita en <a href='http://rmarkdown.rstudio.com/' title=''>RMarkdown</a> desde <a href='https://www.rstudio.com/' title=''>RStudio</a> y compilada por <code>rmarkdown</code> en la plantilla <a href='https://code.google.com/archive/p/io-2012-slides/' title=''><code>ioslides</code></a> de Google gracias a <a href='http://yihui.name/knitr/' title=''><code>knitr</code></a> y <a href='http://pandoc.org/' title=''><code>pandoc</code></a>. Publicada en la web en <a href='https://github.com/bogota-r/intro' title=''>GitHub</a> gracias a <a href='https://pages.github.com/' title=''>GitHub Pages</a>.</p>
+
+<p>La presentación fue preparada por por <a href='https://github.com/seawaR' title=''>Adriana Clavijo</a>, <a href='https://github.com/CruzJulian' title=''>Julian Cruz</a> y <a href='https://github.com/demorenoc' title=''>Daniel Moreno</a> para el <a href='http://www.meetup.com/Bogota-R-Users-Group/' title=''>Grupo de Usuarios de R de Bogotá</a> y el contenido original esta bajo la licensia <a href='http://creativecommons.org/licenses/by/4.0/' title=''>CC-BY 4.0</a>.</p>
+
+<p><a href='http://creativecommons.org/licenses/by/4.0/' title='CC-BY-4.0'><img src='http://i.creativecommons.org/l/by/4.0/88x31.png' title=''/></a></p></article></slide>
 
 
   <slide class="backdrop"></slide>

@@ -11,7 +11,7 @@
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <link rel="stylesheet" media="all" href="libs/ioslides-13.5.1/fonts/fonts.css">
@@ -118,63 +118,77 @@
 <td align="left">geom_abline</td>
 <td align="left">geom_density2d</td>
 <td align="left">geom_line</td>
-<td align="left">geom_rect</td>
+<td align="left">geom_ribbon</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">geom_area</td>
-<td align="left">geom_dotplot</td>
+<td align="left">geom_density_2d</td>
 <td align="left">geom_linerange</td>
-<td align="left">geom_ribbon</td>
+<td align="left">geom_rug</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">geom_bar</td>
-<td align="left">geom_errorbar</td>
+<td align="left">geom_dotplot</td>
 <td align="left">geom_map</td>
-<td align="left">geom_rug</td>
+<td align="left">geom_segment</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">geom_bin2d</td>
-<td align="left">geom_errorbarh</td>
+<td align="left">geom_errorbar</td>
 <td align="left">geom_path</td>
-<td align="left">geom_segment</td>
+<td align="left">geom_smooth</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">geom_blank</td>
-<td align="left">geom_freqpoly</td>
+<td align="left">geom_errorbarh</td>
 <td align="left">geom_point</td>
-<td align="left">geom_smooth</td>
+<td align="left">geom_spoke</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">geom_boxplot</td>
-<td align="left">geom_hex</td>
+<td align="left">geom_freqpoly</td>
 <td align="left">geom_pointrange</td>
 <td align="left">geom_step</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">geom_contour</td>
-<td align="left">geom_histogram</td>
+<td align="left">geom_hex</td>
 <td align="left">geom_polygon</td>
 <td align="left">geom_text</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">geom_crossbar</td>
-<td align="left">geom_hline</td>
-<td align="left">geom_quantile</td>
+<td align="left">geom_count</td>
+<td align="left">geom_histogram</td>
+<td align="left">geom_qq</td>
 <td align="left">geom_tile</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">geom_density</td>
+<td align="left">geom_crossbar</td>
+<td align="left">geom_hline</td>
+<td align="left">geom_quantile</td>
+<td align="left">geom_violin</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">geom_curve</td>
 <td align="left">geom_jitter</td>
 <td align="left">geom_raster</td>
 <td align="left">geom_vline</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">geom_density</td>
+<td align="left">geom_label</td>
+<td align="left">geom_rect</td>
+<td align="left"></td>
 </tr>
 </table>
 
@@ -184,44 +198,50 @@
 <tr class="odd">
 <td align="left"></td>
 <td align="left">stat_bin</td>
-<td align="left">stat_density</td>
-<td align="left">stat_identity</td>
-<td align="left">stat_summary</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">stat_bin2d</td>
-<td align="left">stat_density2d</td>
-<td align="left">stat_qq</td>
-<td align="left">stat_summary2d</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">stat_bindot</td>
-<td align="left">stat_ecdf</td>
-<td align="left">stat_quantile</td>
+<td align="left">stat_contour</td>
+<td align="left">stat_ellipse</td>
+<td align="left">stat_spoke</td>
 <td align="left">stat_summary_hex</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">stat_binhex</td>
-<td align="left">stat_ellipse</td>
-<td align="left">stat_smooth</td>
+<td align="left">stat_bin2d</td>
+<td align="left">stat_count</td>
+<td align="left">stat_function</td>
+<td align="left">stat_sum</td>
 <td align="left">stat_unique</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">stat_boxplot</td>
-<td align="left">stat_function</td>
-<td align="left">stat_spoke</td>
-<td align="left">stat_vline</td>
+<td align="left">stat_bin_2d</td>
+<td align="left">stat_density</td>
+<td align="left">stat_identity</td>
+<td align="left">stat_summary</td>
+<td align="left">stat_ydensity</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">stat_contour</td>
-<td align="left">stat_hline</td>
-<td align="left">stat_sum</td>
-<td align="left">stat_ydensity</td>
+<td align="left">stat_binhex</td>
+<td align="left">stat_density2d</td>
+<td align="left">stat_qq</td>
+<td align="left">stat_summary2d</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">stat_bin_hex</td>
+<td align="left">stat_density_2d</td>
+<td align="left">stat_quantile</td>
+<td align="left">stat_summary_2d</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">stat_boxplot</td>
+<td align="left">stat_ecdf</td>
+<td align="left">stat_smooth</td>
+<td align="left">stat_summary_bin</td>
+<td align="left"></td>
 </tr>
 </table>
 
@@ -244,11 +264,11 @@
 
 <p><a href="http://docs.ggplot2.org/current/geom_boxplot.html"> <img src="geoms_files/figure-html/geom_boxplot-1.png" title="geom_boxplot" alt="geom_boxplot" width="720" style="display: block; margin: auto;" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_bar.html' title=''>geom_bar</a> (<a href='http://docs.ggplot2.org/current/stat_bin.html' title=''>stat_bin</a>)</h2></hgroup><article  id="geom_bar-stat_bin">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_bar.html' title=''>geom_bar</a> (<a href='http://docs.ggplot2.org/current/stat_count.html' title=''>stat_count</a>)</h2></hgroup><article  id="geom_bar-stat_count">
 
-<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(factor(cyl)) + geom_bar(stat = &quot;bin&quot;)</pre>
+<pre class = 'prettyprint lang-r'>ggplot(mtcars) + aes(factor(cyl)) + geom_bar(stat = &quot;count&quot;)</pre>
 
-<p><a href="http://docs.ggplot2.org/0.9.3.1/geom_bar.html"> <img src="geoms_files/figure-html/geom_bar_bin-1.png" title="geom_bar_bin" alt="geom_bar_bin" width="720" style="display: block; margin: auto;" /> </a></p>
+<p><a href="http://docs.ggplot2.org/0.9.3.1/geom_bar.html"> <img src="geoms_files/figure-html/geom_bar_count-1.png" title="geom_bar_count" alt="geom_bar_count" width="720" style="display: block; margin: auto;" /> </a></p>
 
 </article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_bar.html' title=''>geom_bar</a> (<a href='http://docs.ggplot2.org/current/stat_identity.html' title=''>stat_identity</a>)</h2></hgroup><article  id="geom_bar-stat_identity">
 
@@ -301,12 +321,14 @@ ggplot(diamonds) + aes(price, depth, z = table) + stat_summary_hex()</pre>
 
 <p><a href="http://docs.ggplot2.org/current/geom_points2.html"> <img src="geoms_files/figure-html/geom_points2-1.png" title="geom_points2" alt="geom_points2" width="720" style="display: block; margin: auto;" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_points.html' title=''>geom_points</a> (<a href='http://docs.ggplot2.org/current/stat_spoke.html' title=''>stat_spoke</a>)</h2></hgroup><article  id="geom_points-stat_spoke">
+</article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_points.html' title=''>geom_points</a> + <a href='http://docs.ggplot2.org/current/geom_spoke.html' title=''>geom_spoke</a></h2></hgroup><article  id="geom_points-geom_spoke">
 
-<pre class = 'prettyprint lang-r'>ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + 
-  geom_point() + stat_spoke(radius = 0.5)</pre>
+<pre class = 'prettyprint lang-r'>set.seed(43210)
 
-<p><a href="http://docs.ggplot2.org/current/geom_points2_spoke.html"> <img src="geoms_files/figure-html/geom_points2_spoke-1.png" title="geom_points2_spoke" alt="geom_points2_spoke" width="720" style="display: block; margin: auto;" /> </a></p>
+ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + 
+  geom_point() + geom_spoke(radius = 0.5)</pre>
+
+<p><a href="http://docs.ggplot2.org/current/geom_spoke.html"> <img src="geoms_files/figure-html/geom_spoke-1.png" title="geom_spoke" alt="geom_spoke" width="720" style="display: block; margin: auto;" /> </a></p>
 
 </article></slide><slide class=''><hgroup><h2><a href='http://docs.ggplot2.org/current/geom_jitter.html' title=''>geom_jitter</a> (the overploting problem)</h2></hgroup><article  id="geom_jitter-the-overploting-problem">
 
@@ -358,7 +380,7 @@ ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
 
 <p><a href="http://docs.ggplot2.org/current/geom_points_unique.html"> <img src="geoms_files/figure-html/geom_points_unique-1.png" title="geom_points_unique" alt="geom_points_unique" width="720" style="display: block; margin: auto;" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>Graficos de rangos</h2></hgroup><article  id="graficos-de-rangos">
+</article></slide><slide class=''><hgroup><h2>Gráficos de rangos</h2></hgroup><article  id="graficos-de-rangos">
 
 <ul>
 <li>stat_summary</li>
@@ -366,7 +388,7 @@ ggplot(mpg) + aes(displ, hwy) + geom_jitter() + geom_density2d()</pre>
 <li>stat_sum_single</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Gráficos de rangos</h2></hgroup><article  id="graficos-de-rangos">
+</article></slide><slide class=''><hgroup><h2>Gráficos de rangos</h2></hgroup><article  id="graficos-de-rangos-1">
 
 <p><img src="geoms_files/figure-html/base-boxplot-1.png" title="base-boxplot" alt="base-boxplot" width="720" style="display: block; margin: auto;" /></p>
 
@@ -568,26 +590,26 @@ colombia &lt;- colmap(municipios) +
 </article></slide><slide class=''><hgroup><h2>Faceting</h2></hgroup><article  id="faceting">
 
 <pre class = 'prettyprint lang-r'>iris %&gt;% melt(&quot;Species&quot;) %&gt;% ggplot + 
-  aes(x=value) + 
+  aes(x = value) +
   geom_density() +
   xlab(&quot;Valores&quot;) + 
   ylab(&quot;Densidad&quot;) +
   facet_wrap(~variable, scale = &quot;free&quot;)</pre>
 
-</article></slide><slide class=''><hgroup><h2>Facetting</h2></hgroup><article  id="facetting">
+</article></slide><slide class=''><hgroup><h2>Faceting</h2></hgroup><article  id="faceting-1">
 
 <p><a href="http://docs.ggplot2.org/current/facet_wrap.html"> <img src="geoms_files/figure-html/facet_wrap-1.png" title="facet_wrap" alt="facet_wrap" width="720" style="display: block; margin: auto;" /> </a></p>
 
-</article></slide><slide class=''><hgroup><h2>Faceting</h2></hgroup><article  id="faceting-1">
+</article></slide><slide class=''><hgroup><h2>Faceting</h2></hgroup><article  id="faceting-2">
 
 <pre class = 'prettyprint lang-r'>iris %&gt;% melt(&quot;Species&quot;) %&gt;% ggplot + 
-  aes(x=value) + 
+  aes(x = value) +
   geom_density() +
   xlab(&quot;Valores&quot;) + 
   ylab(&quot;Densidad&quot;) +
-  facet_wrap(~variable*Species, scale = &quot;free&quot;, ncol = 3)</pre>
+  facet_grid(Species ~ variable, scales = &quot;free&quot;)</pre>
 
-</article></slide><slide class=''><hgroup><h2>Facetting</h2></hgroup><article  id="facetting-1">
+</article></slide><slide class=''><hgroup><h2>Faceting</h2></hgroup><article  id="faceting-3">
 
 <p><a href="http://docs.ggplot2.org/current/facet.html"> <img src="geoms_files/figure-html/facet-1.png" title="facet" alt="facet" width="720" style="display: block; margin: auto;" /> </a></p>
 
