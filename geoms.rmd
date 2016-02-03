@@ -114,14 +114,14 @@ Mostrar datos vs mostrar información.
 
 ```{r geoms-table, echo = FALSE, results = "asis"}
 ls(pattern = '^geom_', env = as.environment('package:ggplot2')) %>%
-  setdiff("geom_violin") %>% c(rep("", 9), .) %>% matrix(9) %>% kable
+  c(rep("", 11), ., "") %>% matrix(11) %>% kable
 ```
 
 ## Stats {.smaller}
 
 ```{r stats-table, echo = FALSE}
 ls(pattern = '^stat_', env = as.environment('package:ggplot2')) %>%
-  setdiff("stat_abline") %>% c(rep("", 6), .) %>% matrix(6) %>% kable
+  c(rep("", 6), ., rep("", 3)) %>% matrix(6) %>% kable
 ```
 
 ## `r gg2_title("geom_violin")` (`r gg2_title("stat_ydensty")`)
@@ -143,10 +143,10 @@ ggplot(mtcars) + aes(x = factor(cyl), y = mpg) +
 ggplot(mtcars) + aes(factor(cyl), mpg) + geom_boxplot()
 ```
 
-## `r gg2_title("geom_bar")` (`r gg2_title("stat_bin")`)
+## `r gg2_title("geom_bar")` (`r gg2_title("stat_count")`)
 
-```{r geom_bar_bin, img.link = "http://docs.ggplot2.org/0.9.3.1/geom_bar.html"} 
-ggplot(mtcars) + aes(factor(cyl)) + geom_bar(stat = "bin")
+```{r geom_bar_count, img.link = "http://docs.ggplot2.org/0.9.3.1/geom_bar.html"}
+ggplot(mtcars) + aes(factor(cyl)) + geom_bar(stat = "count")
 ```
 
 ## `r gg2_title("geom_bar")` (`r gg2_title("stat_identity")`)
@@ -201,11 +201,13 @@ ggplot(diamonds) + aes(price, depth, z = table) + stat_summary_hex()
 ggplot(mpg) + aes(displ, hwy) + geom_point()
 ```
 
-## `r gg2_title("geom_points")` (`r gg2_title("stat_spoke")`)
+## `r gg2_title("geom_points")` + `r gg2_title("geom_spoke")`
 
-```{r geom_points2_spoke}
+```{r geom_spoke}
+set.seed(43210)
+
 ggplot(mpg) + aes(displ, hwy, angle = runif(234, 0, 2*pi)) + 
-  geom_point() + stat_spoke(radius = 0.5)
+  geom_point() + geom_spoke(radius = 0.5)
 ```
 
 ## `r gg2_title("geom_jitter")` (the overploting problem)
@@ -259,7 +261,7 @@ ggplot(mpg) + aes(displ, hwy) + geom_point(stat = "unique")
 ```
 
 
-## Graficos de rangos 
+## Gráficos de rangos
 
 - stat_summary
 - stat_sum_df
@@ -483,14 +485,14 @@ ggplot(volcano3d, aes(x, y, z = z)) +
 
 ```{r facet_wrap, eval = FALSE}
 iris %>% melt("Species") %>% ggplot + 
-  aes(x=value) + 
+  aes(x = value) +
   geom_density() +
   xlab("Valores") + 
   ylab("Densidad") +
   facet_wrap(~variable, scale = "free")
 ```
 
-## Facetting
+## Faceting
 
 ```{r facet_wrap, echo = FALSE}
 ```
@@ -499,17 +501,15 @@ iris %>% melt("Species") %>% ggplot +
 ## Faceting
 
 ```{r facet, eval = FALSE}
-
 iris %>% melt("Species") %>% ggplot + 
-  aes(x=value) + 
+  aes(x = value) +
   geom_density() +
   xlab("Valores") + 
   ylab("Densidad") +
-  facet_wrap(~variable*Species, scale = "free", ncol = 3)
-
+  facet_grid(Species ~ variable, scales = "free")
 ```
 
-## Facetting
+## Faceting
 
 ```{r facet, echo = FALSE}
 ```

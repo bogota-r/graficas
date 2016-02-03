@@ -399,7 +399,7 @@ png_meme_generator(
 
 ## Qué es grid?
 
-Un sistema gráfico alternativo, flexible y poderoso.
+[Grid](https://www.stat.auckland.ac.nz/~paul/grid/grid.html) es un sistema gráfico alternativo, flexible y poderoso.
 
 Tres componentes:
 
@@ -429,7 +429,7 @@ grid.show.viewport(v)
 
 ## Que es lattice?
 
-Laticce es una libreria que proporciona funciones gráficas de alto nivel basadas en `grid` y útiles para generar gráficas para datos multivariados a través de condicionamiento (_Trellis plots_) basado en trabajo e ideas de [William Cleveland](http://www.stat.purdue.edu/~wsc/).    
+[Laticce](http://lattice.r-forge.r-project.org/) es una libreria que proporciona funciones gráficas de alto nivel basadas en `grid` y útiles para generar gráficas para datos multivariados a través de condicionamiento (_Trellis plots_) basado en trabajo e ideas de [William Cleveland](http://www.stat.purdue.edu/~wsc/).
 
 ![Lattice](graficas_files/lattice.jpeg)
 
@@ -631,9 +631,28 @@ ggplot(mtcars) + aes(y = mpg, x = factor(cyl)) + geom_violin()
 
 # Más allá: Gráficas interactivas
 
-# ggvis y shiny
+## Más allá: Gráficas interactivas
 
-# Integración con JS - htmlwidgets
+### Algunos precedentes:
+
+  - [animation](http://yihui.name/animation/) - generación de graficos animados en diversos formatos.
+  - [googleVis](https://github.com/mages/googleVis#googlevis) - interface al _Google Charts API_.
+  - [rggobi](http://www.ggobi.org/rggobi/) - interface para [ggobi](http://www.ggobi.org/).
+  - [rCharts](https://github.com/ramnathv/rCharts) - el antecedente directo de `htmlwidgets`.
+
+## Más allá: Gráficas interactivas
+
+### Los desarrollos actuales de [**RStudio**](https://www.rstudio.com/) _et al._:
+
+  - [shiny](http://shiny.rstudio.com/) - un _framework_ para desarrollar aplicaciones **web** (JavaScript!) con **componentes reactivos** en R.
+  - [ggvis](https://cran.r-project.org/web/packages/ggvis/index.html) una gramatica de gráficas interactivas (impulsada por [vega](https://github.com/vega/vega)) y pensada para explotar `shiny`.
+  - Integración con JavaScript: [htmlwidgets](http://www.htmlwidgets.org/).
+
+###  Aun más:
+
+  - [plotly](https://github.com/ropensci/plotly) aprovecha la libreria de JavaScript [plot.ly](https://plot.ly/r) e inclusive traduce directamente objetos de ggplot2 - aprovecha `htmlwidgets` para su integración.
+
+  - [rbokeh](http://hafen.github.io/rbokeh/) una interfaz a la libreria de Python [bokeh](http://bokeh.pydata.org/en/latest/) que tambien usa JavaScript para presentar graficos interactivos en navegadores modernos. Igual que `plotly` aprovecha `htmlwidgets` para integrarse.
 
 ## Ayuda y otros recursos
 
@@ -646,10 +665,16 @@ Algunas buenas referencias:
 - [Quick R - Gráficas](http://www.statmethods.net/graphs/index.html)
 - [Springer - Use R Series](http://www.springer.com/series/6991?detailsPage=titles) R en la práctica en diferentes contextos.
 - [La pagina de Paul Murrel](https://www.stat.auckland.ac.nz/~paul/)
+- [Hadley Whickham sobre visualización efectiva](http://courses.had.co.nz/12-effective-vis/)
+- Karl Broman sobre gráficas interactivas [aquí](https://www.biostat.wisc.edu/~kbroman/presentations/InteractiveGraphs/) y [acá](https://www.biostat.wisc.edu/~kbroman/presentations/ChiASA2015/)
 - ...
 
 ## Colofón {.smaller .left-margin}
 
-Esta presentación fue escrita en RMarkdown desde RStudio y compilada por `rmarkdown` en la plantilla `ioslides` de Google gracias a `knitr` y `pandoc`. Publicada en la web en GitHub gracias a GitHub Pages.
-
 ### [**bogota-r.github.io/graficas**](http://bogota-r.github.io/graficas)
+
+Esta presentación fue escrita en [RMarkdown](http://rmarkdown.rstudio.com/) desde [RStudio](https://www.rstudio.com/) y compilada por `rmarkdown` en la plantilla [`ioslides`](https://code.google.com/archive/p/io-2012-slides/) de Google gracias a [`knitr`](http://yihui.name/knitr/) y [`pandoc`](http://pandoc.org/). Publicada en la web en [GitHub](https://github.com/bogota-r/intro) gracias a [GitHub Pages](https://pages.github.com/).
+
+La presentación fue preparada por por [Adriana Clavijo](https://github.com/seawaR), [Julian Cruz](https://github.com/CruzJulian) y [Daniel Moreno](https://github.com/demorenoc) para el [Grupo de Usuarios de R de Bogotá](http://www.meetup.com/Bogota-R-Users-Group/) y el contenido original esta bajo la licensia [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/).
+
+[![CC BY](http://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/ "CC-BY-4.0")
